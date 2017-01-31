@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicioConversion" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IServicioConversion_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicioConversion_RegistrarDocumento_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDocumento" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_RegistrarDocumento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AgregarTienda_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarTienda" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AgregarTienda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarTiendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarTiendaPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTiendaPorId" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarTiendaPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTiendaPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarTiendaPorCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTiendaPorCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarTiendaPorCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTiendaPorCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ActualizarTienda_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarTienda" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ActualizarTienda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarTiendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarCampanaPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCampanaPorId" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarCampanaPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCampanaPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarCampanaPorNombre_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCampanaPorNombre" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarCampanaPorNombre_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCampanaPorNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AgregarTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AgregarTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ActualizarTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ActualizarTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarTipoProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTipoProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarTipoProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarTipoProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AgregarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AgregarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgregarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ActualizarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ActualizarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ExisteConversion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteConversion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ExisteConversion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteConversionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ExisteConversionPorCupon_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteConversionPorCupon" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ExisteConversionPorCupon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteConversionPorCuponResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AnularConversion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnularConversion" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AnularConversion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnularConversionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AnularConversionPorCupon_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnularConversionPorCupon" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_AnularConversionPorCupon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnularConversionPorCuponResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicioConversion">
+    <wsdl:operation name="RegistrarDocumento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/RegistrarDocumento" message="tns:IServicioConversion_RegistrarDocumento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/RegistrarDocumentoResponse" message="tns:IServicioConversion_RegistrarDocumento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTienda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/AgregarTienda" message="tns:IServicioConversion_AgregarTienda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/AgregarTiendaResponse" message="tns:IServicioConversion_AgregarTienda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTiendaPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarTiendaPorId" message="tns:IServicioConversion_ConsultarTiendaPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarTiendaPorIdResponse" message="tns:IServicioConversion_ConsultarTiendaPorId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTiendaPorCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarTiendaPorCodigo" message="tns:IServicioConversion_ConsultarTiendaPorCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarTiendaPorCodigoResponse" message="tns:IServicioConversion_ConsultarTiendaPorCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTienda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ActualizarTienda" message="tns:IServicioConversion_ActualizarTienda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ActualizarTiendaResponse" message="tns:IServicioConversion_ActualizarTienda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorId" message="tns:IServicioConversion_ConsultarCampanaPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorIdResponse" message="tns:IServicioConversion_ConsultarCampanaPorId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorNombre">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombre" message="tns:IServicioConversion_ConsultarCampanaPorNombre_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombreResponse" message="tns:IServicioConversion_ConsultarCampanaPorNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/AgregarTipoProducto" message="tns:IServicioConversion_AgregarTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/AgregarTipoProductoResponse" message="tns:IServicioConversion_AgregarTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ActualizarTipoProducto" message="tns:IServicioConversion_ActualizarTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ActualizarTipoProductoResponse" message="tns:IServicioConversion_ActualizarTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTipoProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarTipoProducto" message="tns:IServicioConversion_ConsultarTipoProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarTipoProductoResponse" message="tns:IServicioConversion_ConsultarTipoProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/AgregarProducto" message="tns:IServicioConversion_AgregarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/AgregarProductoResponse" message="tns:IServicioConversion_AgregarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ActualizarProducto" message="tns:IServicioConversion_ActualizarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ActualizarProductoResponse" message="tns:IServicioConversion_ActualizarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarProducto" message="tns:IServicioConversion_ConsultarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarProductoResponse" message="tns:IServicioConversion_ConsultarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteConversion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ExisteConversion" message="tns:IServicioConversion_ExisteConversion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ExisteConversionResponse" message="tns:IServicioConversion_ExisteConversion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteConversionPorCupon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ExisteConversionPorCupon" message="tns:IServicioConversion_ExisteConversionPorCupon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ExisteConversionPorCuponResponse" message="tns:IServicioConversion_ExisteConversionPorCupon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnularConversion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/AnularConversion" message="tns:IServicioConversion_AnularConversion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/AnularConversionResponse" message="tns:IServicioConversion_AnularConversion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnularConversionPorCupon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/AnularConversionPorCupon" message="tns:IServicioConversion_AnularConversionPorCupon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/AnularConversionPorCuponResponse" message="tns:IServicioConversion_AnularConversionPorCupon_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicioConversion" type="tns:IServicioConversion">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarDocumento">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/RegistrarDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTienda">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AgregarTienda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTiendaPorId">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarTiendaPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTiendaPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarTiendaPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTienda">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ActualizarTienda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorId">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorNombre">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AgregarTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ActualizarTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AgregarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteConversion">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ExisteConversion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteConversionPorCupon">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ExisteConversionPorCupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularConversion">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AnularConversion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularConversionPorCupon">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AnularConversionPorCupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_IServicioConversion" type="tns:IServicioConversion">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IServicioConversion_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarDocumento">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/RegistrarDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTienda">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AgregarTienda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTiendaPorId">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarTiendaPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTiendaPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarTiendaPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTienda">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ActualizarTienda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorId">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorNombre">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AgregarTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ActualizarTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTipoProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarTipoProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AgregarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarProducto">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteConversion">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ExisteConversion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteConversionPorCupon">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ExisteConversionPorCupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularConversion">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AnularConversion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularConversionPorCupon">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/AnularConversionPorCupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioConversion">
+    <wsdl:port name="BasicHttpBinding_IServicioConversion" binding="tns:BasicHttpBinding_IServicioConversion">
+      <soap:address location="http://bataperu-ws.azurewebsites.net/ServicioConversion.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_IServicioConversion" binding="tns:BasicHttpsBinding_IServicioConversion">
+      <soap:address location="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

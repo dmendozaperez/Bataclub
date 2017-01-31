@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bataclub.com.pe/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bataclub.com.pe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bataclub.com.pe/">
+      <s:element name="ws_conexion">
+        <s:complexType />
+      </s:element>
+      <s:element name="ws_conexionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_conexionResult" type="tns:conexion_ws" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="conexion_ws">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cod_error" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="des_error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Autenticacion" type="tns:Autenticacion" />
+      <s:complexType name="Autenticacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="user_password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="ws_genera_cupon">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_nombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_dni" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="_pordes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_dias" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="_pares_max" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_genera_cuponResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_genera_cuponResult" type="tns:data_genera_cupon" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="data_genera_cupon">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cod_error" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="des_error" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cod_barra" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ws_conexionSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_conexion" />
+  </wsdl:message>
+  <wsdl:message name="ws_conexionSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_conexionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_conexionAutenticacion">
+    <wsdl:part name="Autenticacion" element="tns:Autenticacion" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_cuponSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_genera_cupon" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_cuponSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_genera_cuponResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WS_BataClubSoap">
+    <wsdl:operation name="ws_conexion">
+      <wsdl:input message="tns:ws_conexionSoapIn" />
+      <wsdl:output message="tns:ws_conexionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_cupon">
+      <wsdl:input message="tns:ws_genera_cuponSoapIn" />
+      <wsdl:output message="tns:ws_genera_cuponSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS_BataClubSoap" type="tns:WS_BataClubSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_conexion">
+      <soap:operation soapAction="http://bataclub.com.pe/ws_conexion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_conexionAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_cupon">
+      <soap:operation soapAction="http://bataclub.com.pe/ws_genera_cupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_BataClubSoap12" type="tns:WS_BataClubSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_conexion">
+      <soap12:operation soapAction="http://bataclub.com.pe/ws_conexion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_conexionAutenticacion" part="Autenticacion" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_cupon">
+      <soap12:operation soapAction="http://bataclub.com.pe/ws_genera_cupon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_BataClub">
+    <wsdl:port name="WS_BataClubSoap" binding="tns:WS_BataClubSoap">
+      <soap:address location="http://www.bgr.pe/ws_bataclub/WS_BataClub.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_BataClubSoap12" binding="tns:WS_BataClubSoap12">
+      <soap12:address location="http://www.bgr.pe/ws_bataclub/WS_BataClub.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

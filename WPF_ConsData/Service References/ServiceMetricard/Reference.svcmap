@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1437316c-11a3-4e43-b746-0d19f475f3b0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://bataperu-ws.azurewebsites.net/ServicioCliente.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioCliente.wsdl" MetadataType="Wsdl" ID="136fb8ae-00c8-42cc-ab26-f8ba4b72c22f" SourceId="1" SourceUrl="http://bataperu-ws.azurewebsites.net/ServicioCliente.svc?wsdl" />
+    <MetadataFile FileName="ServicioCliente.xsd" MetadataType="Schema" ID="41d4dccb-5479-4ddf-b50d-1119326462f2" SourceId="1" SourceUrl="http://bataperu-ws.azurewebsites.net/ServicioCliente.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioCliente1.xsd" MetadataType="Schema" ID="2c27fcf9-3f37-437a-9043-c7539ef8d16f" SourceId="1" SourceUrl="http://bataperu-ws.azurewebsites.net/ServicioCliente.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServicioCliente2.xsd" MetadataType="Schema" ID="f037a0fd-2478-4a9b-8149-86a7f1f4fe0f" SourceId="1" SourceUrl="http://bataperu-ws.azurewebsites.net/ServicioCliente.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

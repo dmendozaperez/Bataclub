@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="www.bata.responsive.com.Main" %>
+
+<%@ Import Namespace="System.Web.Optimization" %>
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+    <title>Navbar Template for Bootstrap</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sample page to include Bootstrap and Web API to Asp.Net forms application.">
+    <meta name="author" content="Sree">
+    <%-- Style Section --%>
+    <%: Styles.Render("~/bundles/BootstrapCss")  %>
+    <asp:ContentPlaceHolder ID="StyleSection" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <%--<form id="form1" runat="server">--%>
+    <div class="navbar">
+<div class="navbar-inner">
+    <div class="container">
+     <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+    <!-- Everything you want hidden at 940px or less, place within here -->
+        <div class="nav-collapse collapse">
+            <asp:Menu ID="NavigationMenu" runat="server" EnableViewState="false"
+                IncludeStyleBlock="false" Orientation="Horizontal"
+                CssClass="navbar navbar-fixed-top"
+                StaticMenuStyle-CssClass="nav"
+                StaticSelectedStyle-CssClass="active"
+                DynamicMenuStyle-CssClass="dropdown-menu">
+                <Items>
+                    <asp:MenuItem Text="Home" ToolTip="Home"></asp:MenuItem>
+                    <asp:MenuItem Text="Music" ToolTip="Music">
+                        <asp:MenuItem Text="Classical" ToolTip="Classical" />
+                        <asp:MenuItem Text="Rock" ToolTip="Rock" />
+                        <asp:MenuItem Text="Jazz" ToolTip="Jazz" />
+                    </asp:MenuItem>
+                    <asp:MenuItem Text="Movies" ToolTip="Movies">
+                        <asp:MenuItem Text="Action" ToolTip="Action" />
+                        <asp:MenuItem Text="Drama" ToolTip="Drama" />
+                        <asp:MenuItem Text="Musical" ToolTip="Musical" />
+                    </asp:MenuItem>
+                </Items>
+            </asp:Menu>
+        </div>
+    </div>
+</div>
+    <!-- /container -->
+    <%-- Script Section --%>
+    <%: Scripts.Render("~/bundles/jQuery")  %>
+    <asp:ContentPlaceHolder ID="ScriptSection" runat="server" />
+    <%--</form>--%>
+        </div>
+        </form>
+</body>
+</html>

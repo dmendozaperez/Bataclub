@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3d9b27d9-8032-4539-969d-8da31bcdde76" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioConversion.disco" MetadataType="Disco" ID="654946d3-ea37-49f8-9e08-c01c69d16e16" SourceId="1" SourceUrl="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?disco" />
+    <MetadataFile FileName="ServicioConversion.xsd" MetadataType="Schema" ID="75b1c6af-2304-4643-b63f-dcd424eaa2fb" SourceId="1" SourceUrl="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioConversion1.xsd" MetadataType="Schema" ID="16af17cd-216a-45ac-ad2c-4a423c3c9b47" SourceId="1" SourceUrl="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioConversion2.xsd" MetadataType="Schema" ID="709360b3-30e5-4665-afa7-c29caa3f5c7c" SourceId="1" SourceUrl="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServicioConversion.wsdl" MetadataType="Wsdl" ID="d682f971-1bc1-4a7e-bcc8-528f263ed974" SourceId="1" SourceUrl="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

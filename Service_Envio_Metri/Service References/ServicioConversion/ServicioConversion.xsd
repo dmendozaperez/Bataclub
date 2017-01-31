@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://bataperu-ws.azurewebsites.net/ServicioConversion.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Documento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApellidosCliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoCampana" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoDescuentoUtilizado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorreoCliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DNICliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaDocumento" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdTienda" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Impuesto" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NombresCliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notas" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PorcentajeDescuento" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Productos" nillable="true" type="tns:ArrayOfProductoDocumento" />
+      <xs:element minOccurs="0" name="TelefonoCliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" type="tns:TipoDocumento" />
+      <xs:element minOccurs="0" name="TipoPago" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotalSinImpuesto" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorDescuento" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Documento" nillable="true" type="tns:Documento" />
+  <xs:complexType name="ArrayOfProductoDocumento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductoDocumento" nillable="true" type="tns:ProductoDocumento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductoDocumento" nillable="true" type="tns:ArrayOfProductoDocumento" />
+  <xs:complexType name="ProductoDocumento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="CodigoProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroLinea" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PorcentajeDescuento" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="PrecioUnitario" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ValorDescuento" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductoDocumento" nillable="true" type="tns:ProductoDocumento" />
+  <xs:simpleType name="TipoDocumento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BOLETA">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FACTURA">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NOTA_CREDITO">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoDocumento" nillable="true" type="tns:TipoDocumento" />
+  <xs:complexType name="RespuestaServicio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperacionExitosa" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespuestaServicio" nillable="true" type="tns:RespuestaServicio" />
+  <xs:complexType name="Tienda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdTienda" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tienda" nillable="true" type="tns:Tienda" />
+  <xs:complexType name="Campana">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaCreacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdCampana" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Campana" nillable="true" type="tns:Campana" />
+  <xs:complexType name="ArrayOfCampana">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Campana" nillable="true" type="tns:Campana" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCampana" nillable="true" type="tns:ArrayOfCampana" />
+  <xs:complexType name="TipoProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoProducto" nillable="true" type="tns:TipoProducto" />
+  <xs:complexType name="Producto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Atributos" nillable="true" type="tns:ArrayOfAtributoProducto" />
+      <xs:element minOccurs="0" name="Codigo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoTipoProducto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Empresa" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Precio" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Producto" nillable="true" type="tns:Producto" />
+  <xs:complexType name="ArrayOfAtributoProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AtributoProducto" nillable="true" type="tns:AtributoProducto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAtributoProducto" nillable="true" type="tns:ArrayOfAtributoProducto" />
+  <xs:complexType name="AtributoProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Clave" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Valor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AtributoProducto" nillable="true" type="tns:AtributoProducto" />
+</xs:schema>

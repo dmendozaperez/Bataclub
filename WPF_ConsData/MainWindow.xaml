@@ -1,0 +1,166 @@
+﻿<Window x:Class="WPF_ConsData.MainWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+    xmlns:wpfToolKit="http://schemas.microsoft.com/wpf/2008/toolkit"
+    xmlns:control="clr-namespace:Bata.Control"    
+    Title="Bata-Desktop Aplication > Consulta de Clientes"
+    mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    WindowStartupLocation="Manual"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+    Height="500" Width="629" Icon="pin_bata.ico" Loaded="Window_Loaded" ResizeMode="CanMinimize" Unloaded="Window_Unloaded">
+    <Window.Resources>
+        <DataTemplate x:Key="DataTemplate1">
+            <Grid TextBlock.Foreground="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="RowDetails Go here"  Grid.Row="0"/>
+                <TextBlock Text="{Binding ''}" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Name="gridcargar">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="240*" />
+            <RowDefinition Height="100*" />
+        </Grid.RowDefinitions>
+        <!-- CABECERA DE LA VENTANA -->
+        <Grid Grid.Row="0">
+            <Grid x:Name="LayoutRoot" Style="{StaticResource LayoutRootGridStyle}" Grid.RowSpan="4" Grid.ColumnSpan="2">
+                <Grid Style="{StaticResource NavigationOuterGridStyle}" >
+                </Grid>
+                <Grid Style="{StaticResource NavigationOuterGridStyle}">
+                    <Grid x:Name="NavigationGrid" Style="{StaticResource NavigationGridStyle}" Height="62" VerticalAlignment="Top">
+                        <Border x:Name="BrandingBorder" Style="{StaticResource BrandingBorderStyle}">
+                            <StackPanel x:Name="BrandingStackPanel" Style="{StaticResource BrandingStackPanelStyle}">
+                                <!--<ContentControl Style="{StaticResource LogoIcon}" />
+                        <TextBlock x:Name="ApplicationNameTextBlock" Style="{StaticResource ApplicationNameStyle}" Text="Manisol S.A. Bata Colombia." />
+                        -->
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="LinksBorder" Style="{StaticResource LinksBorderStyle}">
+                            <StackPanel x:Name="LinksStackPanel" Style="{StaticResource LinksStackPanelStyle}">
+                                <Rectangle Style="{StaticResource DividerStyle}" />
+                                <Image Source="Design/Images/logo-bata.gif"  Width="150" Margin="8,4,0,4"></Image>
+                                <!--<Button x:Name="btSync" Style="{StaticResource LinkStyle}" 
+                                        ToolTip="Sincronización de tablas locales con datos de la base de datos central." 
+                                        Content="- S y n c - " />-->
+                            </StackPanel>
+                        </Border>
+                        <Label FontFamily="Georgia" Foreground="Black" FontSize="28" Margin="10,10,0,12" HorizontalAlignment="Left" Width="287">{Consulta de Clientes}</Label>
+                        <Rectangle Height="0" VerticalAlignment="Bottom" Fill="WhiteSmoke" HorizontalAlignment="Left" Width="189" Margin="130,0,0,26" />
+                        <Label FontFamily="Georgia" Foreground="Black" FontSize="10" Width="149" 
+                           HorizontalAlignment="Left" Margin="349,19,0,20">Bata Desktop Aplication</Label>
+                    </Grid>
+                    <Border x:Name="bor" Style="{StaticResource BarBottonHeader}" Margin="0,63,0,-23" Height="30"  VerticalAlignment="Top">
+                        <Grid>
+                            <StackPanel HorizontalAlignment="Left" Style="{StaticResource LoginPanelStyle}">
+                                <TextBlock Name="lblInfoUser" Style="{StaticResource SpacerStyle}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel x:Name="LinksLogin" Style="{StaticResource LoginPanelStyle}">
+                                <TextBlock Style="{StaticResource SpacerStyle}"></TextBlock>
+                                <Button Style="{StaticResource LoginRegisterLinkStyle}" Name="btCloseSesion" 
+                                        Content="Cerrar Ventana" Click="btCloseSesion_Click"></Button>
+                                <Rectangle Style="{StaticResource DividerStyleSmoke}" />
+                                <TextBlock Style="{StaticResource SpacerStyle}"></TextBlock>
+                                <Button Name="btBackPanelLiq" Visibility="Hidden"
+                                        Style="{StaticResource LoginRegisterLinkStyle}" Content="Inicio" Click="btBackPanelLiq_Click"></Button>
+                                <!-- Gears -->
+                                <Rectangle Style="{StaticResource DividerStyleSmoke}" />
+                                <TextBlock Style="{StaticResource SpacerStyle}"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+        <StackPanel Margin="18,96,16,0" Orientation="Vertical" Height="Auto" 
+                        VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Grid>
+                <TextBox Name="txtdniruc" FontSize="14" MaxLength="11" TabIndex="0" HorizontalAlignment="Left" Width="260" ToolTip="Ingrese el dni ó ruc."  Margin="120,0,0,50" KeyDown="txtdniruc_KeyDown" >
+                    <TextBox.Effect>
+                        <DropShadowEffect/>
+                    </TextBox.Effect>
+                </TextBox>
+                <Label Margin="1,0,0,0" HorizontalAlignment="Left" Width="110">Ingrese Ruc ó Dni</Label>
+                <Button Width="117" Height="32" Name="btconsulta"  Cursor="Hand"  HorizontalAlignment="Left" Margin="406,0,0,49" TabIndex="1" Grid.Row="0" Click="btconsulta_Click">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" TextAlignment="Left" >Consulta de Documento</TextBlock>
+                                <TextBlock>Consultar Documento Dni o Ruc.</TextBlock>
+                                <TextBlock>No lo presione hasta estar seguro de que ingreso el documento correcto.</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                    <Grid Width="170">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*" />
+                            <ColumnDefinition Width="54*" />
+                            <ColumnDefinition Width="109*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Margin="5,0,0,0"   Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2" Source="Design/Images/lupa.jpg"></Image>
+                        <TextBlock Text="Consultar" VerticalAlignment="Center"  FontWeight="Bold"
+                                          Margin="10,0,70,0" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.Column="1"></TextBlock>
+                    </Grid>
+                </Button>
+                <MediaElement Name="meLoader" ScrubbingEnabled="True"  Source="../../Design/Images/ajax_loader.gif"
+                      LoadedBehavior="Play" Height="11" Width="16" UnloadedBehavior="Play" Margin="385,20,657,50"></MediaElement>
+            </Grid>
+
+        </StackPanel>
+        <Grid Margin="0,11,0,25" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="309*"/>
+                <ColumnDefinition Width="55*"/>
+                <ColumnDefinition Width="83*"/>
+            </Grid.ColumnDefinitions>
+            <TabControl Name="tabcliente" Margin="10,63,10.655,-122" Grid.ColumnSpan="3">
+                <TabItem Header=" > Datos de Clientes">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="82*"/>
+                            <ColumnDefinition Width="747*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Dni ó R.u.c" FontSize="13" Margin="18,-2,404,230" Grid.Column="1"/>
+                        <TextBlock Text="Nombres ó Razon Social" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
+                               Width="163" Margin="18,29,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBlock Text="Apellido Paterno" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
+                               Width="163" Margin="18,63,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBlock Text="Apellido Materno" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
+                               Width="163" Margin="18,98,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBlock Text="Dirección" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
+                               Width="163" Margin="18,134,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBlock Text="Telefono" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
+                               Width="163" Margin="18,166,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBlock Text="E-Mail" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
+                               Width="163" Margin="18,198,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBlock Text="Ubigeo" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
+                               Width="163" Margin="18,230,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBox Name="txtdni" TextWrapping="Wrap" Text="dni" FontSize="12"  Margin="180,1,192,224" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtnombres" TextWrapping="Wrap" CharacterCasing="Upper" Text="nombres" FontSize="12" Margin="180,33,10,192" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtapepat" Height="23" TextWrapping="Wrap" CharacterCasing="Upper" Text="apepat" FontSize="12" Margin="180,68,10,163" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtdireccion" Height="23" TextWrapping="Wrap" Text="direccion" FontSize="12" Margin="180,127,10,104" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtapemat" Height="23" TextWrapping="Wrap" CharacterCasing="Upper" Text="apemat" FontSize="12" Margin="180,99,10,132" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtemail" MaxLength="40" TabIndex="2" Height="23" TextWrapping="Wrap" Text="email" FontSize="12" Margin="180,197,142,34" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" TextChanged="txtemail_TextChanged"/>
+                        <TextBox Name="txttelefono" TabIndex="1" MaxLength="14" Height="23" TextWrapping="Wrap" Text="telefono" FontSize="12" Margin="180,160,142,71" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" TextChanged="txttelefono_TextChanged"/>
+                        <TextBox Name="txtubigeo" TextWrapping="Wrap" Text="ubigeo" FontSize="12" Margin="180,228,241,0" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <Button x:Name="btnactualizar" Cursor="Hand" Content="Actualizar" Margin="409,228,10,-7" Grid.Column="1" Click="btnactualizar_Click"/>
+                        <Label x:Name="label" Content="}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="45" Foreground="Red"  Margin="369,147,118,31" Height="76" Width="28"/>
+                        <TextBlock x:Name="label2" TextWrapping="Wrap"  Text="Ingrese Telefono, Celular ó E-Mail para activar el Descuento" TextAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="13" Foreground="Red"  Margin="395,155,6,21" Height="78" Width="114"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Border Name="pn1"    Background="#FFD9E2E2"  BorderThickness="1" Margin="10,140,10,-10.8" CornerRadius="5"  BorderBrush="Gray" Grid.ColumnSpan="3">
+                <control:LoadingAnimation x:Name="ct1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="164,9,349,25"/>
+
+                <!--<Label Content="Espere un momento por favor..." FontSize="18" Foreground="Black" FontWeight="Bold" Margin="175,236,130,72"></Label>-->
+                <!--<WpfApplication.TestGridView:AlertsView x:Name="AlertsDataGrid" Margin="10"/>-->
+            </Border>
+            <Label Name="lblmsg" Visibility="Visible" Content="Espere un momento por favor..." Margin="272,180,0.32,20.2" FontWeight="Bold" FontSize="13" Grid.ColumnSpan="2"></Label>
+        </Grid>
+    </Grid>
+
+</Window>

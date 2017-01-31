@@ -1,0 +1,161 @@
+﻿<Window x:Class="Bata.Principal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bata"
+        mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        WindowStartupLocation="CenterScreen" 
+        Title="Bata-Desktop Aplication > POS.NET"
+        Height="470" Width="679" Icon="pin_bata.ico" ResizeMode="CanMinimize" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
+    <Window.Resources>
+        <DataTemplate x:Key="DataTemplate1">
+            <Grid TextBlock.Foreground="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Text="RowDetails Go here"  Grid.Row="0"/>
+                <TextBlock Text="{Binding ''}" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Name="gridcargar">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95" />
+            <RowDefinition Height="180" />
+            <RowDefinition Height="180" />
+        </Grid.RowDefinitions>
+        <!-- CABECERA DE LA VENTANA -->
+        <Grid Grid.Row="0">
+            <Grid x:Name="LayoutRoot" Style="{StaticResource LayoutRootGridStyle}" Grid.RowSpan="4" Grid.ColumnSpan="2">
+                <Grid Style="{StaticResource NavigationOuterGridStyle}" >
+                </Grid>
+                <Grid Style="{StaticResource NavigationOuterGridStyle}">
+                    <Grid x:Name="NavigationGrid" Style="{StaticResource NavigationGridStyle}" Height="62" VerticalAlignment="Top">
+                        <Border x:Name="BrandingBorder" Style="{StaticResource BrandingBorderStyle}">
+                            <StackPanel x:Name="BrandingStackPanel" Style="{StaticResource BrandingStackPanelStyle}">
+                                <!--<ContentControl Style="{StaticResource LogoIcon}" />
+                        <TextBlock x:Name="ApplicationNameTextBlock" Style="{StaticResource ApplicationNameStyle}" Text="Manisol S.A. Bata Colombia." />
+                        -->
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="LinksBorder" Style="{StaticResource LinksBorderStyle}">
+                            <StackPanel x:Name="LinksStackPanel" Style="{StaticResource LinksStackPanelStyle}">
+                                <Rectangle Style="{StaticResource DividerStyle}" />
+                                <Image Source="Design/Images/logo-bata.gif"  Width="150" Margin="8,4,0,4"></Image>
+                                <!--<Button x:Name="btSync" Style="{StaticResource LinkStyle}" 
+                                        ToolTip="Sincronización de tablas locales con datos de la base de datos central." 
+                                        Content="- S y n c - " />-->
+                            </StackPanel>
+                        </Border>
+                        <Label FontFamily="Georgia" Foreground="Black" FontSize="28" Margin="10,10,0,10" HorizontalAlignment="Left" Width="287">{POS.NET}</Label>
+                        <Rectangle Height="0" VerticalAlignment="Bottom" Fill="WhiteSmoke" HorizontalAlignment="Left" Width="189" Margin="130,0,0,26" />
+                        <Label FontFamily="Georgia" Foreground="Black" FontSize="10" Width="149" 
+                           HorizontalAlignment="Left" Margin="349,19,0,20">Bata Desktop Aplication</Label>
+                    </Grid>
+                    <Border x:Name="bor" Style="{StaticResource BarBottonHeader}" Margin="0,63,0,-23" Height="30"  VerticalAlignment="Top">
+                        <Grid>
+                            <StackPanel HorizontalAlignment="Left" Style="{StaticResource LoginPanelStyle}">
+                                <TextBlock Name="lblInfoUser" Style="{StaticResource SpacerStyle}"></TextBlock>
+                            </StackPanel>
+                            <StackPanel x:Name="LinksLogin" Style="{StaticResource LoginPanelStyle}">
+                                <TextBlock Style="{StaticResource SpacerStyle}"></TextBlock>
+                                <Button Style="{StaticResource LoginRegisterLinkStyle}" Name="btCloseSesion" 
+                                        Content="Salir del Sistema" Click="btCloseSesion_Click"></Button>
+                                <Rectangle Style="{StaticResource DividerStyleSmoke}" />
+                                <TextBlock Style="{StaticResource SpacerStyle}"></TextBlock>
+                                <Button Name="btBackPanelLiq"  Visibility="Hidden" 
+                                        Style="{StaticResource LoginRegisterLinkStyle}" Content="Inicio" Click="btBackPanelLiq_Click"></Button>
+                                <!-- Gears -->
+                                <Rectangle Style="{StaticResource DividerStyleSmoke}" />
+                                <TextBlock Style="{StaticResource SpacerStyle}"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="btncliente" Background="Transparent" Margin="70,20,0,0" Grid.Row="0" Grid.Column="0" Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btncliente_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" >Clientes</TextBlock>
+                            <TextBlock>Consulta de clientes por dni o ruc.</TextBlock>
+                            <TextBlock>No lo presione hasta estar seguro de abrir la ventana.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="59*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,0" Source="Usuarios.ico" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
+                    <TextBlock Text="CONSULTA DE CLIENTES" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
+                    
+                </Grid>
+            </Button>
+            <TextBlock Text="BATACLUB" Visibility="Hidden"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,-105,10,0" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>
+            <Button Name="btnvales" Background="Transparent" Grid.Row="0" Margin="30,20,0,0" Grid.Column="1" Height="86" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="btnvales_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" >Vales Descuento</TextBlock>
+                            <TextBlock>Consulta los vales de descuento.</TextBlock>
+                            <TextBlock>No lo presione hasta estar seguro de abrir la ventana.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="59*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,0" Source="Design/Images/b_doc.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
+                    <TextBlock Text="VALES ELECTRONICOS" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right"  Width="168" Margin="0,5,10,0" Grid.Column="1"/>
+                </Grid>
+            </Button>
+            <TextBlock Text="BATACLUB" Visibility="Hidden"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,9,85,114" Grid.Column="1" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>
+        </Grid>
+        <Grid Grid.Row="2" >
+            <!--<TextBlock Text="DESCUENTO EMPLEADO"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,1,218,162" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>-->
+            <Button Name="btndesemp" Background="Transparent" Margin="0,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" >Descuento</TextBlock>
+                            <TextBlock>Descuento de empleado bata por dni</TextBlock>
+                            <TextBlock>No lo presione hasta estar seguro de abrir la ventana.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="59*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,0" Source="Design/Images/001_search.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
+                    <TextBlock Text="DESCUENTO EMPLEADO" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
+
+                </Grid>
+            </Button>
+            <Button Width="100" Height="50" Visibility="Hidden" Margin="340,0,0,0" Click="Button_Click"></Button>
+        </Grid>
+    </Grid>
+</Window>
