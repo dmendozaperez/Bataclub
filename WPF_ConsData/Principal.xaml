@@ -84,8 +84,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name="btncliente" Background="Transparent" Margin="70,20,0,0" Grid.Row="0" Grid.Column="0" Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btncliente_Click">
+            <Button Name="btncliente" Background="Transparent" Margin="5,20,0,0" Grid.Row="0" Grid.Column="0" Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btncliente_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -108,7 +109,7 @@
             </Button>
             <TextBlock Text="BATACLUB" Visibility="Hidden"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,-105,10,0" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>
-            <Button Name="btnvales" Background="Transparent" Grid.Row="0" Margin="30,20,0,0" Grid.Column="1" Height="86" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="btnvales_Click">
+            <Button Name="btnvales" Background="Transparent" Grid.Row="0" Margin="15,20,0,0" Grid.Column="1" Height="86" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="btnvales_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -128,13 +129,38 @@
                                           HorizontalAlignment="Right"  Width="168" Margin="0,5,10,0" Grid.Column="1"/>
                 </Grid>
             </Button>
+            <Button Name="btnvalesc" Grid.Column="2" Background="Transparent" Margin="0,20,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnvalesc_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" >Vales de compra</TextBlock>
+                            <TextBlock>Vales de compra</TextBlock>
+                            <TextBlock>No lo presione hasta estar seguro de abrir la ventana.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="59*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,0" Source="Design/Images/packages.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
+                    <TextBlock Text="VALES DE COMPRA" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
+
+                </Grid>
+            </Button>
             <TextBlock Text="BATACLUB" Visibility="Hidden"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,9,85,114" Grid.Column="1" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>
         </Grid>
         <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
             <!--<TextBlock Text="DESCUENTO EMPLEADO"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,1,218,162" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>-->
-            <Button Name="btndesemp" Background="Transparent" Margin="0,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
+            <Button Name="btndesemp" Grid.Column="0" Background="Transparent" Margin="5,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -149,12 +175,13 @@
                         <ColumnDefinition Width="7*" />
                         <ColumnDefinition Width="59*" />
                     </Grid.ColumnDefinitions>
-                    <Image Margin="0,0,0,0" Source="Design/Images/001_search.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
+                    <Image Margin="0,0,0,0" Source="Design/Images/inventory.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
                     <TextBlock Text="DESCUENTO EMPLEADO" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
 
                 </Grid>
             </Button>
+            
             <Button Width="100" Height="50" Visibility="Hidden" Margin="340,0,0,0" Click="Button_Click"></Button>
         </Grid>
     </Grid>

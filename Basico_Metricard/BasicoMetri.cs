@@ -133,6 +133,20 @@ namespace Basico_Metricard
                 {
                     if (dtcupones.Rows.Count > 0)
                     {
+                        /*VAMOS ACUTALIZAR LAS CAMPAÑAS*/
+                        var grupo_promocion = from item in dtcupones.AsEnumerable()
+                                          group item by
+                                          new
+                                          {
+                                              PROMOCION = item["promocion"].ToString()
+                                          }
+                                        into G
+                                          select new
+                                          {
+                                              PROMOCION = G.Key.PROMOCION
+                                          };
+
+                        /*******************************/
                         /*VAMOS ACTUALIZAR agrupar tienda*/
                         var grupo_tda = from item in dtcupones.AsEnumerable()
                                         group item by
@@ -239,6 +253,29 @@ namespace Basico_Metricard
                             {
                                 /*LLAMAR INSTANCIA DE LA WS DE METRI*/
                                 cliente = new ServicioConversionClient();
+
+                                /*CREACION DE PROMOCION*/
+                                #region<CREACION DE PROMOCION>
+                                if (grupo_promocion!=null)
+                                {
+                                    foreach(var key in grupo_promocion)
+                                    {
+                                        Campana campana = cliente.ConsultarCampanaPorCodigo(key.PROMOCION.ToString());
+
+                                        if (campana==null)
+                                        {
+                                            campana = new Campana();
+                                            campana.Codigo = key.PROMOCION.ToString();
+                                            campana.Nombre = key.PROMOCION.ToString();
+
+                                            RespuestaServicio respuesta_cam = cliente.CrearCampana(campana);
+
+                                        }
+                                    }
+                                }
+
+                                #endregion
+                                /**********************************/
 
                                 /*CREACION DE TIENDAS QUE NO FIGUREN EN METRICARD*/
                                 #region<CREACION DE TIENDAS>

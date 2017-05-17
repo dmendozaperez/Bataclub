@@ -74,6 +74,18 @@
   <wsdl:message name="IServicioConversion_ConsultarCampanaPorNombre_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultarCampanaPorNombreResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioConversion_ExisteCampanaPorCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteCampanaPorCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ExisteCampanaPorCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteCampanaPorCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_CrearCampana_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCampana" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_CrearCampana_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearCampanaResponse" />
+  </wsdl:message>
   <wsdl:message name="IServicioConversion_AgregarTipoProducto_InputMessage">
     <wsdl:part name="parameters" element="tns:AgregarTipoProducto" />
   </wsdl:message>
@@ -134,6 +146,12 @@
   <wsdl:message name="IServicioConversion_AnularConversionPorCupon_OutputMessage">
     <wsdl:part name="parameters" element="tns:AnularConversionPorCuponResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarCampanaPorCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCampanaPorCodigo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioConversion_ConsultarCampanaPorCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarCampanaPorCodigoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioConversion">
     <wsdl:operation name="RegistrarDocumento">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/RegistrarDocumento" message="tns:IServicioConversion_RegistrarDocumento_InputMessage" />
@@ -162,6 +180,14 @@
     <wsdl:operation name="ConsultarCampanaPorNombre">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombre" message="tns:IServicioConversion_ConsultarCampanaPorNombre_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombreResponse" message="tns:IServicioConversion_ConsultarCampanaPorNombre_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteCampanaPorCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ExisteCampanaPorCodigo" message="tns:IServicioConversion_ExisteCampanaPorCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ExisteCampanaPorCodigoResponse" message="tns:IServicioConversion_ExisteCampanaPorCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearCampana">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/CrearCampana" message="tns:IServicioConversion_CrearCampana_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/CrearCampanaResponse" message="tns:IServicioConversion_CrearCampana_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AgregarTipoProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/AgregarTipoProducto" message="tns:IServicioConversion_AgregarTipoProducto_InputMessage" />
@@ -202,6 +228,10 @@
     <wsdl:operation name="AnularConversionPorCupon">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/AnularConversionPorCupon" message="tns:IServicioConversion_AnularConversionPorCupon_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/AnularConversionPorCuponResponse" message="tns:IServicioConversion_AnularConversionPorCupon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorCodigo" message="tns:IServicioConversion_ConsultarCampanaPorCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorCodigoResponse" message="tns:IServicioConversion_ConsultarCampanaPorCodigo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioConversion" type="tns:IServicioConversion">
@@ -262,6 +292,24 @@
     </wsdl:operation>
     <wsdl:operation name="ConsultarCampanaPorNombre">
       <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteCampanaPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ExisteCampanaPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCampana">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/CrearCampana" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -352,6 +400,15 @@
     </wsdl:operation>
     <wsdl:operation name="AnularConversionPorCupon">
       <soap:operation soapAction="http://tempuri.org/IServicioConversion/AnularConversionPorCupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorCodigo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -426,6 +483,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ExisteCampanaPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ExisteCampanaPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearCampana">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/CrearCampana" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AgregarTipoProducto">
       <soap:operation soapAction="http://tempuri.org/IServicioConversion/AgregarTipoProducto" style="document" />
       <wsdl:input>
@@ -509,6 +584,15 @@
     </wsdl:operation>
     <wsdl:operation name="AnularConversionPorCupon">
       <soap:operation soapAction="http://tempuri.org/IServicioConversion/AnularConversionPorCupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarCampanaPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorCodigo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

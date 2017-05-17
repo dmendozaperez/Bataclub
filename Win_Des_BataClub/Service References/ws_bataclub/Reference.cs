@@ -25,14 +25,14 @@ namespace Win_Des_BataClub.ws_bataclub {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/ws_genera_cupon", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Win_Des_BataClub.ws_bataclub.data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max);
+        Win_Des_BataClub.ws_bataclub.data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max, string _tipo_des);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/ws_genera_cupon", ReplyAction="*")]
-        System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.data_genera_cupon> ws_genera_cuponAsync(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max);
+        System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.data_genera_cupon> ws_genera_cuponAsync(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max, string _tipo_des);
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1098.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -92,7 +92,7 @@ namespace Win_Des_BataClub.ws_bataclub {
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1098.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -152,7 +152,7 @@ namespace Win_Des_BataClub.ws_bataclub {
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1098.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -281,12 +281,12 @@ namespace Win_Des_BataClub.ws_bataclub {
             return ((Win_Des_BataClub.ws_bataclub.WS_BataClubSoap)(this)).ws_conexionAsync(inValue);
         }
         
-        public Win_Des_BataClub.ws_bataclub.data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max) {
-            return base.Channel.ws_genera_cupon(_nombres, _email, _dni, _pordes, _dias, _pares_max);
+        public Win_Des_BataClub.ws_bataclub.data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max, string _tipo_des) {
+            return base.Channel.ws_genera_cupon(_nombres, _email, _dni, _pordes, _dias, _pares_max, _tipo_des);
         }
         
-        public System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.data_genera_cupon> ws_genera_cuponAsync(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max) {
-            return base.Channel.ws_genera_cuponAsync(_nombres, _email, _dni, _pordes, _dias, _pares_max);
+        public System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.data_genera_cupon> ws_genera_cuponAsync(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max, string _tipo_des) {
+            return base.Channel.ws_genera_cuponAsync(_nombres, _email, _dni, _pordes, _dias, _pares_max, _tipo_des);
         }
     }
 }

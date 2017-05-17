@@ -33,9 +33,15 @@ namespace GeneraBarraPDF
         {
 
             // Basico.GeneraPDF(@"D:\GeneraCupon\cupon2.html", @"D:\GeneraCupon\cupon.pdf");
+
+
             Mouse.OverrideCursor = Cursors.Wait;
-            Basico.ejecuta_pdf(@"D:\GeneraCupon\cupon2.html", @"D:\GeneraCupon\Barra");
-            MessageBox.Show("Se Genero todos los pdf");
+
+
+            Int32 _contar = 0;
+
+            Basico.ejecuta_pdf(@"D:\GeneraCupon\cupon2.html", @"D:\GeneraCupon\Barra",ref _contar);
+            MessageBox.Show("Se Genero " + _contar.ToString() + " Codigo de Barra");
             Mouse.OverrideCursor = null;
         }
     }

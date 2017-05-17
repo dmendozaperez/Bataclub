@@ -10,6 +10,8 @@ namespace WS_BataClub.Bll
         public int cod_error { set; get; }
         public  string des_error { set; get; }
         public  string cod_barra { set; get; }
+
+
        
     }
 }

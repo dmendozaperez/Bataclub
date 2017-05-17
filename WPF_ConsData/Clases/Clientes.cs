@@ -65,7 +65,7 @@ namespace Bata.Clases
                                                       _Nro_Doc_Ven, _Tip_Doc_Ven, _Ser_Doc_Ven,
                                                       _Num_Doc_Ven, _Fec_Doc_Ven, _Est_Doc_Ven,
                                                       _Fc_Nin_Ven);
-            }
+            }   
             catch(Exception exc)
             {
                 _error = exc.Message;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="B2WPnRByKFfZGULciI9bB9jGBdY=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="8AtGN2HGNmCbPwAvsUpgOnPB3Ow=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Cons_ClienteSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Cons_ClienteSoap" contract="ConsultaCliente.Cons_ClienteSoap" bindingType="basicHttpBinding" address="http://localhost:4191/Cons_Cliente.asmx" bindingConfiguration="Cons_ClienteSoap">
+    <endpoint name="Cons_ClienteSoap" contract="ConsultaCliente.Cons_ClienteSoap" bindingType="basicHttpBinding" address="http://10.10.10.208/web_site_cliente/Cons_Cliente.asmx" bindingConfiguration="Cons_ClienteSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:4191/Cons_Cliente.asmx</serializedValue>
+          <serializedValue>http://10.10.10.208/web_site_cliente/Cons_Cliente.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

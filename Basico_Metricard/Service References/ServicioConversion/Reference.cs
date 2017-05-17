@@ -1036,6 +1036,12 @@ namespace Basico_Metricard.ServicioConversion {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombre", ReplyAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorNombreResponse")]
         Basico_Metricard.ServicioConversion.Campana[] ConsultarCampanaPorNombre(string nombre);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConversion/ExisteCampanaPorCodigo", ReplyAction="http://tempuri.org/IServicioConversion/ExisteCampanaPorCodigoResponse")]
+        bool ExisteCampanaPorCodigo(string codigoCampana);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConversion/CrearCampana", ReplyAction="http://tempuri.org/IServicioConversion/CrearCampanaResponse")]
+        Basico_Metricard.ServicioConversion.RespuestaServicio CrearCampana(Basico_Metricard.ServicioConversion.Campana campana);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConversion/AgregarTipoProducto", ReplyAction="http://tempuri.org/IServicioConversion/AgregarTipoProductoResponse")]
         Basico_Metricard.ServicioConversion.RespuestaServicio AgregarTipoProducto(Basico_Metricard.ServicioConversion.TipoProducto tipoProducto);
         
@@ -1065,6 +1071,9 @@ namespace Basico_Metricard.ServicioConversion {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConversion/AnularConversionPorCupon", ReplyAction="http://tempuri.org/IServicioConversion/AnularConversionPorCuponResponse")]
         bool AnularConversionPorCupon(string CodigoDescuento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioConversion/ConsultarCampanaPorCodigo", ReplyAction="http://tempuri.org/IServicioConversion/ConsultarCampanaPorCodigoResponse")]
+        Basico_Metricard.ServicioConversion.Campana ConsultarCampanaPorCodigo(string codigo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1122,6 +1131,14 @@ namespace Basico_Metricard.ServicioConversion {
             return base.Channel.ConsultarCampanaPorNombre(nombre);
         }
         
+        public bool ExisteCampanaPorCodigo(string codigoCampana) {
+            return base.Channel.ExisteCampanaPorCodigo(codigoCampana);
+        }
+        
+        public Basico_Metricard.ServicioConversion.RespuestaServicio CrearCampana(Basico_Metricard.ServicioConversion.Campana campana) {
+            return base.Channel.CrearCampana(campana);
+        }
+        
         public Basico_Metricard.ServicioConversion.RespuestaServicio AgregarTipoProducto(Basico_Metricard.ServicioConversion.TipoProducto tipoProducto) {
             return base.Channel.AgregarTipoProducto(tipoProducto);
         }
@@ -1160,6 +1177,10 @@ namespace Basico_Metricard.ServicioConversion {
         
         public bool AnularConversionPorCupon(string CodigoDescuento) {
             return base.Channel.AnularConversionPorCupon(CodigoDescuento);
+        }
+        
+        public Basico_Metricard.ServicioConversion.Campana ConsultarCampanaPorCodigo(string codigo) {
+            return base.Channel.ConsultarCampanaPorCodigo(codigo);
         }
     }
 }

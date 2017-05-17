@@ -109,11 +109,49 @@ namespace Bata
                             _nombres = split[6].ToString().Trim() + ", " + split[5].ToString().Trim();
                             _telefono = split[9].ToString().Trim();
                             _email = split[10].ToString().Trim();
-                            _valida = true;
+
+                            if (_dni.Length > 0)
+                            {
+                                _valida = true;
+                                return _valida;
+                            }
+
+                            //_valida = true;
+                            //return _valida;
                         }
                     }
 
                 }
+            }
+            catch
+            {
+                _valida = false;
+            }
+            return _valida;
+        }
+
+        private Boolean captura_data_dbf_in(string _serie,string _numero,ref string _dni,ref string _nombres,
+                                            ref string _telefono,ref string _email)
+        {
+            Boolean _valida = false;
+            DBF.NET.DBFNET select_table = null;
+            try
+            {
+                select_table = new DBF.NET.DBFNET();
+                select_table.tabla = "TEMPIN";
+                DataTable dt = select_table.selectrow(_serie, _numero);
+                if (dt!=null)
+                {
+                    if (dt.Rows.Count>0)
+                    {
+                        _dni = dt.Rows[0]["DNI"].ToString();
+                        _nombres = dt.Rows[0]["APEPAT"].ToString() + " " + dt.Rows[0]["APEMAT"].ToString() + ", " + dt.Rows[0]["NOMBRES"].ToString();
+                        _telefono = dt.Rows[0]["TELEFONO"].ToString();                        
+                        _email = dt.Rows[0]["EMAIL"].ToString();
+                        _valida = true;                        
+                    }
+                }
+
             }
             catch
             {
@@ -197,6 +235,10 @@ namespace Bata
                                     }
 
                                     _cadena = _cadena.Replace("\"", "");
+
+                                    if (_nombrearchivo_txt== "000051")
+                                        if (_cadena.Trim().Length == 0) break;
+
                                     string[] split = _cadena.Split(new Char[] { ',' });
                                     string _serie = "";
                                     string _numero = "";
@@ -216,19 +258,31 @@ namespace Bata
                                         _nombres_venta= split[7].ToString().Trim();
                                         _estado_doc= split[8].ToString().Trim();
                                         _tienda ="50" + split[9].ToString().Trim();
-                                       
-                                        string _fc_nint=(_estado_doc=="A")?"": split[10].ToString().Trim();
+
+                                        string _fc_nint = "";// (_estado_doc == "A") ? "" : split[10].ToString().Trim();
+                                        if (split.Count()>10)
+                                        {
+                                            _fc_nint = (_estado_doc == "A") ? "" : split[10].ToString().Trim();
+                                        }
+
+
+                                        //string _fc_nint=(_estado_doc=="A")?"": split[10].ToString().Trim();
                                         string _emai_venta = "";
                                         string _telefono_venta = "";
 
                                         if (_serie== "302001" || _serie == "302003" || _serie == "000051")
                                         { 
+                                            /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
 
-                                            if (!get_tel_email_in(_rutaarchivo_in,ref _dni_venta,ref _nombres_venta,ref _telefono_venta,ref _emai_venta))
+                                            if (!captura_data_dbf_in(_serie,_numero,ref _dni_venta,ref _nombres_venta,ref _telefono_venta,ref _emai_venta))
                                             { 
-                                                telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
+                                            /*******************************************/
+                                                if (!get_tel_email_in(_rutaarchivo_in,ref _dni_venta,ref _nombres_venta,ref _telefono_venta,ref _emai_venta))
+                                                { 
+                                                    telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
+                                                }
                                             }
-                                            _error = Clientes._update_vales(_serie.Trim().ToString(), _nombrearchivo_txt, _tienda,_dni_venta,_nombres_venta,_fecha_doc,_tipo_doc,_serie_doc,_numero_doc,_estado_doc, _fc_nint,_emai_venta,_telefono_venta);
+                                            _error = Clientes._update_vales(_serie.Trim().ToString(),(_serie!= "000051")? _nombrearchivo_txt:_numero, _tienda,_dni_venta,_nombres_venta,_fecha_doc,_tipo_doc,_serie_doc,_numero_doc,_estado_doc, _fc_nint,_emai_venta,_telefono_venta);
                                         }
                                         else
                                         {
@@ -242,7 +296,8 @@ namespace Bata
 
                                     }
 
-                                    if (_error.Length == 0) break;
+                                    if (_serie!= "000051")
+                                        if (_error.Length == 0) break;
 
                                     //System.Console.WriteLine(line);
                                     counter++;
@@ -507,6 +562,18 @@ namespace Bata
             {
                 MessageBox.Show(exc.Message,"Aviso",MessageBoxButton.OK,MessageBoxImage.Error);
                 Mouse.OverrideCursor = null;
+            }
+        }
+
+        private void btnvalesc_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ValesCompra._activo_form)
+            {
+                //_verifica_version();
+                ValesCompra frm = new ValesCompra();
+                frm.Show();
+                //this.Close();
+                ValesCompra._activo_form = true;
             }
         }
     }

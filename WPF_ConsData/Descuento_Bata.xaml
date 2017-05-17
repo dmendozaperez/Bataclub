@@ -177,10 +177,69 @@
                     <TextBlock Text="Total de Transacciones" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
                                Width="163"  FontSize="13" Grid.Column="0" Grid.Row="7"/>
 
-                    <TextBox Name="txtdniruc" FontSize="14" MaxLength="11" TabIndex="0" Height="28" VerticalAlignment="Center" Margin="0,-10,0,0" HorizontalAlignment="Left" Width="160" ToolTip="Ingrese el dni ó ruc."  Grid.Column="1" Grid.Row="0" KeyDown="txtdniruc_KeyDown" PreviewKeyDown="txtdniruc_PreviewKeyDown" PreviewTextInput="txtdniruc_PreviewTextInput" TextChanged="txtdniruc_TextChanged_1" >
+                    <TextBox Name="txtdniruc" FontSize="14" MaxLength="11" TabIndex="0" Height="28" VerticalAlignment="Center" Margin="0,-10,0,0" HorizontalAlignment="Left" Width="160" ToolTip="Ingrese el dni ó ruc."  Grid.Column="1" Grid.Row="0" KeyDown="txtdniruc_KeyDown" PreviewKeyDown="txtdniruc_PreviewKeyDown" PreviewTextInput="txtdniruc_PreviewTextInput" TextChanged="txtdniruc_TextChanged_1" MouseDown="txtdniruc_MouseDown" >
                         <TextBox.Effect>
                             <DropShadowEffect/>
                         </TextBox.Effect>
+                        <TextBox.ContextMenu>
+                            <ContextMenu 
+            Name="cxm"
+            Opened="CxmOpened"
+          >
+                                <MenuItem 
+              Header="Cut"
+              Name="cxmItemCut" 
+              Click="ClickCut" 
+                                    IsEnabled="False"
+            />
+                                <MenuItem 
+              Header="Copy" 
+              Name="cxmItemCopy"
+              Click="ClickCopy" 
+                                    IsEnabled="False"
+            />
+                                <MenuItem 
+              Header="Paste"
+              Name="cxmItemPaste"
+              Click="ClickPaste" 
+                                    IsEnabled="False"
+                                    Visibility="Hidden"
+            />
+                                <Separator/>
+                                <MenuItem 
+              Header="Select All"
+              Name="cxmItemSelectAll"
+              Click="ClickSelectAll" 
+                                    IsEnabled="False"
+            />
+                                <MenuItem 
+              Header="Select Current Line"
+              Name="cxmItemSelectLine"
+              Click="ClickSelectLine" 
+                                    IsEnabled="False"
+            />
+                                <Separator/>
+                                <MenuItem 
+              Header="Undo Last Action"
+              Name="cxmItemUndo"
+              Click="ClickUndo" 
+                                    IsEnabled="False"
+            />
+                                <MenuItem 
+              Header="Redo Last Action"
+              Name="cxmItemRedo"
+              Click="ClickRedo" 
+                                    IsEnabled="False"
+            />
+                                <Separator/>
+                                <MenuItem 
+              Header="Clear All Text"
+              Name="cxmItemClear"
+              Click="ClickClear" 
+                                    IsEnabled="False"
+            />
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
                     </TextBox>
                     <TextBox Name="txtdni" Height="23" TextWrapping="Wrap" Text="dni" FontSize="12" Width="140" HorizontalAlignment="Left"  FontWeight="Bold"  IsReadOnly="True" Grid.Row="1" Grid.Column="1" Background="#FFCCE4C8"  />
                     <TextBox Name="txtnombres" Height="23" TextWrapping="Wrap" Text="nombres" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="2" Margin="0,4,-111,4" Background="#FFCCE4C8"/>

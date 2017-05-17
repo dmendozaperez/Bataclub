@@ -38,7 +38,7 @@ namespace GeneraBarraPDF.Bll
             return dt;
         }
 
-        public static void ejecuta_pdf(string file_html,string path_destination)
+        public static void ejecuta_pdf(string file_html,string path_destination,ref Int32 _contar)
         {
             DataTable dt = null;
             try
@@ -58,14 +58,20 @@ namespace GeneraBarraPDF.Bll
 
                         for (Int32 i=0;i<dt.Rows.Count;++i)
                         {
+                            _contar += 1;
                             string _barra = dt.Rows[i]["Barra"].ToString();
                             string _montovale = dt.Rows[i]["MontoVale"].ToString(); 
                             string _montoletra = dt.Rows[i]["MontLetras"].ToString();
+                            string _interno = dt.Rows[i]["Correlativo"].ToString();
                             string _readcontentsecundario = readContentsprincipal;
                             _readcontentsecundario = _readcontentsecundario.Replace("xxxxxxxxxxxxxxx",_barra);
                             _readcontentsecundario = _readcontentsecundario.Replace("MONTOS", _montovale);
                             _readcontentsecundario = _readcontentsecundario.Replace("MONTOL", _montoletra);
-                            string _file_pdf = "BATA_" + _barra.ToString() + ".pdf";
+                            _readcontentsecundario = _readcontentsecundario.Replace("INTERNO", _interno);
+
+                            string _montovale_int = Convert.ToInt32(dt.Rows[i]["MontoVale"]).ToString();
+
+                            string _file_pdf = "BATA_" + _barra.ToString() + "_" + _montovale_int + ".pdf";
                             string _file_path_pdf = path_destination + "\\" + _file_pdf.ToString();
 
                             GeneraPDF(_readcontentsecundario, _file_path_pdf);

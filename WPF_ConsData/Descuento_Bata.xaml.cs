@@ -612,5 +612,40 @@ namespace Bata
                 //MessageBox.Show("CTRL + SHIFT + TAB trapped");
             }
         }
+
+        private void txtdniruc_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        void ClickPaste(Object sender, RoutedEventArgs args) { txtdniruc.Paste(); }
+        void ClickCopy(Object sender, RoutedEventArgs args) { txtdniruc.Copy(); }
+        void ClickCut(Object sender, RoutedEventArgs args) { txtdniruc.Cut(); }
+        void ClickSelectAll(Object sender, RoutedEventArgs args) { txtdniruc.SelectAll(); }
+        void ClickClear(Object sender, RoutedEventArgs args) { txtdniruc.Clear(); }
+        void ClickUndo(Object sender, RoutedEventArgs args) { txtdniruc.Undo(); }
+        void ClickRedo(Object sender, RoutedEventArgs args) { txtdniruc.Redo(); }
+
+        void ClickSelectLine(Object sender, RoutedEventArgs args)
+        {
+            int lineIndex = txtdniruc.GetLineIndexFromCharacterIndex(txtdniruc.CaretIndex);
+            int lineStartingCharIndex = txtdniruc.GetCharacterIndexFromLineIndex(lineIndex);
+            int lineLength = txtdniruc.GetLineLength(lineIndex);
+            txtdniruc.Select(lineStartingCharIndex, lineLength);
+        }
+
+        void CxmOpened(Object sender, RoutedEventArgs args)
+        {
+            // Only allow copy/cut if something is selected to copy/cut.
+            if (txtdniruc.SelectedText == "")
+                cxmItemCopy.IsEnabled = cxmItemCut.IsEnabled = false;
+            else
+                cxmItemCopy.IsEnabled = cxmItemCut.IsEnabled = true;
+
+            // Only allow paste if there is text on the clipboard to paste.
+            if (Clipboard.ContainsText())
+                cxmItemPaste.IsEnabled = true;
+            else
+                cxmItemPaste.IsEnabled = false;
+        }
     }
 }

@@ -48,6 +48,27 @@ namespace WS_BataClub
 
         }
 
+        
+        public  string list_client { get; set; }
+
+        //[WebMethod]
+        //public data_genera_cupon[] ws_genera_cupon_array(int _pordes, int _dias, int _pares_max, string _tipo_des,data_genera_cupon[] datacupones)
+        //{
+        //    data_genera_cupon[] array = null;
+        //    try
+        //    {
+        //        if (datacupones==null)
+        //        {
+
+        //        }
+        //    }
+        //    catch
+        //    {
+
+        //    }
+        //    return array;
+        //}
+
         [WebMethod]
         public data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias,int _pares_max,string _tipo_des)
         {

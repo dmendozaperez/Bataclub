@@ -85,6 +85,7 @@
     <Compile Include="Bll\ConexionData.cs" />
     <Compile Include="Bll\conexion_ws.cs" />
     <Compile Include="Bll\data_genera_cupon.cs" />
+    <Compile Include="Bll\ListaCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad.cs">
       <SubType>Component</SubType>

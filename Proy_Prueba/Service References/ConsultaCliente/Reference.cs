@@ -16,9 +16,17 @@ namespace Proy_Prueba.ConsultaCliente {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.consultabata.com/", ConfigurationName="ConsultaCliente.Cons_ClienteSoap")]
     public interface Cons_ClienteSoap {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_validatdabgwb", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ws_validatdabgwb(string _cod_tda);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_update_cliente", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string ws_update_cliente(string _ruc, string _nombres, string _apepat, string _apemat, string _telefono, string _email, string _tda);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_update_venta_empl", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string ws_update_venta_empl(string _Tip_Id_Ven, string _Nro_Dni_Ven, string _Cod_Tda_Ven, string _Nro_Doc_Ven, string _Tip_Doc_Ven, string _Ser_Doc_Ven, string _Num_Doc_Ven, string _Fec_Doc_Ven, string _Est_Doc_Ven, string _Fc_Nin_Ven);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_update_vales", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -26,7 +34,11 @@ namespace Proy_Prueba.ConsultaCliente {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_buscar_vales", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Data.DataSet ws_buscar_vales(string _correlativo, string _code);
+        System.Data.DataSet ws_buscar_vales(string _correlativo, string _code, string _tda);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_buscar_desxdni", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ws_buscar_desxdni(string _dni, string _codtda, string _tip_des);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_conscliente", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -54,7 +66,7 @@ namespace Proy_Prueba.ConsultaCliente {
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -168,16 +180,28 @@ namespace Proy_Prueba.ConsultaCliente {
                 base(binding, remoteAddress) {
         }
         
+        public bool ws_validatdabgwb(string _cod_tda) {
+            return base.Channel.ws_validatdabgwb(_cod_tda);
+        }
+        
         public string ws_update_cliente(string _ruc, string _nombres, string _apepat, string _apemat, string _telefono, string _email, string _tda) {
             return base.Channel.ws_update_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tda);
+        }
+        
+        public string ws_update_venta_empl(string _Tip_Id_Ven, string _Nro_Dni_Ven, string _Cod_Tda_Ven, string _Nro_Doc_Ven, string _Tip_Doc_Ven, string _Ser_Doc_Ven, string _Num_Doc_Ven, string _Fec_Doc_Ven, string _Est_Doc_Ven, string _Fc_Nin_Ven) {
+            return base.Channel.ws_update_venta_empl(_Tip_Id_Ven, _Nro_Dni_Ven, _Cod_Tda_Ven, _Nro_Doc_Ven, _Tip_Doc_Ven, _Ser_Doc_Ven, _Num_Doc_Ven, _Fec_Doc_Ven, _Est_Doc_Ven, _Fc_Nin_Ven);
         }
         
         public string ws_update_vales(string _serie, string _correlativo, string _cod_tda_venta, string _dni_venta, string _nombres_venta, string _fecha_doc, string _tipo_doc, string _serie_doc, string _numero_doc, string _estado_doc, string _fc_nint, string _email_venta, string _telefono_venta) {
             return base.Channel.ws_update_vales(_serie, _correlativo, _cod_tda_venta, _dni_venta, _nombres_venta, _fecha_doc, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fc_nint, _email_venta, _telefono_venta);
         }
         
-        public System.Data.DataSet ws_buscar_vales(string _correlativo, string _code) {
-            return base.Channel.ws_buscar_vales(_correlativo, _code);
+        public System.Data.DataSet ws_buscar_vales(string _correlativo, string _code, string _tda) {
+            return base.Channel.ws_buscar_vales(_correlativo, _code, _tda);
+        }
+        
+        public System.Data.DataSet ws_buscar_desxdni(string _dni, string _codtda, string _tip_des) {
+            return base.Channel.ws_buscar_desxdni(_dni, _codtda, _tip_des);
         }
         
         public System.Data.DataTable ws_conscliente(string _dniruc) {

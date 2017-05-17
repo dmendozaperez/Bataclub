@@ -69,7 +69,7 @@ namespace ConsultaSunat
             {
                 System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(ValidarCertificado);
                 //Esta es la direccion que les pase en el grupo de facebook para obtener el captcha
-                HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create("http://www.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=image&magic=2");
+                HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create("http://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/captcha?accion=image&magic=2");
                 myWebRequest.CookieContainer = myCookie;
                 myWebRequest.Proxy = null;
                 myWebRequest.Credentials = CredentialCache.DefaultCredentials;
@@ -266,8 +266,12 @@ namespace ConsultaSunat
             try
             {
                 //A este link le pasamos los datos , RUC y valor del captcha
-                string myUrl = String.Format("http://www.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias?accion=consPorRuc&nroRuc={0}&codigo={1}",
-                                        numDni, ImgCapcha);
+                //string myUrl = String.Format("http://www.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias?accion=consPorRuc&nroRuc={0}&codigo={1}",
+                //                        numDni, ImgCapcha);
+
+                string myUrl = String.Format("http://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias?accion=consPorRuc&nroRuc={0}&codigo={1}",
+                                       numDni, ImgCapcha);
+
                 HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create(myUrl);
                 myWebRequest.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0";
                 myWebRequest.CookieContainer = myCookie;

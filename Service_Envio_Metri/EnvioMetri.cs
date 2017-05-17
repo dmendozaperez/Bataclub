@@ -19,7 +19,7 @@ namespace Service_Envio_Metri
         {
             InitializeComponent();
             tmservicio = new Timer(30000);
-           // tmservicio.Elapsed += new ElapsedEventHandler(tmpServicio_Elapsed);
+            tmservicio.Elapsed += new ElapsedEventHandler(tmpServicio_Elapsed);
         }
         void tmpServicio_Elapsed(object sender, ElapsedEventArgs e)
         {

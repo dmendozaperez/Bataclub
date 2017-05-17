@@ -110,6 +110,7 @@ namespace Bata
             switch (_dniruc.Length)
             {
                 case 8:
+                case 9:
                     if (dtdni != null)
                     {
                         if (dt.Rows.Count > 0)
@@ -249,7 +250,7 @@ namespace Bata
 
                 //if (!(Clientes._persona_reniec == null))
                 //{
-                if (_dni_ruc.Length == 8)
+                if (_dni_ruc.Length == 8 || _dni_ruc.Length == 9)
                 {
                     //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
                     DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub);
@@ -512,7 +513,8 @@ namespace Bata
             //Tight Loop:  Loop until the ProgressBar.Value reaches the max
             do
             {
-                value += 8;
+                //value += 8;
+                value += 35;
 
                 /*Update the Value of the ProgressBar:
 		          1)  Pass the "updatePbDelegate" delegate that points to the ProgressBar1.SetValue method
@@ -591,6 +593,24 @@ namespace Bata
 
                     TextWriter tw = new StreamWriter(@_ruta_archivo, true);
                     tw.WriteLine(_serie + "," + ((_monto>0)?"M":"P") + "," + ((_monto > 0) ? Convert.ToInt32(_monto).ToString() : _porc_desc.ToString())  + "," + _pares_max.ToString() + "," + _dniruc + "," + _nombre + "," + _apepat + "," + _apemat + "," + _direccion + "," + _telefono + "," + _email + "," + _ubigeo + "," + _tipo_desc + "," + _empruc + "," + _empraz + "," + _tipo_cupon);
+
+
+                    /*En este proceso vamos a crear el dbf y actualizar o insertar*/
+                    DataTable dt_dbf = new DataTable();
+                    dt_dbf.Columns.Add("serie", typeof(string));
+                    dt_dbf.Columns.Add("numero", typeof(string));
+                    dt_dbf.Columns.Add("dni", typeof(string));
+                    dt_dbf.Columns.Add("nombres", typeof(string));
+                    dt_dbf.Columns.Add("apepat", typeof(string));
+                    dt_dbf.Columns.Add("apemat", typeof(string));
+                    dt_dbf.Columns.Add("telefono", typeof(string));
+                    dt_dbf.Columns.Add("email", typeof(string));
+                    dt_dbf.Rows.Add(_serie, _correlativo.ToString(), _dniruc, _nombre, _apepat, _apemat, _telefono, _email);
+
+
+                    Boolean tempdbf = Basico._generadbf__ins_upd(dt_dbf);
+
+
                     tw.Flush();
                     tw.Close();
                     tw.Dispose();
@@ -671,7 +691,7 @@ namespace Bata
                         return;
                     }
 
-                    if (_dni_ruc.Length != 8 && _dni_ruc.Length != 11)
+                    if (_dni_ruc.Length != 8 && _dni_ruc.Length!=9 && _dni_ruc.Length != 11)
                     {
                         MessageBox.Show("El numero DNI ó RUC es incorrecto",
                               "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -1085,12 +1105,19 @@ namespace Bata
 
                     if (_valida!="3")
                     {
-                        txtbuscar.Text = "";
-                        tabvale.IsEnabled = false;
-                        tabcliente.IsEnabled = true;
-                        tabvalescliente.SelectedIndex = 1;
-                        this.tabvalescliente.UpdateLayout();
-                        txtdniruc.Focus();
+                        if (_monto == 0)
+                        {
+                            txtbuscar.Text = "";
+                            tabvale.IsEnabled = false;
+                            tabcliente.IsEnabled = true;
+                            tabvalescliente.SelectedIndex = 1;
+                            this.tabvalescliente.UpdateLayout();
+                            txtdniruc.Focus();
+                        }
+                        else
+                        {
+                            lblestado.Text = "El Numero de Vale " + txtbuscar.Text + ", No es Valido en esta ventana.";
+                        }
                     }
                 }
             }

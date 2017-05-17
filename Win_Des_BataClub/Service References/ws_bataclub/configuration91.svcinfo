@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="1Amp76TavfTmCi6Cy0+gD8dNr6M=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Kp3mU1RVxpBGtpcX+Oz1k6ifxG0=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="WS_BataClubSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WS_BataClubSoap" contract="ws_bataclub.WS_BataClubSoap" bindingType="basicHttpBinding" address="http://www.bgr.pe/ws_bataclub/WS_BataClub.asmx" bindingConfiguration="WS_BataClubSoap">
+    <endpoint name="WS_BataClubSoap" contract="ws_bataclub.WS_BataClubSoap" bindingType="basicHttpBinding" address="http://localhost:27681/WS_BataClub.asmx" bindingConfiguration="WS_BataClubSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://www.bgr.pe/ws_bataclub/WS_BataClub.asmx</serializedValue>
+          <serializedValue>http://localhost:27681/WS_BataClub.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

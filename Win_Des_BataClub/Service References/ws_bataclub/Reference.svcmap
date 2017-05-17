@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://www.bgr.pe/ws_bataclub/WS_BataClub.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:27681/WS_BataClub.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WS_BataClub1.wsdl" MetadataType="Wsdl" ID="a63c2567-3f94-48e6-92d9-e62afc40095b" SourceId="1" SourceUrl="http://www.bgr.pe/ws_bataclub/WS_BataClub.asmx?wsdl" />
-    <MetadataFile FileName="WS_BataClub1.disco" MetadataType="Disco" ID="2f774f21-18a1-495c-a607-dadb65cb5667" SourceId="1" SourceUrl="http://www.bgr.pe/ws_bataclub/WS_BataClub.asmx?disco" />
+    <MetadataFile FileName="WS_BataClub.disco" MetadataType="Disco" ID="01201813-0cf9-4606-a7d8-650450e9ae36" SourceId="1" SourceUrl="http://localhost:27681/WS_BataClub.asmx?disco" />
+    <MetadataFile FileName="WS_BataClub.wsdl" MetadataType="Wsdl" ID="4a623f1e-560e-43e9-8623-c7e29f1ea837" SourceId="1" SourceUrl="http://localhost:27681/WS_BataClub.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
