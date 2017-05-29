@@ -20,7 +20,7 @@
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
+    <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>188</ApplicationRevision>
+    <ApplicationRevision>196</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -72,7 +72,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>pin_bata.ico</ApplicationIcon>
@@ -355,9 +355,6 @@
     <Resource Include="pin_bata.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ws_clientedniruc\Cons_Cliente.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Design\Images\load2.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -375,6 +372,9 @@
   <ItemGroup>
     <Resource Include="Design\Images\b_anterior.gif" />
     <Resource Include="Design\Images\b_siguiente.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ws_clientedniruc\Cons_Cliente.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,6 +23,27 @@ namespace Win_Des_BataClub.ws_bataclub {
         [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/ws_conexion", ReplyAction="*")]
         System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.ws_conexionResponse> ws_conexionAsync(Win_Des_BataClub.ws_bataclub.ws_conexionRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/list_client", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Win_Des_BataClub.ws_bataclub.ListaCliente list_client();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/list_client", ReplyAction="*")]
+        System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.ListaCliente> list_clientAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/list_items", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Win_Des_BataClub.ws_bataclub.ListaItems list_items();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/list_items", ReplyAction="*")]
+        System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.ListaItems> list_itemsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/ws_genera_list_barra", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Win_Des_BataClub.ws_bataclub.ListaCliente[] ws_genera_list_barra(Win_Des_BataClub.ws_bataclub.ListaItems list_cliente, int _pordes, int _dias, int _pares_max, string _tipo_des);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/ws_genera_list_barra", ReplyAction="*")]
+        System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.ListaCliente[]> ws_genera_list_barraAsync(Win_Des_BataClub.ws_bataclub.ListaItems list_cliente, int _pordes, int _dias, int _pares_max, string _tipo_des);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://bataclub.com.pe/ws_genera_cupon", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Win_Des_BataClub.ws_bataclub.data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max, string _tipo_des);
@@ -32,7 +53,7 @@ namespace Win_Des_BataClub.ws_bataclub {
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1098.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -92,7 +113,7 @@ namespace Win_Des_BataClub.ws_bataclub {
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1098.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -152,7 +173,141 @@ namespace Win_Des_BataClub.ws_bataclub {
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1098.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataclub.com.pe/")]
+    public partial class ListaItems : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private ListaCliente[] listaField;
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public ListaCliente[] Lista {
+            get {
+                return this.listaField;
+            }
+            set {
+                this.listaField = value;
+                this.RaisePropertyChanged("Lista");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bataclub.com.pe/")]
+    public partial class ListaCliente : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dniField;
+        
+        private string nombreField;
+        
+        private string apellidosField;
+        
+        private string emailField;
+        
+        private string barraField;
+        
+        private string errorField;
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string dni {
+            get {
+                return this.dniField;
+            }
+            set {
+                this.dniField = value;
+                this.RaisePropertyChanged("dni");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string apellidos {
+            get {
+                return this.apellidosField;
+            }
+            set {
+                this.apellidosField = value;
+                this.RaisePropertyChanged("apellidos");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+                this.RaisePropertyChanged("email");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string barra {
+            get {
+                return this.barraField;
+            }
+            set {
+                this.barraField = value;
+                this.RaisePropertyChanged("barra");
+            }
+        }
+        
+        /// <comentarios/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string error {
+            get {
+                return this.errorField;
+            }
+            set {
+                this.errorField = value;
+                this.RaisePropertyChanged("error");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <comentarios/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -279,6 +434,30 @@ namespace Win_Des_BataClub.ws_bataclub {
             Win_Des_BataClub.ws_bataclub.ws_conexionRequest inValue = new Win_Des_BataClub.ws_bataclub.ws_conexionRequest();
             inValue.Autenticacion = Autenticacion;
             return ((Win_Des_BataClub.ws_bataclub.WS_BataClubSoap)(this)).ws_conexionAsync(inValue);
+        }
+        
+        public Win_Des_BataClub.ws_bataclub.ListaCliente list_client() {
+            return base.Channel.list_client();
+        }
+        
+        public System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.ListaCliente> list_clientAsync() {
+            return base.Channel.list_clientAsync();
+        }
+        
+        public Win_Des_BataClub.ws_bataclub.ListaItems list_items() {
+            return base.Channel.list_items();
+        }
+        
+        public System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.ListaItems> list_itemsAsync() {
+            return base.Channel.list_itemsAsync();
+        }
+        
+        public Win_Des_BataClub.ws_bataclub.ListaCliente[] ws_genera_list_barra(Win_Des_BataClub.ws_bataclub.ListaItems list_cliente, int _pordes, int _dias, int _pares_max, string _tipo_des) {
+            return base.Channel.ws_genera_list_barra(list_cliente, _pordes, _dias, _pares_max, _tipo_des);
+        }
+        
+        public System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.ListaCliente[]> ws_genera_list_barraAsync(Win_Des_BataClub.ws_bataclub.ListaItems list_cliente, int _pordes, int _dias, int _pares_max, string _tipo_des) {
+            return base.Channel.ws_genera_list_barraAsync(list_cliente, _pordes, _dias, _pares_max, _tipo_des);
         }
         
         public Win_Des_BataClub.ws_bataclub.data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max, string _tipo_des) {

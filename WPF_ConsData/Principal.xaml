@@ -129,7 +129,7 @@
                                           HorizontalAlignment="Right"  Width="168" Margin="0,5,10,0" Grid.Column="1"/>
                 </Grid>
             </Button>
-            <Button Name="btnvalesc" Grid.Column="2" Background="Transparent" Margin="0,20,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnvalesc_Click">
+            <Button Name="btnvalesc"  Grid.Column="2" Background="Transparent" Margin="0,20,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnvalesc_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>

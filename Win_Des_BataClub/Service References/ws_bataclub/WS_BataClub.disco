@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
-  <contractRef ref="http://localhost:27681/WS_BataClub.asmx?wsdl" docRef="http://localhost:27681/WS_BataClub.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <soap address="http://localhost:27681/WS_BataClub.asmx" xmlns:q1="http://bataclub.com.pe/" binding="q1:WS_BataClubSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-  <soap address="http://localhost:27681/WS_BataClub.asmx" xmlns:q2="http://bataclub.com.pe/" binding="q2:WS_BataClubSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-</discovery>

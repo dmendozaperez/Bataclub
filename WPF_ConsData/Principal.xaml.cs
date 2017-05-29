@@ -338,17 +338,19 @@ namespace Bata
             _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
 
             actualizar_click_once();
-            _verifica_version();
+            //_verifica_version();
 
 
             /*deshabilitar boton de empl*/
            // _tienda = "50283";
-            ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
-            Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
+            //ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
+            //Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
 
-            btndesemp.Visibility = (btn_habilita == true) ? Visibility.Visible : Visibility.Hidden;
+            //btndesemp.Visibility = (btn_habilita == true) ? Visibility.Visible : Visibility.Hidden;
 
-         //   actualizar_vale();
+            btndesemp.Visibility = Visibility.Hidden;
+
+            //   actualizar_vale();
         }
         private void _verifica_version()
         {
@@ -480,7 +482,7 @@ namespace Bata
         }
 
         private void btncliente_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             
             if (!MainWindow._activo_form)
             {

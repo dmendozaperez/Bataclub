@@ -47,27 +47,38 @@ namespace WS_BataClub
             return conexion; 
 
         }
+        [WebMethod]
+        public ListaCliente list_client()
+        {
+            return new ListaCliente();
+        }
+        [WebMethod]
+        public ListaItems list_items()
+        {
+            return new ListaItems();
+        }
 
-        
-        public  string list_client { get; set; }
 
-        //[WebMethod]
-        //public data_genera_cupon[] ws_genera_cupon_array(int _pordes, int _dias, int _pares_max, string _tipo_des,data_genera_cupon[] datacupones)
-        //{
-        //    data_genera_cupon[] array = null;
-        //    try
-        //    {
-        //        if (datacupones==null)
-        //        {
+       
 
-        //        }
-        //    }
-        //    catch
-        //    {
-
-        //    }
-        //    return array;
-        //}
+        [WebMethod]
+        public List<ListaCliente> ws_genera_list_barra(ListaItems list_cliente, int _pordes, int _dias, int _pares_max, string _tipo_des)
+        {            
+            List<ListaCliente> lista_return_barra = null;
+            try
+            {
+                if (list_cliente.Lista.Count()>0)
+                {
+                     lista_return_barra =Basico.return_barra_list(list_cliente, _pordes, _dias, _pares_max, _tipo_des);
+                   
+                }                
+            }
+            catch
+            {
+                lista_return_barra = null;
+            }
+            return lista_return_barra;
+        }
 
         [WebMethod]
         public data_genera_cupon ws_genera_cupon(string _nombres, string _email, string _dni, int _pordes, int _dias,int _pares_max,string _tipo_des)

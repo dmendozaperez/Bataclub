@@ -188,7 +188,7 @@ namespace Bata.Clases
                 if (!existe_cliente)
                 {
                     var respuesta1 = cliente_metri.IngresarDatosNuevoCliente(update_cliente_metri);
-                    if (!respuesta1.OperacionExitosa) _valida = "Error de MetriCard";
+                    if (!respuesta1.OperacionExitosa) _valida = respuesta1.Mensaje;//"Error de MetriCard";
                     if (respuesta1.OperacionExitosa)
                     {
                         if (_email.Length!=0)

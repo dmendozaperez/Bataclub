@@ -89,5 +89,71 @@ namespace WS_BataClub.Bll
                 if (cn.State == ConnectionState.Open) cn.Close();
             return _valida;
         }
+        public static List<ListaCliente> return_barra_list(ListaItems list_cliente, int _pordes, int _dias, int _pares_max, string _tipo_des)
+        {
+            string sqlquery = "[USP_Insertar_Vales_Metricard_Grupo]";
+            List<ListaCliente> list_return =null;
+            try
+            {               
+
+                if (list_cliente.Lista.Count()>0)
+                {
+                    /*verificamos si la lista hay valores si esta haci entonces creamos un datatable temporal*/
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("dni", typeof(string));
+                    dt.Columns.Add("nombres", typeof(string));
+                    dt.Columns.Add("apellidos", typeof(string));
+                    dt.Columns.Add("email", typeof(string));
+                    dt.Columns.Add("barra", typeof(string));
+
+                    foreach(var item in list_cliente.Lista)
+                    {
+                        dt.Rows.Add(item.dni, item.nombre, item.apellidos, item.email, item.barra);
+                    }
+
+                    using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                    {
+                        using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@pordes", _pordes);
+                            cmd.Parameters.AddWithValue("@dias", _dias);
+                            cmd.Parameters.AddWithValue("@paresmax",_pares_max);
+                            cmd.Parameters.AddWithValue("@prom_des", _tipo_des);
+                            cmd.Parameters.AddWithValue("@tmpcupones", dt);
+
+                            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                            {
+                                DataTable dtbarra = new DataTable();
+                                da.Fill(dtbarra);
+
+                                if (dtbarra.Rows.Count>0)
+                                {
+                                    list_return = new List<ListaCliente>();
+
+                                    list_return = (from item in dtbarra.AsEnumerable()
+                                                          select new ListaCliente
+                                                          {
+                                                              dni= item.Field<string>("dni"),
+                                                              nombre= item.Field<string>("nombres"),
+                                                              apellidos = item.Field<string>("apellidos"),
+                                                              email = item.Field<string>("email"),
+                                                              barra = item.Field<string>("barra"),
+                                                          }).ToList();
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch(Exception exc)
+            {
+                list_return = null;
+            }
+            return list_return;
+        }
     }
 }

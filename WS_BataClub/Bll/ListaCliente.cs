@@ -13,5 +13,11 @@ namespace WS_BataClub.Bll
         public string apellidos { get; set; }
         public string email { get; set; }
         public string barra { get; set; }
+        public string error { get; set; }
+        
+    }
+    public class ListaItems
+    {
+        public ListaCliente[] Lista { get; set; }
     }
 }
