@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Design/Site.Master" AutoEventWireup="true" CodeBehind="LoginForm.aspx.cs" Inherits="www.bataclubvales.com.Control.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
-     <script language="Javascript" type="text/javascript" src="http://api.easyjquery.com/easyjquery.js"></script>
+ <%--    <script language="Javascript" type="text/javascript" src="http://api.easyjquery.com/easyjquery.js"></script>--%>
     <script src="../../Scripts/Js/logInJs.js" type="text/javascript"></script>
     Inicio de sesión en el sistema
 </asp:Content>

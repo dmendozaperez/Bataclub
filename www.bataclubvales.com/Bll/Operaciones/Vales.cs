@@ -116,7 +116,7 @@ namespace www.bataclubvales.com.Bll
                 da.Fill(dt);
                 _TotalRowCount = Convert.ToInt32(parTotalCount.Value);
             }
-            catch
+            catch(Exception exc)
             {
                 dt = null;
             }

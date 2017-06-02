@@ -44,7 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\..\Auditoria\vb 2013 c#\Sistema_Auditoria\Sistema_Auditoria\bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\..\..\Aquarella\www.aquarella.com.pe\www.aquarella.com.pe\bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="AsyncCtpLibrary">
       <HintPath>..\..\..\Auditoria\vb 2013 c#\Sistema_Auditoria\Sistema_Auditoria\bin\AsyncCtpLibrary.dll</HintPath>

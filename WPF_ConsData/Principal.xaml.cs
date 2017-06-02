@@ -342,13 +342,13 @@ namespace Bata
 
 
             /*deshabilitar boton de empl*/
-           // _tienda = "50283";
-            //ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
-            //Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
+             _tienda = "50283";
+            ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
+            Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
 
-            //btndesemp.Visibility = (btn_habilita == true) ? Visibility.Visible : Visibility.Hidden;
+            btndesemp.Visibility = (btn_habilita == true) ? Visibility.Visible : Visibility.Hidden;
 
-            btndesemp.Visibility = Visibility.Hidden;
+            //btndesemp.Visibility = Visibility.Hidden;
 
             //   actualizar_vale();
         }

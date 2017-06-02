@@ -642,7 +642,7 @@
                      </tr>
                      <tr>
                          <td>
-                            <asp:Button ID="btnnuevo" runat="server" Text="Ingresar Nuevo Vale de Descuento" />
+                            <asp:Button ID="btnnuevo" runat="server" Text="Ingresar Nuevo Vale de Descuento" style="display:none" />
                          </td>
                          <td>
 
