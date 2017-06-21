@@ -107,50 +107,87 @@ namespace Bata
 
         private void print_data(string _dniruc, DataTable dt)
         {
-            switch (_dniruc.Length)
-            {
-                case 8:
-                case 9:
-                    if (dtdni != null)
-                    {
-                        if (dt.Rows.Count > 0)
+            try
+            {          
+                switch (_dniruc.Length)
+                {
+                    case 8:
+                    case 9:
+                        if (dtdni != null)
                         {
-                            txtdni.Text = dt.Rows[0]["fc_ruc"].ToString();
-                            txtnombres.Text = dt.Rows[0]["fc_nomb"].ToString();
-                            txtapepat.Text = dt.Rows[0]["fc_apep"].ToString();
-                            txtapemat.Text = dt.Rows[0]["fc_apem"].ToString();
-                            txttelefono.Text = dt.Rows[0]["fc_tele"].ToString();
-                            txtemail.Text = dt.Rows[0]["fc_mail"].ToString();
-                            txtdireccion.Text = dt.Rows[0]["fc_dcli"].ToString();
-                            txtubigeo.Text = dt.Rows[0]["fc_cubi"].ToString();
+                            if (dt.Rows.Count > 0)
+                            {
+                                txtdni.Text = dt.Rows[0]["fc_ruc"].ToString();
+                                txtnombres.Text = dt.Rows[0]["fc_nomb"].ToString();
+                                txtapepat.Text = dt.Rows[0]["fc_apep"].ToString();
+                                txtapemat.Text = dt.Rows[0]["fc_apem"].ToString();
+                                txttelefono.Text = dt.Rows[0]["fc_tele"].ToString();
+                                txtemail.Text = dt.Rows[0]["fc_mail"].ToString();
+                                txtdireccion.Text = dt.Rows[0]["fc_dcli"].ToString();
+                                txtubigeo.Text = dt.Rows[0]["fc_cubi"].ToString();
 
+                            }
+                            else
+                            {
+                                CaptionResul();
+                            }
                         }
                         else
                         {
                             CaptionResul();
                         }
-                    }
-                    else
-                    {
-                        CaptionResul();
-                    }
-                    break;
-                case 11:
-                    if (dtruc != null)
-                    {
-                        if (dtruc.Rows.Count > 0)
+                        break;
+                    case 11:
+                        if (dtruc != null)
                         {
-                            txtdni.Text = dtruc.Rows[0]["fc_ruc"].ToString();
-                            txtnombres.Text = dtruc.Rows[0]["fc_nomb"].ToString();
-                            txtapepat.Text = dtruc.Rows[0]["fc_apep"].ToString();
-                            txtapemat.Text = dtruc.Rows[0]["fc_apem"].ToString();
-                            txttelefono.Text = dtruc.Rows[0]["fc_tele"].ToString();
-                            txtemail.Text = dtruc.Rows[0]["fc_mail"].ToString();
-                            txtdireccion.Text = dtruc.Rows[0]["fc_dcli"].ToString();
-                            txtubigeo.Text = dtruc.Rows[0]["fc_cubi"].ToString();
+                            if (dtruc.Rows.Count > 0)
+                            {
+                                txtdni.Text = dtruc.Rows[0]["fc_ruc"].ToString();
+                                txtnombres.Text = dtruc.Rows[0]["fc_nomb"].ToString();
+                                txtapepat.Text = dtruc.Rows[0]["fc_apep"].ToString();
+                                txtapemat.Text = dtruc.Rows[0]["fc_apem"].ToString();
+                                txttelefono.Text = dtruc.Rows[0]["fc_tele"].ToString();
+                                txtemail.Text = dtruc.Rows[0]["fc_mail"].ToString();
+                                txtdireccion.Text = dtruc.Rows[0]["fc_dcli"].ToString();
+                                txtubigeo.Text = dtruc.Rows[0]["fc_cubi"].ToString();
+                            }
+                            else
+                            {
+                                if (dtruc2 != null)
+                                {
+                                    if (dtruc2.Rows.Count == 0)
+                                    {
+                                        MessageBox.Show("hubo un problema con la web service Bata",
+                                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                                    }
+                                    else
+                                    {
+
+                                        if (dtruc2.Rows[0]["nombres"].ToString() == "Error!")
+                                        {
+                                            MessageBox.Show("hubo un problema con la consulta, intente de nuevo o verifique el numero de ruc",
+                                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                                        }
+                                        else
+                                        {
+                                            this.txtdireccion.Text = dtruc2.Rows[0]["direccion"].ToString();
+                                            this.txtnombres.Text = dtruc2.Rows[0]["nombres"].ToString();
+                                            this.txtdni.Text = txtdniruc.Text;
+                                            this.txttelefono.Text = dtruc2.Rows[0]["telefono"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("hubo un problema con la web service Bata",
+                                    "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+                                }
+                            }
                         }
                         else
                         {
+
                             if (dtruc2 != null)
                             {
                                 if (dtruc2.Rows.Count == 0)
@@ -182,59 +219,29 @@ namespace Bata
 
                             }
                         }
-                    }
-                    else
-                    {
-
-                        if (dtruc2 != null)
-                        {
-                            if (dtruc2.Rows.Count == 0)
-                            {
-                                MessageBox.Show("hubo un problema con la web service Bata",
-                                "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                            }
-                            else
-                            {
-
-                                if (dtruc2.Rows[0]["nombres"].ToString() == "Error!")
-                                {
-                                    MessageBox.Show("hubo un problema con la consulta, intente de nuevo o verifique el numero de ruc",
-                                "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                                }
-                                else
-                                {
-                                    this.txtdireccion.Text = dtruc2.Rows[0]["direccion"].ToString();
-                                    this.txtnombres.Text = dtruc2.Rows[0]["nombres"].ToString();
-                                    this.txtdni.Text = txtdniruc.Text;
-                                    this.txttelefono.Text = dtruc2.Rows[0]["telefono"].ToString();
-                                }
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("hubo un problema con la web service Bata",
-                            "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-
-                        }
-                    }
-                    break;
-            }
-            txtdniruc.SelectAll();
-            txtdniruc.Focus();
-            if (txtdni.Text.Trim().Length > 0)
-            {
-
-                txtemail.Background = Brushes.Khaki;
-                txttelefono.Background = Brushes.Khaki;
-                txtemail.IsReadOnly = false;
-                txttelefono.IsReadOnly = false;
-
-                if (txtemail.Text.Trim().Length > 0 || txttelefono.Text.Trim().Length > 0)
+                        break;
+                }
+                txtdniruc.SelectAll();
+                txtdniruc.Focus();
+                if (txtdni.Text.Trim().Length > 0)
                 {
-                    btnactualizar.IsEnabled = true;
+
+                    txtemail.Background = Brushes.Khaki;
+                    txttelefono.Background = Brushes.Khaki;
+                    txtemail.IsReadOnly = false;
+                    txttelefono.IsReadOnly = false;
+
+                    if (txtemail.Text.Trim().Length > 0 || txttelefono.Text.Trim().Length > 0)
+                    {
+                        btnactualizar.IsEnabled = true;
+                    }
                 }
             }
-
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message,
+                                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void _consulta_dni_ruc_loading(string _dni_ruc)
@@ -392,7 +399,7 @@ namespace Bata
                 //txtdniruc.SelectAll();
                 //txtdniruc.Focus();
             }
-            catch (Exception exc)
+            catch 
             {
                 throw;
                 //MessageBox.Show(exc.Message,
@@ -741,7 +748,15 @@ namespace Bata
         }
         private void _loading_procesos(string _dni_ruc)
         {
-            _consulta_dni_ruc_loading(_dni_ruc);
+            try
+            { 
+                 _consulta_dni_ruc_loading(_dni_ruc);
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message,
+                "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             //_crear_actualiza_dbf_loading();
         }
         private void CaptionResul()

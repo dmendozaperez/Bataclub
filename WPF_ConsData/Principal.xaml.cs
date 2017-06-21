@@ -342,7 +342,7 @@ namespace Bata
 
 
             /*deshabilitar boton de empl*/
-             _tienda = "50283";
+            // _tienda = "50283";
             ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
             Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
 
