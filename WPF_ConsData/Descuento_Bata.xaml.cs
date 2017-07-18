@@ -570,8 +570,8 @@ namespace Bata
                 {
                     tiempoFinal = DateTime.Now;
                     TimeSpan diffTime = tiempoFinal - tiempoInicial;
-                    long segundos = diffTime.Seconds; //DateA DateDiff(DateInterval.Second, tiempoInicial, tiempoFinal)
-                    if (segundos >= 1)
+                    long segundos = diffTime.Milliseconds; //DateA DateDiff(DateInterval.Second, tiempoInicial, tiempoFinal)
+                    if (segundos >= 250)
                     {
                         MessageBox.Show("Entrada no permitida por teclado",
                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
