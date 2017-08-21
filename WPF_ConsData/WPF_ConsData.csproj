@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>199</ApplicationRevision>
+    <ApplicationRevision>206</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -113,6 +113,7 @@
     <Compile Include="Clases\Basico.cs" />
     <Compile Include="Clases\Clientes.cs" />
     <Compile Include="Clases\DBFNET.cs" />
+    <Compile Include="Clases\PromBata.cs" />
     <Compile Include="Control\LoadingAnimation.xaml.cs">
       <DependentUpon>LoadingAnimation.xaml</DependentUpon>
     </Compile>
@@ -226,7 +227,16 @@
     <None Include="Service References\ServiceMetricard\ServicioCliente2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.Barra.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.Data_Sunat.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.GeneraCuponBata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.PromBata.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ws_clientedniruc\Cons_Cliente.wsdl" />
@@ -375,6 +385,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ws_clientedniruc\Cons_Cliente.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\Images\incidencia.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

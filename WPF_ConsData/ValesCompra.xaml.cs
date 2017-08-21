@@ -524,8 +524,9 @@ namespace Bata
                 //{
                 if (_dni_ruc.Length == 8)
                 {
+                    Boolean nuevobataclub = false;
                     //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
-                    DataTable dt = Clientes._consultacliente(_dni_ruc, ref RegistradoEnFlujosBataClub);
+                    DataTable dt = Clientes._consultacliente(_dni_ruc, ref RegistradoEnFlujosBataClub,ref nuevobataclub);
                     dtdni = dt;
                     if (dt != null)
                     {
@@ -560,8 +561,8 @@ namespace Bata
                 }
                 else
                 {
-
-                    DataTable dt1 = Clientes._consultacliente(_dni_ruc, ref RegistradoEnFlujosBataClub);
+                    Boolean nuevobataclub = false;
+                    DataTable dt1 = Clientes._consultacliente(_dni_ruc, ref RegistradoEnFlujosBataClub,ref nuevobataclub);
                     dtruc = dt1;
                     if (dt1 != null)
                     {

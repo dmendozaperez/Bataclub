@@ -6,6 +6,7 @@ using System.Web.Services;
 using System.Data;
 using System.IO;
 using ConsultReniec;
+using WS_ConsCliente.Clases;
 
 //using ConsultReniec;
 //using ConsultaSunat;
@@ -92,6 +93,58 @@ namespace WS_ConsCliente
                 _error = exc.Message;
             }
             return _error;
+        }
+
+        [WebMethod]
+        public List<Barra> ws_buscar_barra_dni(string dni)
+        {
+            List<Barra> bus = null;
+            try
+            {
+                bus = Basico.buscar_barra_dni(dni);
+            }
+            catch
+            {
+                bus = null;
+            }
+            return bus;
+        }
+        [WebMethod]
+        public GeneraCuponBata generacupon()
+        {
+            return new GeneraCuponBata();
+        }
+
+        [WebMethod]
+        public GeneraCuponBata ws_getbarra(GeneraCuponBata genera_cupon)
+        {
+            GeneraCuponBata gen = null;
+            try
+            {
+                Basico.get_cupon_genauto(ref genera_cupon);
+                gen = genera_cupon;
+            }
+            catch
+            {
+                gen = null;
+            }
+            return gen;
+        }
+
+        [WebMethod]
+        public PromBata ws_getprombata(string cod,string tda,string dni)
+        {
+            PromBata getprom = null;
+            try
+            {
+                Basico get_bas = new Basico();
+                getprom = get_bas.get_prombata(cod,tda,dni);
+            }
+            catch
+            {
+                getprom = null;
+            }
+            return getprom;
         }
 
         [WebMethod]

@@ -156,11 +156,11 @@
         <Grid Grid.Row="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!--<TextBlock Text="DESCUENTO EMPLEADO"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,1,218,162" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>-->
-            <Button Name="btndesemp" Grid.Column="0" Background="Transparent" Margin="5,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
+            <Button Name="btndesemp" Grid.Column="0" Background="Transparent" Margin="-110,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -181,7 +181,29 @@
 
                 </Grid>
             </Button>
-            
+
+            <Button Name="btnsoport" Grid.Column="1" Background="Transparent" Margin="105,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnsoport_Click" >
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" >Incidencia</TextBlock>
+                            <TextBlock>Reporta tu incidencia</TextBlock>
+                            <TextBlock>No lo presione hasta estar seguro de abrir la ventana.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="59*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,0" Source="Design/Images/incidencia.jpg" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
+                    <TextBlock Text="REPORTA INCIDENCIA" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
+
+                </Grid>
+            </Button>
+
             <Button Width="100" Height="50" Visibility="Hidden" Margin="340,0,0,0" Click="Button_Click"></Button>
         </Grid>
     </Grid>

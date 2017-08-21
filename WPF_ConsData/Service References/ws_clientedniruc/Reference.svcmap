@@ -21,8 +21,8 @@
     <MetadataSource Address="http://www.bgr.pe/web_site_cliente/Cons_Cliente.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Cons_Cliente.disco" MetadataType="Disco" ID="41d3ba17-3dfb-4aef-8a3e-67ba17f69232" SourceId="1" SourceUrl="http://www.bgr.pe/web_site_cliente/Cons_Cliente.asmx?disco" />
-    <MetadataFile FileName="Cons_Cliente.wsdl" MetadataType="Wsdl" ID="07acd12e-7f37-4302-968b-db7d42dc4c6b" SourceId="1" SourceUrl="http://www.bgr.pe/web_site_cliente/Cons_Cliente.asmx?wsdl" />
+    <MetadataFile FileName="Cons_Cliente.disco" MetadataType="Disco" ID="3581b5d5-1bef-4ea2-ba7a-7001dbef433a" SourceId="1" SourceUrl="http://www.bgr.pe/web_site_cliente/Cons_Cliente.asmx?disco" />
+    <MetadataFile FileName="Cons_Cliente.wsdl" MetadataType="Wsdl" ID="c7758a8f-19fe-49c7-8b2b-a459d6486c6a" SourceId="1" SourceUrl="http://www.bgr.pe/web_site_cliente/Cons_Cliente.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

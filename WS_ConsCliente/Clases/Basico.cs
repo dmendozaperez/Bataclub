@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
+using WS_ConsCliente.Clases;
 
 namespace WS_ConsCliente
 {
@@ -85,6 +86,59 @@ namespace WS_ConsCliente
         #endregion
 
         #region<METODO PARA VALES>
+        public PromBata get_prombata(string cod,string tda,string dni)
+        {
+            PromBata getdata = null;
+            string sqlquery = "USP_GetValidaPromBata";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    if (cn.State == 0) cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+
+                        getdata = new PromBata();
+
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@cod_prom", cod);
+                        cmd.Parameters.AddWithValue("@cod_tda", tda);
+                        cmd.Parameters.AddWithValue("@dni", dni);
+
+                        cmd.Parameters.Add("@valida", SqlDbType.Bit);
+                        cmd.Parameters.Add("@nom_prom", SqlDbType.VarChar,100);
+                        cmd.Parameters.Add("@fecha_ini", SqlDbType.Date);
+                        cmd.Parameters.Add("@fecha_fin", SqlDbType.Date);
+                        cmd.Parameters.Add("@por_des", SqlDbType.Money);
+                        cmd.Parameters.Add("@max_pares", SqlDbType.Decimal);
+
+                        cmd.Parameters["@valida"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@nom_prom"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@fecha_ini"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@fecha_fin"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@por_des"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@max_pares"].Direction = ParameterDirection.Output;
+
+                        cmd.ExecuteNonQuery();
+                        getdata.valida = (Boolean)cmd.Parameters["@valida"].Value;
+                        getdata.nom_prom =(string)cmd.Parameters["@nom_prom"].Value;
+                        getdata.fecha_ini =(DateTime) cmd.Parameters["@fecha_ini"].Value;
+                        getdata.fecha_fin =(DateTime) cmd.Parameters["@fecha_fin"].Value;
+                        getdata.por_des =(decimal) cmd.Parameters["@por_des"].Value;
+                        getdata.max_par=(decimal) cmd.Parameters["@max_pares"].Value;
+                       
+
+                    }
+                }
+            }
+            catch(Exception exc)
+            {
+                getdata = null;
+            }
+            return getdata;
+        }
+
 
         public static string update_vales(string _serie,string _correlativo,string _cod_tda_venta,string _dni_venta,
             string _nombres_venta,string _fecha_doc,string _tipo_doc,string _serie_doc,string _numero_doc,
@@ -261,6 +315,94 @@ namespace WS_ConsCliente
             return dt;
         }
 
+        public static void get_cupon_genauto(ref GeneraCuponBata set_cupon)
+        {
+           
+            string sqlquery = "[USP_Insertar_Vales_Bata]";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    if (cn.State ==0) cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@nombres", set_cupon.nombres);
+                        cmd.Parameters.AddWithValue("@email", set_cupon.email);
+                        cmd.Parameters.AddWithValue("@dni", set_cupon.dni);
+                        cmd.Parameters.AddWithValue("@pordes", set_cupon.pordes);
+                        cmd.Parameters.AddWithValue("@fecha_ini", set_cupon.fechaini);
+                        cmd.Parameters.AddWithValue("@fecha_fin", set_cupon.fechafin);
+                        cmd.Parameters.AddWithValue("@paresmax", set_cupon.paresmax);
+                        cmd.Parameters.AddWithValue("@Grupo", set_cupon.grupo);
+
+                        cmd.Parameters.Add("@barra",SqlDbType.VarChar,20);
+                        cmd.Parameters.Add("@serget", SqlDbType.VarChar, 6);
+                        cmd.Parameters.Add("@numget", SqlDbType.VarChar, 8);
+                        cmd.Parameters.Add("@tipcup", SqlDbType.VarChar, 5);
+
+
+                        cmd.Parameters["@barra"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@serget"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@numget"].Direction = ParameterDirection.Output;
+                        cmd.Parameters["@tipcup"].Direction = ParameterDirection.Output;
+
+
+                        cmd.ExecuteNonQuery();
+                        set_cupon.barra =(string) cmd.Parameters["@barra"].Value;
+                        set_cupon.serie = (string)cmd.Parameters["@serget"].Value;
+                        set_cupon.correlativo = (string)cmd.Parameters["@numget"].Value;
+                        set_cupon.tipcup=(string)cmd.Parameters["@tipcup"].Value;
+                    }
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+           
+        }
+
+        public static List<Barra> buscar_barra_dni(string _dni)
+        {
+            List<Barra> listar = null;
+            string sqlquery = "USP_ConsultaCuponesActivo";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    if (cn.State == 0) cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@dni", _dni);
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.HasRows)
+                        {
+                            listar = new List<Barra>();
+                            while (dr.Read())
+                            {
+                                Barra ag = new Barra();
+                                ag.barra = dr["barra"].ToString();
+                                ag.promocion = dr["promocion"].ToString();
+                                ag.fechac =Convert.ToDateTime(dr["fechac"]);
+                                listar.Add(ag);
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                listar = null;
+            }
+            return listar;
+        }
+
         #region<REGION DE CONEXIONES DATA BATALUB>
 
         public static string _update_apltda(string _cod_tda,string _nom_apl,string _ver_apl)
@@ -324,5 +466,15 @@ namespace WS_ConsCliente
         }
        
         #endregion
+    }
+
+    public class PromBata
+    {
+        public Boolean valida { get; set; }
+        public string nom_prom { get; set; }
+        public DateTime fecha_ini { get; set; }
+        public DateTime fecha_fin { get; set; }
+        public Decimal por_des { get; set; }
+        public Decimal max_par { get; set; }
     }
 }

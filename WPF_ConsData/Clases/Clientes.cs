@@ -19,7 +19,7 @@ namespace Bata.Clases
         public static string _str_codigo_captcha_sunat { set; get; }
         public static string _str_codigo_captcha_reniec { set; get; }
 
-
+        
         public static DataSet _consulta_vales(string _corre,string _code,string _cod_tda="")
         {
             DataSet ds = null;
@@ -72,7 +72,7 @@ namespace Bata.Clases
             }
             return _error;
         }
-        public static DataTable _consultacliente(string _dniruc,ref Boolean flujo_metri)
+        public static DataTable _consultacliente(string _dniruc,ref Boolean flujo_metri,ref Boolean nuevo_bataclub)
         {
             DataTable dt = null;
             
@@ -107,6 +107,10 @@ namespace Bata.Clases
                     dt.Rows.Add(_fc_ruc, _fc_nomb.ToUpper(), _fc_apep.ToUpper(), _fc_apem, _fc_tele, _fc_mail, _fc_dcli.ToUpper(), "");
                     flujo_metri = datosCliente.RegistradoEnFlujosBataClub;
 
+                }
+                else
+                {
+                    nuevo_bataclub = true;
                 }
 
 

@@ -18,6 +18,8 @@ using Bata.Clases;
 using System.Windows.Threading;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
+
 namespace Bata
 {
     /// <summary>
@@ -534,7 +536,8 @@ namespace Bata
             {
                 string dni = dt.Rows[i]["DNI_Venta"].ToString();
                 Boolean _flujo = false;
-                DataTable dtmetri = Clientes._consultacliente(dni,ref _flujo);
+                    Boolean nuevocliente = false;
+                    DataTable dtmetri = Clientes._consultacliente(dni,ref _flujo,ref nuevocliente);
 
                 if (dtmetri!=null)
                 {
@@ -577,6 +580,11 @@ namespace Bata
                 //this.Close();
                 ValesCompra._activo_form = true;
             }
+        }
+
+        private void btnsoport_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("http://soporte.bgr.pe/glpi");
         }
     }
 }

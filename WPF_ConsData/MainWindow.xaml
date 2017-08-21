@@ -118,7 +118,7 @@
                 <ColumnDefinition Width="83*"/>
             </Grid.ColumnDefinitions>
             <TabControl Name="tabcliente" Margin="10,63,10.655,-122" Grid.ColumnSpan="3">
-                <TabItem Header=" > Datos de Clientes">
+                <TabItem Name="tab1" Header=" > Datos de Clientes">
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="82*"/>
@@ -150,6 +150,21 @@
                         <Button x:Name="btnactualizar" Cursor="Hand" Content="Actualizar" Margin="409,228,10,-7" Grid.Column="1" Click="btnactualizar_Click"/>
                         <Label x:Name="label" Content="}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="45" Foreground="Red"  Margin="369,147,118,31" Height="76" Width="28"/>
                         <TextBlock x:Name="label2" TextWrapping="Wrap"  Text="Ingrese Telefono, Celular ó E-Mail para activar el Descuento" TextAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="13" Foreground="Red"  Margin="395,155,6,21" Height="78" Width="114"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="tab2" Header=" > Cupones Disponibles">
+                    <Grid>
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid Name="dg1" HorizontalAlignment="Left"  Width="590"  AlternatingRowBackground="Beige" IsReadOnly="True"   AutoGenerateColumns="False" GridLinesVisibility="All" SelectionUnit="Cell"    >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding barra}" ClipboardContentBinding="{x:Null}" Header="Barra" >
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding promocion}" ClipboardContentBinding="{x:Null}" Header="Campaña">
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding fechac}" ClipboardContentBinding="{x:Null}" Header="Fec. Expiración"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
                     </Grid>
                 </TabItem>
             </TabControl>

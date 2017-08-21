@@ -172,7 +172,7 @@ namespace ConsultReniec
                     //  Console.WriteLine("Text recognized: " + text);
                 }
             }
-            catch
+            catch(Exception exc)
             {
 
             }
