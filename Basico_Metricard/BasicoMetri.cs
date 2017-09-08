@@ -13,7 +13,7 @@ namespace Basico_Metricard
     
     public class BasicoMetri
     {
-        private static string conexion= "Server=10.10.10.208;Database=BdTienda;User ID=sa;Password=Bata2013;Trusted_Connection=False;";
+        private static string conexion= "Server=www.bgr.pe;Database=BdTienda;User ID=sa;Password=Bata2013;Trusted_Connection=False;";
 
 
         private static Boolean _update_cupon_metricard(string _barra,ref string _error)
@@ -42,6 +42,33 @@ namespace Basico_Metricard
             if (cn != null)
                 if (cn.State == ConnectionState.Open) cn.Close();
             return _valida;
+        }
+        private static DataTable dt_tienda()
+        {
+            DataTable dt = null;
+            string sqlquery = "USP_ListaTdaMetriN";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(conexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            dt = new DataTable();
+                            da.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                dt = null;
+            }
+            return dt;
         }
         private static DataTable dt_cupones_convert(ref string _error)
         {
@@ -124,10 +151,41 @@ namespace Basico_Metricard
         public static void _ejecuta_proceso_envia_metricard(ref String _error)
         {
             DataTable dtcupones = null;
+            DataTable dttienda = null;
             //string _error = "";
             ServicioConversionClient cliente = null;
             try
             {
+
+                #region<ACTUALIZAR TIENDAS>
+                dttienda = dt_tienda();
+
+                if (dttienda!=null)
+                {
+                    if (dttienda.Rows.Count>0)
+                    {
+                        cliente = new ServicioConversionClient();
+                        for (Int32 i=0;i<dttienda.Rows.Count;++i)
+                        {
+                                string codtda = dttienda.Rows[i]["cod_entid"].ToString();
+                                string destda = dttienda.Rows[i]["des_entid"].ToString();
+
+                                Tienda tienda = cliente.ConsultarTiendaPorCodigo(codtda);
+
+                                if (tienda == null)
+                                {
+                                    tienda = new ServicioConversion.Tienda();
+                                    tienda.Nombre = destda;
+                                    tienda.Codigo = codtda;
+                                    RespuestaServicio respuesta_tda = cliente.AgregarTienda(tienda);
+
+                                }
+                           
+                        }
+                    }
+                }
+                #endregion
+
                 dtcupones = dt_cupones_convert(ref _error);
                 if (dtcupones != null)
                 {

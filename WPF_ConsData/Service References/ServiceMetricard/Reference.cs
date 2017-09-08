@@ -23,6 +23,9 @@ namespace Bata.ServiceMetricard {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoMaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ApellidosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -65,6 +68,19 @@ namespace Bata.ServiceMetricard {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApellidoMaterno {
+            get {
+                return this.ApellidoMaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoMaternoField, value) != true)) {
+                    this.ApellidoMaternoField = value;
+                    this.RaisePropertyChanged("ApellidoMaterno");
+                }
             }
         }
         

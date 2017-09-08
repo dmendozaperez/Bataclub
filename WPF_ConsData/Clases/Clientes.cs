@@ -186,7 +186,7 @@ namespace Bata.Clases
                 
                 bool existe_cliente = cliente_metri.EsCliente_DniString(_ruc);
                 //insertando en la ws de metricard
-                ServiceMetricard.Cliente update_cliente_metri = new ServiceMetricard.Cliente { DNI_String = _ruc, Nombres = _nombres, Apellidos = _apepat + " " + _apemat, eMail = _email, Celular = _telefono,CodigoTienda= _tda };
+                ServiceMetricard.Cliente update_cliente_metri = new ServiceMetricard.Cliente { DNI_String = _ruc, Nombres = _nombres, Apellidos = _apepat,ApellidoMaterno=_apemat, eMail = _email, Celular = _telefono,CodigoTienda= _tda };
                 //si no existe entonces insertamos
                 
                 if (!existe_cliente)
