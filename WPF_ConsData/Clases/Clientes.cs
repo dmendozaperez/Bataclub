@@ -99,7 +99,7 @@ namespace Bata.Clases
                     string _fc_ruc = datosCliente.DNI_String.ToString();
                     string _fc_nomb = (datosCliente.Nombres!=null)?datosCliente.Nombres.ToString():"";
                     string _fc_apep = (datosCliente.Apellidos!=null)? datosCliente.Apellidos.ToString():"";
-                    string _fc_apem = "";
+                    string _fc_apem = (datosCliente.ApellidoMaterno != null) ? datosCliente.ApellidoMaterno.ToString() : "";
                     string _fc_tele = (datosCliente.Celular != null)?datosCliente.Celular: "";
                     if (_fc_tele.Length == 0) _fc_tele = (datosCliente.Fono != null) ? datosCliente.Fono.ToString() : "";
                     string _fc_mail = (datosCliente.eMail!=null)? datosCliente.eMail.ToString():"";
