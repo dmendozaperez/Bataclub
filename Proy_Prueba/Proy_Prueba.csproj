@@ -95,6 +95,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Service References\ConsultaCliente\Cons_Cliente1.wsdl" />
+    <None Include="Service References\ConsultaCliente\Proy_Prueba.ConsultaCliente.Barra.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ConsultaCliente\Proy_Prueba.ConsultaCliente.Data_Sunat.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -121,6 +124,12 @@
     <None Include="Service References\ConsultaCliente\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ConsultaCliente\Proy_Prueba.ConsultaCliente.GeneraCuponBata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsultaCliente\Proy_Prueba.ConsultaCliente.PromBata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ConsultaCliente\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

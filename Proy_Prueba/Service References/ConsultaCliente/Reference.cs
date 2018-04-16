@@ -32,6 +32,22 @@ namespace Proy_Prueba.ConsultaCliente {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string ws_update_vales(string _serie, string _correlativo, string _cod_tda_venta, string _dni_venta, string _nombres_venta, string _fecha_doc, string _tipo_doc, string _serie_doc, string _numero_doc, string _estado_doc, string _fc_nint, string _email_venta, string _telefono_venta);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_buscar_barra_dni", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Proy_Prueba.ConsultaCliente.Barra[] ws_buscar_barra_dni(string dni);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/generacupon", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Proy_Prueba.ConsultaCliente.GeneraCuponBata generacupon();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_getbarra", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Proy_Prueba.ConsultaCliente.GeneraCuponBata ws_getbarra(Proy_Prueba.ConsultaCliente.GeneraCuponBata genera_cupon);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_getprombata", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Proy_Prueba.ConsultaCliente.PromBata ws_getprombata(string cod, string tda, string dni);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_buscar_vales", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet ws_buscar_vales(string _correlativo, string _code, string _tda);
@@ -65,8 +81,68 @@ namespace Proy_Prueba.ConsultaCliente {
         string ws_update_apltda(string _cod_tda, string _nom_apl, string _ver_apl);
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
+    public partial class Barra : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string barraField;
+        
+        private string promocionField;
+        
+        private System.DateTime fechacField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string barra {
+            get {
+                return this.barraField;
+            }
+            set {
+                this.barraField = value;
+                this.RaisePropertyChanged("barra");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string promocion {
+            get {
+                return this.promocionField;
+            }
+            set {
+                this.promocionField = value;
+                this.RaisePropertyChanged("promocion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public System.DateTime fechac {
+            get {
+                return this.fechacField;
+            }
+            set {
+                this.fechacField = value;
+                this.RaisePropertyChanged("fechac");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -83,7 +159,7 @@ namespace Proy_Prueba.ConsultaCliente {
         
         private string telefonoField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string error {
             get {
@@ -95,7 +171,7 @@ namespace Proy_Prueba.ConsultaCliente {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string direccion {
             get {
@@ -107,7 +183,7 @@ namespace Proy_Prueba.ConsultaCliente {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string nombres {
             get {
@@ -119,7 +195,7 @@ namespace Proy_Prueba.ConsultaCliente {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string ruc {
             get {
@@ -131,7 +207,7 @@ namespace Proy_Prueba.ConsultaCliente {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string telefono {
             get {
@@ -140,6 +216,336 @@ namespace Proy_Prueba.ConsultaCliente {
             set {
                 this.telefonoField = value;
                 this.RaisePropertyChanged("telefono");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
+    public partial class PromBata : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool validaField;
+        
+        private string nom_promField;
+        
+        private System.DateTime fecha_iniField;
+        
+        private System.DateTime fecha_finField;
+        
+        private decimal por_desField;
+        
+        private decimal max_parField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool valida {
+            get {
+                return this.validaField;
+            }
+            set {
+                this.validaField = value;
+                this.RaisePropertyChanged("valida");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string nom_prom {
+            get {
+                return this.nom_promField;
+            }
+            set {
+                this.nom_promField = value;
+                this.RaisePropertyChanged("nom_prom");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public System.DateTime fecha_ini {
+            get {
+                return this.fecha_iniField;
+            }
+            set {
+                this.fecha_iniField = value;
+                this.RaisePropertyChanged("fecha_ini");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public System.DateTime fecha_fin {
+            get {
+                return this.fecha_finField;
+            }
+            set {
+                this.fecha_finField = value;
+                this.RaisePropertyChanged("fecha_fin");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public decimal por_des {
+            get {
+                return this.por_desField;
+            }
+            set {
+                this.por_desField = value;
+                this.RaisePropertyChanged("por_des");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public decimal max_par {
+            get {
+                return this.max_parField;
+            }
+            set {
+                this.max_parField = value;
+                this.RaisePropertyChanged("max_par");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
+    public partial class GeneraCuponBata : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string nombres_prinField;
+        
+        private string nombresField;
+        
+        private string apepatField;
+        
+        private string apematField;
+        
+        private string emailField;
+        
+        private string dniField;
+        
+        private decimal pordesField;
+        
+        private System.DateTime fechainiField;
+        
+        private System.DateTime fechafinField;
+        
+        private decimal paresmaxField;
+        
+        private string grupoField;
+        
+        private string barraField;
+        
+        private string correlativoField;
+        
+        private string serieField;
+        
+        private string tipcupField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string nombres_prin {
+            get {
+                return this.nombres_prinField;
+            }
+            set {
+                this.nombres_prinField = value;
+                this.RaisePropertyChanged("nombres_prin");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string nombres {
+            get {
+                return this.nombresField;
+            }
+            set {
+                this.nombresField = value;
+                this.RaisePropertyChanged("nombres");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string apepat {
+            get {
+                return this.apepatField;
+            }
+            set {
+                this.apepatField = value;
+                this.RaisePropertyChanged("apepat");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string apemat {
+            get {
+                return this.apematField;
+            }
+            set {
+                this.apematField = value;
+                this.RaisePropertyChanged("apemat");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+                this.RaisePropertyChanged("email");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string dni {
+            get {
+                return this.dniField;
+            }
+            set {
+                this.dniField = value;
+                this.RaisePropertyChanged("dni");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public decimal pordes {
+            get {
+                return this.pordesField;
+            }
+            set {
+                this.pordesField = value;
+                this.RaisePropertyChanged("pordes");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public System.DateTime fechaini {
+            get {
+                return this.fechainiField;
+            }
+            set {
+                this.fechainiField = value;
+                this.RaisePropertyChanged("fechaini");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public System.DateTime fechafin {
+            get {
+                return this.fechafinField;
+            }
+            set {
+                this.fechafinField = value;
+                this.RaisePropertyChanged("fechafin");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public decimal paresmax {
+            get {
+                return this.paresmaxField;
+            }
+            set {
+                this.paresmaxField = value;
+                this.RaisePropertyChanged("paresmax");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string grupo {
+            get {
+                return this.grupoField;
+            }
+            set {
+                this.grupoField = value;
+                this.RaisePropertyChanged("grupo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string barra {
+            get {
+                return this.barraField;
+            }
+            set {
+                this.barraField = value;
+                this.RaisePropertyChanged("barra");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string correlativo {
+            get {
+                return this.correlativoField;
+            }
+            set {
+                this.correlativoField = value;
+                this.RaisePropertyChanged("correlativo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public string serie {
+            get {
+                return this.serieField;
+            }
+            set {
+                this.serieField = value;
+                this.RaisePropertyChanged("serie");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public string tipcup {
+            get {
+                return this.tipcupField;
+            }
+            set {
+                this.tipcupField = value;
+                this.RaisePropertyChanged("tipcup");
             }
         }
         
@@ -194,6 +600,22 @@ namespace Proy_Prueba.ConsultaCliente {
         
         public string ws_update_vales(string _serie, string _correlativo, string _cod_tda_venta, string _dni_venta, string _nombres_venta, string _fecha_doc, string _tipo_doc, string _serie_doc, string _numero_doc, string _estado_doc, string _fc_nint, string _email_venta, string _telefono_venta) {
             return base.Channel.ws_update_vales(_serie, _correlativo, _cod_tda_venta, _dni_venta, _nombres_venta, _fecha_doc, _tipo_doc, _serie_doc, _numero_doc, _estado_doc, _fc_nint, _email_venta, _telefono_venta);
+        }
+        
+        public Proy_Prueba.ConsultaCliente.Barra[] ws_buscar_barra_dni(string dni) {
+            return base.Channel.ws_buscar_barra_dni(dni);
+        }
+        
+        public Proy_Prueba.ConsultaCliente.GeneraCuponBata generacupon() {
+            return base.Channel.generacupon();
+        }
+        
+        public Proy_Prueba.ConsultaCliente.GeneraCuponBata ws_getbarra(Proy_Prueba.ConsultaCliente.GeneraCuponBata genera_cupon) {
+            return base.Channel.ws_getbarra(genera_cupon);
+        }
+        
+        public Proy_Prueba.ConsultaCliente.PromBata ws_getprombata(string cod, string tda, string dni) {
+            return base.Channel.ws_getprombata(cod, tda, dni);
         }
         
         public System.Data.DataSet ws_buscar_vales(string _correlativo, string _code, string _tda) {

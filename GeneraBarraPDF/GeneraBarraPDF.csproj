@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NReco.PdfGenerator">
-      <HintPath>..\..\..\Generador PDF\Genera PDF\BataGeneraPDF\BataGeneraPDF\bin\Debug\NReco.PdfGenerator.dll</HintPath>
+      <HintPath>..\..\SLBATA\CapaPresentacion\bin\NReco.PdfGenerator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

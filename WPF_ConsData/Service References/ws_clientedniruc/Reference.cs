@@ -81,8 +81,8 @@ namespace Bata.ws_clientedniruc {
         string ws_update_apltda(string _cod_tda, string _nom_apl, string _ver_apl);
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -95,7 +95,7 @@ namespace Bata.ws_clientedniruc {
         
         private System.DateTime fechacField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string barra {
             get {
@@ -107,7 +107,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string promocion {
             get {
@@ -119,7 +119,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public System.DateTime fechac {
             get {
@@ -141,8 +141,8 @@ namespace Bata.ws_clientedniruc {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -159,7 +159,7 @@ namespace Bata.ws_clientedniruc {
         
         private string telefonoField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string error {
             get {
@@ -171,7 +171,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string direccion {
             get {
@@ -183,7 +183,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string nombres {
             get {
@@ -195,7 +195,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string ruc {
             get {
@@ -207,7 +207,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string telefono {
             get {
@@ -229,8 +229,8 @@ namespace Bata.ws_clientedniruc {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -249,7 +249,7 @@ namespace Bata.ws_clientedniruc {
         
         private decimal max_parField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public bool valida {
             get {
@@ -261,7 +261,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string nom_prom {
             get {
@@ -273,7 +273,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public System.DateTime fecha_ini {
             get {
@@ -285,7 +285,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public System.DateTime fecha_fin {
             get {
@@ -297,7 +297,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public decimal por_des {
             get {
@@ -309,7 +309,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public decimal max_par {
             get {
@@ -331,8 +331,8 @@ namespace Bata.ws_clientedniruc {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2053.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -369,7 +369,7 @@ namespace Bata.ws_clientedniruc {
         
         private string tipcupField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string nombres_prin {
             get {
@@ -381,7 +381,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string nombres {
             get {
@@ -393,7 +393,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string apepat {
             get {
@@ -405,7 +405,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string apemat {
             get {
@@ -417,7 +417,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string email {
             get {
@@ -429,7 +429,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public string dni {
             get {
@@ -441,7 +441,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=6)]
         public decimal pordes {
             get {
@@ -453,7 +453,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=7)]
         public System.DateTime fechaini {
             get {
@@ -465,7 +465,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=8)]
         public System.DateTime fechafin {
             get {
@@ -477,7 +477,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=9)]
         public decimal paresmax {
             get {
@@ -489,7 +489,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=10)]
         public string grupo {
             get {
@@ -501,7 +501,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=11)]
         public string barra {
             get {
@@ -513,7 +513,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public string correlativo {
             get {
@@ -525,7 +525,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=13)]
         public string serie {
             get {
@@ -537,7 +537,7 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=14)]
         public string tipcup {
             get {

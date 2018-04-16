@@ -44,16 +44,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\..\Aquarella\www.aquarella.com.pe\www.aquarella.com.pe\bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\Skype\My Skype Received Files\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="AsyncCtpLibrary">
-      <HintPath>..\..\..\Auditoria\vb 2013 c#\Sistema_Auditoria\Sistema_Auditoria\bin\AsyncCtpLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\Skype\My Skype Received Files\AsyncCtpLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Jayrock">
-      <HintPath>..\..\..\Auditoria\vb 2013 c#\Sistema_Auditoria\Sistema_Auditoria\bin\Jayrock.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\Skype\My Skype Received Files\Jayrock.dll</HintPath>
     </Reference>
     <Reference Include="Jayrock.Json">
-      <HintPath>..\..\..\Auditoria\vb 2013 c#\Sistema_Auditoria\Sistema_Auditoria\bin\Jayrock.Json.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\Skype\My Skype Received Files\Jayrock.Json.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>

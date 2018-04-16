@@ -102,7 +102,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="WPFToolkit">
-      <HintPath>..\..\..\AQUARELLA SQL\Sistema\Vb C# 2013\ELECTRONICO_CARVAJAL\ELECTRONICO\Sistema\www.aquarella.com.pe\Aquarella\bin\Debug\WPFToolkit.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\WPFToolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

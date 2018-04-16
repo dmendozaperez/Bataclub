@@ -99,31 +99,59 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ExisteCampanaPorCodigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigoCampana" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExisteCampanaPorCodigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExisteCampanaPorCodigoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearCampana">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="campana" nillable="true" type="q11:Campana" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearCampanaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="CrearCampanaResult" nillable="true" type="q12:RespuestaServicio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AgregarTipoProducto">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="tipoProducto" nillable="true" type="q11:TipoProducto" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AgregarTipoProductoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="AgregarTipoProductoResult" nillable="true" type="q12:RespuestaServicio" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActualizarTipoProducto">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="tipoProducto" nillable="true" type="q13:TipoProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AgregarTipoProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="AgregarTipoProductoResult" nillable="true" type="q14:RespuestaServicio" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarTipoProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="tipoProducto" nillable="true" type="q15:TipoProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ActualizarTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ActualizarTipoProductoResult" nillable="true" type="q14:RespuestaServicio" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ActualizarTipoProductoResult" nillable="true" type="q16:RespuestaServicio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -137,35 +165,35 @@
   <xs:element name="ConsultarTipoProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ConsultarTipoProductoResult" nillable="true" type="q15:TipoProducto" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ConsultarTipoProductoResult" nillable="true" type="q17:TipoProducto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="producto" nillable="true" type="q16:Producto" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="producto" nillable="true" type="q18:Producto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AgregarProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="AgregarProductoResult" nillable="true" type="q17:RespuestaServicio" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="AgregarProductoResult" nillable="true" type="q19:RespuestaServicio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarProducto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="producto" nillable="true" type="q18:Producto" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="producto" nillable="true" type="q20:Producto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActualizarProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ActualizarProductoResult" nillable="true" type="q19:RespuestaServicio" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ActualizarProductoResult" nillable="true" type="q21:RespuestaServicio" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -179,7 +207,7 @@
   <xs:element name="ConsultarProductoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ConsultarProductoResult" nillable="true" type="q20:Producto" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ConsultarProductoResult" nillable="true" type="q22:Producto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -236,6 +264,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="AnularConversionPorCuponResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarCampanaPorCodigo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codigo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarCampanaPorCodigoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/MetricArts.BataClub.BataPeruService.Data" minOccurs="0" name="ConsultarCampanaPorCodigoResult" nillable="true" type="q23:Campana" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -36,13 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge">
-      <HintPath>..\..\..\consulra ruc\Ñwinsoft_Ruc\Ñwinsoft_Ruc\dll\AForge.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\bin\Release\AForge.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Imaging">
-      <HintPath>..\..\..\consulra ruc\Ñwinsoft_Ruc\Ñwinsoft_Ruc\dll\AForge.Imaging.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\bin\Release\AForge.Imaging.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Math">
-      <HintPath>..\..\..\consulra ruc\Ñwinsoft_Ruc\Ñwinsoft_Ruc\dll\AForge.Math.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\bin\Release\AForge.Math.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -82,12 +82,8 @@
     <Content Include="tessdata\eng.cube.size" />
     <Content Include="tessdata\eng.cube.word-freq" />
     <Content Include="tessdata\eng.tesseract_cube.nn" />
-    <Content Include="x64\liblept168.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="x64\libtesseract302.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="x64\liblept168.dll" />
+    <Content Include="x64\libtesseract302.dll" />
     <Content Include="x86\liblept168.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

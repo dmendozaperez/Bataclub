@@ -85,6 +85,101 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ws_buscar_barra_dni">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_buscar_barra_dniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_buscar_barra_dniResult" type="tns:ArrayOfBarra" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBarra">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Barra" nillable="true" type="tns:Barra" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Barra">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="barra" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="promocion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechac" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="generacupon">
+        <s:complexType />
+      </s:element>
+      <s:element name="generacuponResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generacuponResult" type="tns:GeneraCuponBata" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GeneraCuponBata">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nombres_prin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apepat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apemat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pordes" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaini" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechafin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="paresmax" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="grupo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="barra" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correlativo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="serie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipcup" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_getbarra">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="genera_cupon" type="tns:GeneraCuponBata" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_getbarraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_getbarraResult" type="tns:GeneraCuponBata" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_getprombata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_getprombataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_getprombataResult" type="tns:PromBata" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PromBata">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="valida" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="nom_prom" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_ini" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha_fin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="por_des" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="max_par" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ws_buscar_vales">
         <s:complexType>
           <s:sequence>
@@ -275,6 +370,30 @@
   <wsdl:message name="ws_update_valesSoapOut">
     <wsdl:part name="parameters" element="tns:ws_update_valesResponse" />
   </wsdl:message>
+  <wsdl:message name="ws_buscar_barra_dniSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_buscar_barra_dni" />
+  </wsdl:message>
+  <wsdl:message name="ws_buscar_barra_dniSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_buscar_barra_dniResponse" />
+  </wsdl:message>
+  <wsdl:message name="generacuponSoapIn">
+    <wsdl:part name="parameters" element="tns:generacupon" />
+  </wsdl:message>
+  <wsdl:message name="generacuponSoapOut">
+    <wsdl:part name="parameters" element="tns:generacuponResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_getbarraSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_getbarra" />
+  </wsdl:message>
+  <wsdl:message name="ws_getbarraSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_getbarraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_getprombataSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_getprombata" />
+  </wsdl:message>
+  <wsdl:message name="ws_getprombataSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_getprombataResponse" />
+  </wsdl:message>
   <wsdl:message name="ws_buscar_valesSoapIn">
     <wsdl:part name="parameters" element="tns:ws_buscar_vales" />
   </wsdl:message>
@@ -340,6 +459,22 @@
       <wsdl:input message="tns:ws_update_valesSoapIn" />
       <wsdl:output message="tns:ws_update_valesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ws_buscar_barra_dni">
+      <wsdl:input message="tns:ws_buscar_barra_dniSoapIn" />
+      <wsdl:output message="tns:ws_buscar_barra_dniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generacupon">
+      <wsdl:input message="tns:generacuponSoapIn" />
+      <wsdl:output message="tns:generacuponSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_getbarra">
+      <wsdl:input message="tns:ws_getbarraSoapIn" />
+      <wsdl:output message="tns:ws_getbarraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_getprombata">
+      <wsdl:input message="tns:ws_getprombataSoapIn" />
+      <wsdl:output message="tns:ws_getprombataSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ws_buscar_vales">
       <wsdl:input message="tns:ws_buscar_valesSoapIn" />
       <wsdl:output message="tns:ws_buscar_valesSoapOut" />
@@ -404,6 +539,42 @@
     </wsdl:operation>
     <wsdl:operation name="ws_update_vales">
       <soap:operation soapAction="http://www.consultabata.com/ws_update_vales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_buscar_barra_dni">
+      <soap:operation soapAction="http://www.consultabata.com/ws_buscar_barra_dni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generacupon">
+      <soap:operation soapAction="http://www.consultabata.com/generacupon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_getbarra">
+      <soap:operation soapAction="http://www.consultabata.com/ws_getbarra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_getprombata">
+      <soap:operation soapAction="http://www.consultabata.com/ws_getprombata" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -515,6 +686,42 @@
     </wsdl:operation>
     <wsdl:operation name="ws_update_vales">
       <soap12:operation soapAction="http://www.consultabata.com/ws_update_vales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_buscar_barra_dni">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_buscar_barra_dni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generacupon">
+      <soap12:operation soapAction="http://www.consultabata.com/generacupon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_getbarra">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_getbarra" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_getprombata">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_getprombata" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
