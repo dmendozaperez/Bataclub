@@ -767,6 +767,14 @@ namespace Bata
 
                     string _ruta_txt = @"D:\Cons\Vales\in";
                     string _ruta_txt_out = @"D:\Cons\Vales\out";
+
+                    if (dtcuponlista!=null)
+                    { 
+                        for (Int32 i = 0; i < dtcuponlista.Rows.Count; ++i)
+                        {
+                            _serie = dtcuponlista.Rows[i]["serie"].ToString();
+                        }
+                    }
                     if (!Directory.Exists(@_ruta_txt))
                     {
                         Directory.CreateDirectory(@_ruta_txt);
