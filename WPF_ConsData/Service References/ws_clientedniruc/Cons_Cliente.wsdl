@@ -312,6 +312,85 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ws_ActivaGiftCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dni_activa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apepat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apemat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_ActivaGiftCardResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ws_GrabarSQL_Ticket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apepat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apemat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="forpag" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tarjeta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nro_tarj" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="detail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_GrabarSQL_TicketResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ws_BuscarGiftCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_BuscarGiftCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_BuscarGiftCardResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_BuscarTicketGF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_BuscarTicketGFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_BuscarTicketGFResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ws_verifica_version_apltda">
         <s:complexType>
           <s:sequence>
@@ -430,6 +509,30 @@
   <wsdl:message name="ws_persona_sunatSoapOut">
     <wsdl:part name="parameters" element="tns:ws_persona_sunatResponse" />
   </wsdl:message>
+  <wsdl:message name="ws_ActivaGiftCardSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_ActivaGiftCard" />
+  </wsdl:message>
+  <wsdl:message name="ws_ActivaGiftCardSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_ActivaGiftCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_GrabarSQL_TicketSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_GrabarSQL_Ticket" />
+  </wsdl:message>
+  <wsdl:message name="ws_GrabarSQL_TicketSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_GrabarSQL_TicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_BuscarGiftCardSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_BuscarGiftCard" />
+  </wsdl:message>
+  <wsdl:message name="ws_BuscarGiftCardSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_BuscarGiftCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_BuscarTicketGFSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_BuscarTicketGF" />
+  </wsdl:message>
+  <wsdl:message name="ws_BuscarTicketGFSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_BuscarTicketGFResponse" />
+  </wsdl:message>
   <wsdl:message name="ws_verifica_version_apltdaSoapIn">
     <wsdl:part name="parameters" element="tns:ws_verifica_version_apltda" />
   </wsdl:message>
@@ -498,6 +601,22 @@
     <wsdl:operation name="ws_persona_sunat">
       <wsdl:input message="tns:ws_persona_sunatSoapIn" />
       <wsdl:output message="tns:ws_persona_sunatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_ActivaGiftCard">
+      <wsdl:input message="tns:ws_ActivaGiftCardSoapIn" />
+      <wsdl:output message="tns:ws_ActivaGiftCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_GrabarSQL_Ticket">
+      <wsdl:input message="tns:ws_GrabarSQL_TicketSoapIn" />
+      <wsdl:output message="tns:ws_GrabarSQL_TicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_BuscarGiftCard">
+      <wsdl:input message="tns:ws_BuscarGiftCardSoapIn" />
+      <wsdl:output message="tns:ws_BuscarGiftCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_BuscarTicketGF">
+      <wsdl:input message="tns:ws_BuscarTicketGFSoapIn" />
+      <wsdl:output message="tns:ws_BuscarTicketGFSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ws_verifica_version_apltda">
       <wsdl:input message="tns:ws_verifica_version_apltdaSoapIn" />
@@ -629,6 +748,42 @@
     </wsdl:operation>
     <wsdl:operation name="ws_persona_sunat">
       <soap:operation soapAction="http://www.consultabata.com/ws_persona_sunat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_ActivaGiftCard">
+      <soap:operation soapAction="http://www.consultabata.com/ws_ActivaGiftCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_GrabarSQL_Ticket">
+      <soap:operation soapAction="http://www.consultabata.com/ws_GrabarSQL_Ticket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_BuscarGiftCard">
+      <soap:operation soapAction="http://www.consultabata.com/ws_BuscarGiftCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_BuscarTicketGF">
+      <soap:operation soapAction="http://www.consultabata.com/ws_BuscarTicketGF" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -776,6 +931,42 @@
     </wsdl:operation>
     <wsdl:operation name="ws_persona_sunat">
       <soap12:operation soapAction="http://www.consultabata.com/ws_persona_sunat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_ActivaGiftCard">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_ActivaGiftCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_GrabarSQL_Ticket">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_GrabarSQL_Ticket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_BuscarGiftCard">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_BuscarGiftCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_BuscarTicketGF">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_BuscarTicketGF" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

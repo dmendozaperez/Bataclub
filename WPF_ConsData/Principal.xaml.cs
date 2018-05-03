@@ -238,7 +238,8 @@ namespace Bata
 
                                     _cadena = _cadena.Replace("\"", "");
 
-                                    if (_nombrearchivo_txt== "000051")
+                                    //-- Agregamos condicion para GiftCard - Henry Morales - 16/04/18
+                                    if (_nombrearchivo_txt== "000051" || _nombrearchivo_txt == "000055")
                                         if (_cadena.Trim().Length == 0) break;
 
                                     string[] split = _cadena.Split(new Char[] { ',' });
@@ -272,7 +273,8 @@ namespace Bata
                                         string _emai_venta = "";
                                         string _telefono_venta = "";
 
-                                        if (_serie== "302001" || _serie == "302003" || _serie == "000051")
+                                        //-- Agregamos condicion para GiftCard - Henry Morales - 16/04/18
+                                        if (_serie== "302001" || _serie == "302003" || _serie == "000051" || _serie == "000055")
                                         { 
                                             /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
 
@@ -284,7 +286,8 @@ namespace Bata
                                                     telefono_email_clienteV(_fc_nint, ref _emai_venta, ref _telefono_venta);
                                                 }
                                             }
-                                            _error = Clientes._update_vales(_serie.Trim().ToString(),(_serie!= "000051")? _nombrearchivo_txt:_numero, _tienda,_dni_venta,_nombres_venta,_fecha_doc,_tipo_doc,_serie_doc,_numero_doc,_estado_doc, _fc_nint,_emai_venta,_telefono_venta);
+                                            //-- Agregamos condicion para GiftCard - Henry Morales - 16/04/18
+                                            _error = Clientes._update_vales(_serie.Trim().ToString(),(_serie!= "000051" && _serie != "000055") ? _nombrearchivo_txt:_numero, _tienda,_dni_venta,_nombres_venta,_fecha_doc,_tipo_doc,_serie_doc,_numero_doc,_estado_doc, _fc_nint,_emai_venta,_telefono_venta);
                                         }
                                         else
                                         {
@@ -297,8 +300,8 @@ namespace Bata
                                         }
 
                                     }
-
-                                    if (_serie!= "000051")
+                                    //-- Agregamos condicion para GiftCard - Henry Morales - 16/04/18
+                                    if (_serie!= "000051" && _serie != "000055")
                                         if (_error.Length == 0) break;
 
                                     //System.Console.WriteLine(line);
@@ -344,7 +347,7 @@ namespace Bata
 
 
             /*deshabilitar boton de empl*/
-            // _tienda = "50283";
+            //_tienda = "50283";
             ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
             Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
 
@@ -579,6 +582,23 @@ namespace Bata
                 frm.Show();
                 //this.Close();
                 ValesCompra._activo_form = true;
+            }
+        }
+
+        /// <summary>
+        /// Método que se activa para ingresar a la opción de Activación Gift Cards
+        /// Modificado por : Henry Morales - 16/04/2018
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btngiftcard_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ActivaGiftCard._activo_form)
+            {
+                ActivaGiftCard frm = new ActivaGiftCard();
+                frm.Show();
+                //this.Close();
+                ActivaGiftCard._activo_form = true;
             }
         }
 

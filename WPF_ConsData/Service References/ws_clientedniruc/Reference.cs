@@ -72,6 +72,22 @@ namespace Bata.ws_clientedniruc {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable ws_persona_sunat(string _ruc);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_ActivaGiftCard", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void ws_ActivaGiftCard(string numero, string dni_activa, string nombres, string apepat, string apemat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_GrabarSQL_Ticket", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void ws_GrabarSQL_Ticket(string tienda, string serie, string codigo, string fecha, string dni, string nombres, string apepat, string apemat, string forpag, string tarjeta, string nro_tarj, string detail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_BuscarGiftCard", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ws_BuscarGiftCard(string numero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_BuscarTicketGF", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ws_BuscarTicketGF(string empresa, string serie, string numero);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_verifica_version_apltda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         bool ws_verifica_version_apltda(string _cod_tda, string _nom_apl, string _ver_apl);
@@ -640,6 +656,22 @@ namespace Bata.ws_clientedniruc {
         
         public System.Data.DataTable ws_persona_sunat(string _ruc) {
             return base.Channel.ws_persona_sunat(_ruc);
+        }
+        
+        public void ws_ActivaGiftCard(string numero, string dni_activa, string nombres, string apepat, string apemat) {
+            base.Channel.ws_ActivaGiftCard(numero, dni_activa, nombres, apepat, apemat);
+        }
+        
+        public void ws_GrabarSQL_Ticket(string tienda, string serie, string codigo, string fecha, string dni, string nombres, string apepat, string apemat, string forpag, string tarjeta, string nro_tarj, string detail) {
+            base.Channel.ws_GrabarSQL_Ticket(tienda, serie, codigo, fecha, dni, nombres, apepat, apemat, forpag, tarjeta, nro_tarj, detail);
+        }
+        
+        public System.Data.DataTable ws_BuscarGiftCard(string numero) {
+            return base.Channel.ws_BuscarGiftCard(numero);
+        }
+        
+        public System.Data.DataTable ws_BuscarTicketGF(string empresa, string serie, string numero) {
+            return base.Channel.ws_BuscarTicketGF(empresa, serie, numero);
         }
         
         public bool ws_verifica_version_apltda(string _cod_tda, string _nom_apl, string _ver_apl) {

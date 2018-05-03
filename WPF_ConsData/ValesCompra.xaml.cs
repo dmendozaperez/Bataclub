@@ -24,6 +24,8 @@ namespace Bata
     public partial class ValesCompra : Window
     {
         public static Boolean _activo_form = false;
+        private string texto = "Vale";
+
         string _tienda { set; get; }
         private DataTable dtdni = null;
         private DataTable dtruc = null;
@@ -46,6 +48,27 @@ namespace Bata
         public ValesCompra()
         {
             InitializeComponent();
+        }
+        /// <summary>
+        /// Método que se activa cuando el combo de Vale / Gift Card cambie su seleccion
+        /// Modificado por : Henry Morales - 16/04/2018
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void combo_changed(object sender, RoutedEventArgs e)
+        {
+            if(ComboTipo.SelectedIndex == 0)
+            {
+                texto = "Vale";
+                ingnum.Content = "N° Vale";
+            }
+            else
+            {
+                texto = "Gift Card";
+                ingnum.Content = "N° Gift Card";
+            }
+            txtbuscar.Text = "";
+            txtbuscar.Focus();
         }
        
         private void Window_Unloaded(object sender, RoutedEventArgs e)
@@ -90,7 +113,17 @@ namespace Bata
         private void txtbuscar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string _strbuscar = txtbuscar.Text.Trim().ToString();
-            if (_strbuscar.Length == 15)
+            //-- Modificado por : Henry Morales - 16/04/18
+            //-- Adecuar GiftCard; se agregó condición
+            if (_strbuscar.Length == 15 && ComboTipo.SelectedIndex == 0)
+            {
+                validar_buscar = true;
+                buscar();
+                //validar_buscar = false;
+            }
+            //-- Modificado por : Henry Morales - 27/04/18
+            //-- Cambio de especificacion, cambia el código de 10 a 13 digitos
+            if (_strbuscar.Length == 13 && ComboTipo.SelectedIndex == 1)
             {
                 validar_buscar = true;
                 buscar();
@@ -117,8 +150,11 @@ namespace Bata
             limpiar();
             if (txtbuscar.Text.Trim().Length == 0)
             {
+                //-- Modificado por : Henry Morales - 16/04/18
+                //-- Adecuar GiftCard; Se cambió el texto a dinámico según selección.
                 Mouse.OverrideCursor = null;
-                lblestado.Text = "Ingrese El N° de Vale";
+                lblestado.Text = "Ingrese El N° de " + texto + "";
+                //lblestado.Text = "Ingrese El N° de Vale";
                 txtbuscar.Focus();
 
                 return;
@@ -207,20 +243,33 @@ namespace Bata
                                     }
                                     else
                                     {
-                                        lblestado.Text = "El Numero de Vale " + _barra + ", Ya existe en la lista. Por favor ingrese otro Vale";
+                                        //-- Modificado por : Henry Morales - 16/04/18
+                                        //-- Adecuar GiftCard; Se cambió el texto a dinámico según selección.
+                                        lblestado.Text = "El Numero de "+texto+" " + _barra + ", Ya existe en la lista. Por favor ingrese otro "+texto+"";
+                                        //lblestado.Text = "El Numero de Vale " + _barra + ", Ya existe en la lista. Por favor ingrese otro Vale";
+                                        txtbuscar.SelectAll();
                                         txtbuscar.Focus();
                                     }
                                 }
                                 else
                                 {
-                                    lblestado.Text = "El Numero de Vale " + _barra + ", No se puede agregar porque es de otra empresa ó tipo";
+                                    //-- Modificado por : Henry Morales - 16/04/18
+                                    //-- Adecuar GiftCard; Se cambió el texto a dinámico según selección.
+                                    lblestado.Text = "El Numero de "+texto+" " + _barra + ", No se puede agregar porque es de otra empresa ó tipo";
+                                    //lblestado.Text = "El Numero de Vale " + _barra + ", No se puede agregar porque es de otra empresa ó tipo";
+                                    txtbuscar.SelectAll();
                                     txtbuscar.Focus();
                                 }
                             }
                         }
                         else
                         {
-                            lblestado.Text = "El Numero de Vale " + _barra + ", No es Valido en esta ventana.";
+                            //-- Modificado por : Henry Morales - 16/04/18
+                            //-- Adecuar GiftCard; Se cambió el texto a dinámico según selección.
+                            lblestado.Text = "El Numero de "+texto+" " + _barra + ", No es Valido en esta ventana.";
+                            //lblestado.Text = "El Numero de Vale " + _barra + ", No es Valido en esta ventana.";
+                            txtbuscar.SelectAll();
+                            txtbuscar.Focus();
                         }
                         //txtbuscar.Text = "";
                         //tabvale.IsEnabled = false;
@@ -743,7 +792,9 @@ namespace Bata
            
             try
             {
+                string mostrar = "";
 
+                //if(ComboTipo.SelectedValue)
 
                 string _validatxt = txtdni.Text.Trim();
                 if (_validatxt.Length != 0 && _validatxt != "Error!")
@@ -765,16 +816,17 @@ namespace Bata
                     _email = _email.Replace(",", " ");
                     _ubigeo = _ubigeo.Replace(",", " ");
 
+                    //-- Se agrega condición para evitar generar archivo en blanco - Henry Morales - 16/04/18 %%%
+                    if (_serie.ToString().Trim() == "" && dtcuponlista != null)
+                    {
+                        _serie = dtcuponlista.Rows[0]["serie"].ToString();
+                    }
+
+                    //-- Adecuar GiftCards (usaran misma carpeta) - Henry Morales - 16/04/18
                     string _ruta_txt = @"D:\Cons\Vales\in";
                     string _ruta_txt_out = @"D:\Cons\Vales\out";
-
-                    if (dtcuponlista!=null)
-                    { 
-                        for (Int32 i = 0; i < dtcuponlista.Rows.Count; ++i)
-                        {
-                            _serie = dtcuponlista.Rows[i]["serie"].ToString();
-                        }
-                    }
+                    //string _ruta_txt = @"D:\Cons\Vales\in";
+                    //string _ruta_txt_out = @"D:\Cons\Vales\out";
                     if (!Directory.Exists(@_ruta_txt))
                     {
                         Directory.CreateDirectory(@_ruta_txt);

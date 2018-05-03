@@ -110,12 +110,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ActivaGiftCard.xaml.cs">
+      <DependentUpon>ActivaGiftCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clases\Basico.cs" />
     <Compile Include="Clases\Clientes.cs" />
+    <Compile Include="Clases\CrearTicket.cs" />
     <Compile Include="Clases\DBFNET.cs" />
+    <Compile Include="Clases\GiftCards.cs" />
     <Compile Include="Clases\PromBata.cs" />
     <Compile Include="Control\LoadingAnimation.xaml.cs">
       <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Datos_Cliente.xaml.cs">
+      <DependentUpon>Datos_Cliente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Descuento_Bata.xaml.cs">
       <DependentUpon>Descuento_Bata.xaml</DependentUpon>
@@ -143,9 +151,17 @@
       <DependentUpon>ValesCompra.xaml</DependentUpon>
     </Compile>
     <Compile Include="WpfSingleInstance.cs" />
+    <Page Include="ActivaGiftCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\LoadingAnimation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Datos_Cliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Descuento_Bata.xaml">
       <SubType>Designer</SubType>
@@ -384,10 +400,10 @@
     <Resource Include="Design\Images\b_siguiente.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ws_clientedniruc\Cons_Cliente.disco" />
+    <Resource Include="Design\Images\incidencia.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Design\Images\incidencia.jpg" />
+    <None Include="Service References\ws_clientedniruc\Cons_Cliente.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

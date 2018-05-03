@@ -403,6 +403,133 @@ namespace WS_ConsCliente
             return listar;
         }
 
+        #region<METODOS GIFT CARD>
+        public static DataTable BuscarGiftCard(string numero)
+        {
+            DataTable dt = null;
+
+            using (SqlConnection sql = new SqlConnection(ConexionData.conexion))
+            {
+                try
+                {
+                    if (sql.State == 0) sql.Open();
+                    SqlDataAdapter da = new SqlDataAdapter("USP_Busca_GiftCard", sql);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                    da.SelectCommand.Parameters.Add("@codigo_act", SqlDbType.VarChar).Value = numero;
+                    DataTable res = new DataTable();
+                    da.Fill(res);
+                    sql.Close();
+                    dt = res;
+                }
+                catch (Exception Ex)
+                {
+                    if (sql != null)
+                        if (sql.State == ConnectionState.Open) sql.Close();
+                    throw Ex;
+                }
+            }
+
+            return dt;
+        }
+        public static DataTable BuscarTicketGF(string empresa, string serie, string numero)
+        {
+            DataTable dt = null;
+
+            using (SqlConnection sql = new SqlConnection(ConexionData.conexion))
+            {
+                try
+                {
+                    if (sql.State == 0) sql.Open();
+                    SqlDataAdapter da = new SqlDataAdapter("USP_Busca_TicketGF", sql);
+                    da.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                    da.SelectCommand.Parameters.Add("@empresa", SqlDbType.VarChar).Value = empresa;
+                    da.SelectCommand.Parameters.Add("@serie", SqlDbType.VarChar).Value = serie;
+                    da.SelectCommand.Parameters.Add("@numero", SqlDbType.VarChar).Value = numero;
+                    DataTable res = new DataTable();
+                    da.Fill(res);
+                    sql.Close();
+                    dt = res;
+                }
+                catch (Exception Ex)
+                {
+                    throw Ex;
+                }
+            }
+
+            return dt;
+        }
+        public static void ActivaGiftCard(string numero, string dni_activa, string nombres, string apepat, string apemat)
+        {
+            using (SqlConnection sql = new SqlConnection(ConexionData.conexion))
+            {
+                try
+                {
+                    if (sql.State == 0) sql.Open();
+                    SqlCommand cmd = new SqlCommand();
+
+                    cmd.CommandText = "USP_ActEst_GiftCard";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sql;
+
+                    cmd.Parameters.Add("@codigo", SqlDbType.VarChar).Value = numero;
+                    cmd.Parameters.Add("@estado", SqlDbType.VarChar).Value = "DS";
+                    cmd.Parameters.Add("@dni", SqlDbType.VarChar).Value = dni_activa;
+                    cmd.Parameters.Add("@nombres", SqlDbType.VarChar).Value = nombres;
+                    cmd.Parameters.Add("@apepat", SqlDbType.VarChar).Value = apepat;
+                    cmd.Parameters.Add("@apemat", SqlDbType.VarChar).Value = apemat;
+
+                    cmd.ExecuteNonQuery();
+
+                    sql.Close();
+                }
+                catch (Exception Ex)
+                {
+                    throw Ex;
+                }
+            }
+        }
+
+        public static void GrabarSQL_Ticket(string tienda,  string serie,   string codigo,  string fecha,   string dni,       string nombres, 
+                                            string apepat,  string apemat,  string forpag,  string tarjeta, string nro_tarj,  string detail)
+        {
+            using (SqlConnection sql = new SqlConnection(ConexionData.conexion))
+            {
+                try
+                {
+                    if (sql.State == 0) sql.Open();
+                    SqlCommand cmd = new SqlCommand();
+
+                    cmd.CommandText = "USP_Graba_Ticket";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Connection = sql;
+
+                    cmd.Parameters.Add("@tienda", SqlDbType.VarChar).Value = tienda;
+                    cmd.Parameters.Add("@serie", SqlDbType.VarChar).Value = serie;
+                    cmd.Parameters.Add("@codigo", SqlDbType.VarChar).Value = codigo;
+                    cmd.Parameters.Add("@fecha", SqlDbType.VarChar).Value = DateTime.Now;
+                    cmd.Parameters.Add("@dni", SqlDbType.VarChar).Value = dni;
+                    cmd.Parameters.Add("@nombres", SqlDbType.VarChar).Value = nombres;
+                    cmd.Parameters.Add("@apepat", SqlDbType.VarChar).Value = apepat;
+                    cmd.Parameters.Add("@apemat", SqlDbType.VarChar).Value = apemat;
+                    cmd.Parameters.Add("@forpag", SqlDbType.VarChar).Value = forpag;
+                    cmd.Parameters.Add("@tarjeta", SqlDbType.VarChar).Value = tarjeta;
+                    cmd.Parameters.Add("@nro_tarj", SqlDbType.VarChar).Value = nro_tarj;
+                    cmd.Parameters.Add("@detail", SqlDbType.VarChar).Value = detail;
+
+                    string valida = "'" + tienda + "','" + serie + "','" + codigo + "','" + fecha + "','" + dni + "','" + nombres + "','" + apepat + "','" + apemat + "','" + forpag + "','" + tarjeta + "','" + nro_tarj+ "','" + detail + "'";
+                    cmd.ExecuteNonQuery();
+                    sql.Close();
+                }
+                catch (Exception Ex)
+                {
+                    throw Ex;
+                }
+            }
+        }
+        #endregion
+
         #region<REGION DE CONEXIONES DATA BATALUB>
 
         public static string _update_apltda(string _cod_tda,string _nom_apl,string _ver_apl)

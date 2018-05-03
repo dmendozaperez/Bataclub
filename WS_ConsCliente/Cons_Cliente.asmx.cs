@@ -379,6 +379,73 @@ namespace WS_ConsCliente
             return dt;
         }
 
+        #region<REGION PARA GIFT CARD>
+
+        [WebMethod]
+        public void ws_ActivaGiftCard(string numero, string dni_activa, string nombres, string apepat, string apemat)
+        {
+            /*DataTable ListaGiftCard = null;*/
+            try
+            {
+                Basico.ActivaGiftCard(numero, dni_activa, nombres, apepat, apemat);
+
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+                /*ListaGiftCard = null;*/
+            }
+        }
+
+        [WebMethod]
+        public void ws_GrabarSQL_Ticket(string tienda, string serie, string codigo, string fecha, string dni, string nombres, string apepat, string apemat, string forpag, string tarjeta, string nro_tarj, string detail)
+        {
+            /*DataTable ListaGiftCard = null;*/
+            try
+            {
+                Basico.GrabarSQL_Ticket(tienda, serie, codigo, fecha, dni, nombres, apepat, apemat, forpag, tarjeta, nro_tarj, detail);
+
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+                /*ListaGiftCard = null;*/
+            }
+        }
+
+        [WebMethod]
+        public DataTable ws_BuscarGiftCard(string numero)
+        {
+            DataTable ListaGiftCard = null;
+            try
+            {
+                ListaGiftCard = Basico.BuscarGiftCard(numero);
+                ListaGiftCard.TableName = "datos";
+            }
+            catch
+            {
+                ListaGiftCard = null;
+            }
+            return ListaGiftCard;
+        }
+
+        [WebMethod]
+        public DataTable ws_BuscarTicketGF(string empresa, string serie, string numero)
+        {
+            DataTable dt = null;
+            try
+            {
+                dt = Basico.BuscarTicketGF(empresa, serie, numero);
+                dt.TableName = "datos";
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+
+            return dt;
+        }
+        #endregion
 
         #region<REGIONES PARA CONEXIONES BATACLUB BD>
         [WebMethod]
@@ -410,5 +477,9 @@ namespace WS_ConsCliente
             return _error;
         }
         #endregion
+
+
+
+
     }
 }

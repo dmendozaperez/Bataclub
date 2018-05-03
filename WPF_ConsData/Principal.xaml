@@ -78,7 +78,7 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
-                
+
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -104,7 +104,7 @@
                     <Image Margin="0,0,0,0" Source="Usuarios.ico" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
                     <TextBlock Text="CONSULTA DE CLIENTES" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
-                    
+
                 </Grid>
             </Button>
             <TextBlock Text="BATACLUB" Visibility="Hidden"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
@@ -145,8 +145,8 @@
                         <ColumnDefinition Width="59*" />
                     </Grid.ColumnDefinitions>
                     <Image Margin="0,0,0,0" Source="Design/Images/packages.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"></Image>
-                    <TextBlock Text="VALES DE COMPRA" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
-                                          HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
+                    <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                                          HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"><Run Text="VALES DE COMPRA"/><Run Text=" /"/><LineBreak/><Run Text="GIFT CARDS"/></TextBlock>
 
                 </Grid>
             </Button>
@@ -154,13 +154,18 @@
                                           HorizontalAlignment="Right" Margin="0,9,85,114" Grid.Column="1" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>
         </Grid>
         <Grid Grid.Row="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!--<TextBlock Text="DESCUENTO EMPLEADO"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,1,218,162" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>-->
-            <Button Name="btndesemp" Grid.Column="0" Background="Transparent" Margin="-110,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
+            <Button Name="btndesemp" Grid.Column="0" Background="Transparent" Margin="5,20,0,70"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -182,7 +187,7 @@
                 </Grid>
             </Button>
 
-            <Button Name="btnsoport" Grid.Column="1" Background="Transparent" Margin="105,-60,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnsoport_Click" >
+            <Button Name="btnsoport" Grid.Column="2" Background="Transparent" Margin="0,20,0,70"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnsoport_Click" >
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -204,7 +209,29 @@
                 </Grid>
             </Button>
 
+            <!--> Se agregó opción Gift Card, para el proceso de activación / Henry Morales / 16-04-18 <-->
             <Button Width="100" Height="50" Visibility="Hidden" Margin="340,0,0,0" Click="Button_Click"></Button>
+            <Button x:Name="btnGiftCard" Background="Transparent" Grid.Row="0" Margin="15,20,0,70"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btngiftcard_Click" Grid.Column="1">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" ><Run Text="Gift Cards"/></TextBlock>
+                            <TextBlock><Run Text="Gift Cards"/></TextBlock>
+                            <TextBlock><Run Text="No lo presione hasta estar seguro de abrir la ventana."/></TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="59*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,0" Source="Design/Images/packages.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="ACTIVAR GIFT CARDS" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                        HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
+
+                </Grid>
+            </Button>
         </Grid>
     </Grid>
 </Window>
