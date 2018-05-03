@@ -13,7 +13,7 @@ namespace Basico_Metricard
     
     public class BasicoMetri
     {
-        private static string conexion= "Server=www.bgr.pe;Database=BdTienda;User ID=sa;Password=Bata2013;Trusted_Connection=False;";
+        private static string conexion= "Server=10.10.10.208;Database=BdTienda;User ID=sa;Password=Bata2013;Trusted_Connection=False;";
 
 
         private static Boolean _update_cupon_metricard(string _barra,ref string _error)
@@ -210,6 +210,7 @@ namespace Basico_Metricard
             ServicioConversionClient cliente = null;
             try
             {
+
 
                 #region<ACTUALIZAR TIENDAS>
                 dttienda = dt_tienda();
@@ -558,6 +559,14 @@ namespace Basico_Metricard
             try
             {
 
+                string _hora_ejecucion = hora_venta_ejecucion("01");
+
+                DateTime myDt = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
+
+                string _hora_actual = myDt.ToString("HH:mm");
+
+                if (_hora_actual != _hora_ejecucion) return;
+
                 #region<ACTUALIZAR TIENDAS>
                 dttienda = dt_tienda();
 
@@ -853,6 +862,37 @@ namespace Basico_Metricard
 
         }
 
+        /*CAPTURAR HORA DEL SERVICIO PARA LA VENTA A EJECUTARSE*/
+        private static string hora_venta_ejecucion(string _cod_servicio)
+        {
+            string hora_sql = "";
+            string sqlquery = "USP_MetricardServicioConfig";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(conexion))
+                {
+                    if (cn.State == 0) cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@cod_servicio", _cod_servicio);
+                        cmd.Parameters.Add("@out_time", SqlDbType.VarChar, 15);
+                        cmd.Parameters["@out_time"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        hora_sql =(string)cmd.Parameters["@out_time"].Value;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                hora_sql = "";
+            }
+            return hora_sql;
+
+        }
+        /******************************************/
     }
 
 }
