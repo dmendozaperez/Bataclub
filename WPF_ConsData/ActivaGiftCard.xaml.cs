@@ -127,6 +127,23 @@ namespace Bata
         {
             SoloNumero(e);
         }
+        
+        private void txtnrotarj_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.End || e.Key == Key.Home || e.Key == Key.Back || e.Key == Key.Delete || e.Key == Key.LeftShift || e.Key == Key.RightShift)
+            { }
+            else
+            {
+                string cad_ini = txtnrotarj.Text.Replace("*", "").Trim();
+                int len = cad_ini.Length;
+                if (txtnrotarj.Text.Length >= 6)
+                {
+                    txtnrotarj.Text = cad_ini.Substring(0, 6) + "******" + cad_ini.Substring(6, len - 6);
+                }
+                txtnrotarj.Focus();
+                txtnrotarj.Select(txtnrotarj.Text.Length, 0);
+            }
+        }
 
         /// <summary>
         /// método que evalúa las teclas presionadas y permite que sólo los números y letras sean escritas
@@ -189,6 +206,8 @@ namespace Bata
         /// <param name="e"></param>
         private void txtbuscar_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            /* Lectora de Barra ya manda un Enter
             // Se cambia la especificación de tamaño de código de Activacion (de 11 a 18 caracteres) - 27/04/2018
             string _strbuscar = txtbuscar.Text.Trim().ToString();
             if (_strbuscar.Length == 18)//busca si llega a una cantidad de caracteres
@@ -196,7 +215,7 @@ namespace Bata
                 validar_buscar = true;
                 buscar();
                 //validar_buscar = false;
-            }
+            }*/
         }
 
         /// <summary>
@@ -970,10 +989,10 @@ namespace Bata
                         if (rdtarjet.IsChecked.Value) { _forpag = "T"; }
                         string fecha_dbf = txtfecha.Text.Substring(3, 2) + "/" + txtfecha.Text.Substring(0, 2) + "/" + txtfecha.Text.Substring(6, 4);
                         //**-- Ejecuta Guardado en DBF de Ticket
-                        codigo = GiftCards.GrabarDBF_Ticket(cod_empresa, serie, fecha_dbf, _dniruc, _nombre, _apepat, _apemat, _forpag, tipo_tarj, num_tarj, dtcuponlista);
+                        //codigo = GiftCards.GrabarDBF_Ticket(cod_empresa, serie, fecha_dbf, _dniruc, _nombre, _apepat, _apemat, _forpag, tipo_tarj, num_tarj, dtcuponlista);
                         //**-- Ejecuta Actualización de Stock
-                        GiftCards.GrabarDBF_Stock(cod_empresa, tipo_docu, serie, codigo, fecha_dbf, _dniruc, _nombre, _apepat, _apemat, dtcuponlista);
-
+                        //GiftCards.GrabarDBF_Stock(cod_empresa, tipo_docu, serie, codigo, fecha_dbf, _dniruc, _nombre, _apepat, _apemat, dtcuponlista);
+                        codigo = GiftCards.Grabar_Ticket(cod_empresa, tipo_docu, serie, fecha_dbf, _dniruc, _nombre, _apepat, _apemat, _forpag, tipo_tarj, num_tarj, dtcuponlista);
                         /// se recorre el detalle de la activación
                         for (Int32 i=0;i<dtcuponlista.Rows.Count;++i)
                         {
@@ -1216,5 +1235,6 @@ namespace Bata
             txtnrotarj.Text = "numero tarjeta";
             btnactualizar.IsEnabled = false;
         }
+
     }
 }

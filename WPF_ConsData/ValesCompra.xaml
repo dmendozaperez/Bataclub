@@ -97,8 +97,8 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Content="N° Vale" HorizontalAlignment="Right" Grid.Column="6" FontSize="12" FontWeight="Bold" Height="28" Width="82" Margin="0,7,120,35" Name="ingnum"/>
-                        <TextBox Name="txtbuscar" CharacterCasing="Upper" MaxLength="17" HorizontalAlignment="Left" FontSize="13" FontWeight="Bold" Height="28" Width="151" KeyDown="txtbuscar_KeyDown" PreviewTextInput="txtbuscar_PreviewTextInput" Margin="95,5,0,37" TextChanged="txtbuscar_TextChanged" Grid.Column="6" Grid.ColumnSpan="2" >
+                        <Label Content="         N° Vale" HorizontalAlignment="Right" Grid.Column="6" FontSize="12" FontWeight="Bold" Width="101" Margin="0,3,101,22" Name="ingnum"/>
+                        <TextBox Name="txtbuscar" CharacterCasing="Upper" MaxLength="17" HorizontalAlignment="Left" FontSize="13" FontWeight="Bold" Height="28" Width="151" KeyDown="txtbuscar_KeyDown" PreviewTextInput="txtbuscar_PreviewTextInput" Margin="109,5,0,37" TextChanged="txtbuscar_TextChanged" Grid.Column="6" Grid.ColumnSpan="2" >
                             <TextBox.Effect>
                                 <DropShadowEffect/>
                             </TextBox.Effect>
@@ -244,9 +244,10 @@
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="70"></RowDefinition>
-                                        <RowDefinition Height="50"></RowDefinition>
-                                        <RowDefinition Height="50"></RowDefinition>
+                                        <RowDefinition Height="60"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
+                                        <RowDefinition Height="40"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Label Content="Nombre del Cliente" Visibility="Hidden" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Grid.Row="0"></Label>
                                     <Label Content="Ruc/Dni" Grid.Column="1" Visibility="Hidden" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Grid.Row="1"></Label>
@@ -256,12 +257,14 @@
                                     <TextBox Name="txtfecha_v" IsReadOnly="True" Visibility="Hidden" FontSize="13" FontWeight="Bold" Text="" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2" Height="28" ></TextBox>
 
                                     <Label Content="Tienda de Uso" Grid.Column="2" Margin="0,0,4,0" VerticalAlignment="Bottom" Grid.Row="0" Grid.ColumnSpan="3"/>
-                                    <Label Content="Beneficiario" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Grid.Row="1" Grid.ColumnSpan="3"></Label>
-                                    <Label Content="Fecha Venta" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Grid.Row="2" Grid.ColumnSpan="3"></Label>
+                                    <Label Content="Documento" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Grid.Row="1" Grid.ColumnSpan="3"></Label>
+                                    <Label Content="Beneficiario" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Grid.Row="2" Grid.ColumnSpan="3"></Label>
+                                    <Label Content="Fecha Venta" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Grid.Row="3" Grid.ColumnSpan="3"></Label>
 
                                     <TextBox Name="txttienda_us" IsReadOnly="True" FontSize="13" FontWeight="Bold" Text="" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="0" Height="28" ></TextBox>
-                                    <TextBox Name="txtnombre_us" IsReadOnly="True" FontSize="13" FontWeight="Bold" Text="" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="1" Height="28" ></TextBox>
-                                    <TextBox Name="txtfecha_us" IsReadOnly="True" FontSize="13" FontWeight="Bold" Text="" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="2" Height="28" ></TextBox>
+                                    <TextBox Name="txtdocu_us" IsReadOnly="True" FontSize="13" FontWeight="Bold" Text="" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="1" Height="28" ></TextBox>
+                                    <TextBox Name="txtnombre_us" IsReadOnly="True" FontSize="13" FontWeight="Bold" Text="" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="2" Height="28" ></TextBox>
+                                    <TextBox Name="txtfecha_us" IsReadOnly="True" FontSize="13" FontWeight="Bold" Text="" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Grid.Column="5" Grid.Row="3" Height="28" ></TextBox>
 
                                 </Grid>
                                 <!--<Grid.ColumnDefinitions>

@@ -60,12 +60,12 @@ namespace Bata
             if(ComboTipo.SelectedIndex == 0)
             {
                 texto = "Vale";
-                ingnum.Content = "N° Vale";
+                ingnum.Content = "         N° Vale";
             }
             else
             {
                 texto = "Gift Card";
-                ingnum.Content = "N° Gift Card";
+                ingnum.Content = "N° Gift Card"+ Environment.NewLine+"(Cod. Consumo)";
             }
             txtbuscar.Text = "";
             txtbuscar.Focus();
@@ -195,9 +195,11 @@ namespace Bata
                     string _nombres_b = dtdatos.Rows[0]["nombres"].ToString().Trim();
                     string _fecha_b = dtdatos.Rows[0]["fecha_emi"].ToString().Trim();
 
+                    // Se agregó N° de Documento
                     string _tienda_us = dtdatos.Rows[0]["tienda_ven"].ToString().Trim();
                     string _cliente_us = dtdatos.Rows[0]["cliente_venta"].ToString().Trim();
                     string _fecha_us = dtdatos.Rows[0]["fecha_venta"].ToString().Trim();
+                    string _docu_us = dtdatos.Rows[0]["docu_venta"].ToString().Trim(); // Nro de Documento
 
                     string _barra = txtbuscar.Text.Trim().ToString();
 
@@ -205,6 +207,7 @@ namespace Bata
                     txtnombre_v.Text = _nombres_b;
                     txtfecha_v.Text = _fecha_b;
                     txttienda_us.Text = _tienda_us;
+                    txtdocu_us.Text = _docu_us;
                     txtnombre_us.Text = _cliente_us;
                     txtfecha_us.Text = _fecha_us;
 
