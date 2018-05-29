@@ -182,7 +182,7 @@ namespace WS_ConsCliente
             DataTable dtcliente = null;
             try
             {
-                dtcliente=Basico._data_cliente(_dniruc);
+                dtcliente=Basico._consulta_cliente_bata(_dniruc);
             }
             catch
             { 
@@ -191,6 +191,37 @@ namespace WS_ConsCliente
 
             return dtcliente;
         }
+        [WebMethod]
+        public DataTable ws_conscliente_bata(string _dniruc)
+        {
+            DataTable dtcliente = null;
+            try
+            {
+                dtcliente = Basico._consulta_cliente_bata(_dniruc);
+            }
+            catch
+            {
+                dtcliente = null;
+            }
+            return dtcliente;
+        }
+        [WebMethod]
+        public Boolean ws_insertcliente_bata(string dniruc, string nombres, string apelpat, string apemat,
+                                                     string email, string telefono, string codtda)
+        {
+            Boolean valida_ws = false;
+            try
+            {
+                valida_ws = Basico._insertar_cliente_bata(dniruc, nombres, apelpat, apemat,
+                                                          email, telefono, codtda);
+            }
+            catch (Exception)
+            {
+                valida_ws = false;               
+            }
+            return valida_ws;
+        }
+
         //public enum Resul
         //{
         //    /// <summary>

@@ -90,9 +90,15 @@ namespace Bata
             btnactualizar.IsEnabled = false;
             txttelefono.IsReadOnly = true;
             txtemail.IsReadOnly = true;
+            txtnombres.IsReadOnly = true;
+            txtapepat.IsReadOnly = true;
+            txtapemat.IsReadOnly = true;
 
             txtemail.Background = Brushes.White;
             txttelefono.Background = Brushes.White;
+            txtnombres.Background = Brushes.White;
+            txtapepat.Background = Brushes.White;
+            txtapemat.Background = Brushes.White;
 
             pn1.Visibility = Visibility.Collapsed;
             lblmsg.Visibility = Visibility.Collapsed;
@@ -236,6 +242,7 @@ namespace Bata
                         btnactualizar.IsEnabled = true;
                     }
                 }
+                if (txtnombres.Background == Brushes.Khaki) txtnombres.Focus();
             }
             catch(Exception exc)
             {
@@ -279,7 +286,7 @@ namespace Bata
                         }
                         else
                         {
-                            PersonaReniec myInfo = new PersonaReniec(); //Clientes._persona_reniec;                                
+                            PersonaReniec myInfo = new PersonaReniec(true); //Clientes._persona_reniec;                                
                                                                         //myInfo.GetInfo(_dni_ruc, Clientes._str_codigo_captcha_reniec);
                             DataTable dt2 = Clientes._consultaReniec(_dni_ruc);
 
@@ -292,7 +299,7 @@ namespace Bata
                     }
                     else
                     {
-                        PersonaReniec myInfo = new PersonaReniec(); //Clientes._persona_reniec;                                
+                        PersonaReniec myInfo = new PersonaReniec(true); //Clientes._persona_reniec;                                
                                                                     //myInfo.GetInfo(_dni_ruc, Clientes._str_codigo_captcha_reniec);
                         DataTable dt2 = Clientes._consultaReniec(_dni_ruc);
 
@@ -481,6 +488,43 @@ namespace Bata
 
         private void btnactualizar_Click(object sender, RoutedEventArgs e)
         {
+            if (txtdni.Text.Trim().Length > 0)
+            {
+                if (txtnombres.Background == Brushes.Khaki)
+                {
+                    if (txtnombres.Text.Trim().Length == 0)
+                    {
+                        MessageBox.Show("Ingrese el nombre del cliente",
+                                  "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        txtnombres.Focus();
+                        Mouse.OverrideCursor = null;
+                        return;
+                    }
+                    if (txtapepat.Text.Trim().Length == 0)
+                    {
+                        MessageBox.Show("Ingrese el apellido paterno del cliente",
+                                  "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        txtapepat.Focus();
+                        Mouse.OverrideCursor = null;
+                        return;
+
+                    }
+                    if (txtemail.Text.Trim().Length > 0)
+                    {
+                        if (!Clientes.ComprobarFormatoEmail(txtemail.Text))
+                        {
+                            MessageBox.Show("El formato del Email. es incorrecto",
+                                      "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            txtemail.Focus();
+                            Mouse.OverrideCursor = null;
+                            return;
+                        }
+                    }
+                    _crear__actualiza_dbf();
+                    return;
+                }
+            }
+
             if (txtdniruc.Text.Trim().Length>0)
             {
                 Mouse.OverrideCursor = Cursors.Wait;
@@ -615,6 +659,12 @@ namespace Bata
                     dt_dbf.Columns.Add("email", typeof(string));
                     dt_dbf.Rows.Add(_serie, _correlativo.ToString(), _dniruc, _nombre, _apepat, _apemat, _telefono, _email);
 
+                    #region<BATACLUB CLIENTES>
+                    string _correo_envio = "";string _telef_envia = "";
+                    string _valida = Clientes._actualiza_cliente(_dniruc, _nombre, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
+                    #endregion
+
+                    Clientes._insertar_cliente_bata(_dniruc, _nombre, _apepat, _apemat, _email, _telefono, _tienda);
 
                     Boolean tempdbf = Basico._generadbf__ins_upd(dt_dbf);
 
@@ -796,10 +846,28 @@ namespace Bata
                         txtdniruc.Focus();
                         break;
                     case 0:
-                        MessageBox.Show("Error Desconocido",
-                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
-                        txtdniruc.SelectAll();
-                        txtdniruc.Focus();
+                        //MessageBox.Show("Error Desconocido",
+                        //"Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("1. No se encuentra sus datos en nuestra base de datos \r\n2. Hay un Error en la Web Service RENIEC... \r\n \r\nPOR FAVOR INGRESE MANUALMENTE LOS DATOS EN LAS CASILLAS SOMBREADAS",
+                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        txtnombres.Background = Brushes.Khaki;
+                        txtapepat.Background = Brushes.Khaki;
+                        txtapemat.Background = Brushes.Khaki;
+                        txtemail.Background = Brushes.Khaki;
+                        txttelefono.Background = Brushes.Khaki;
+                        txtdni.Text = txtdniruc.Text;
+                        txttelefono.IsReadOnly = false;
+                        txtemail.IsReadOnly = false;
+                        txtnombres.IsReadOnly = false;
+                        txtapepat.IsReadOnly = false;
+                        txtapemat.IsReadOnly = false;
+
+
+                        //txtdniruc.SelectAll();
+                        //txtdniruc.Focus();
+                        txtnombres.Focus();
+                        //txtdniruc.SelectAll();
+                        //txtdniruc.Focus();
                         break;
                 }
             }

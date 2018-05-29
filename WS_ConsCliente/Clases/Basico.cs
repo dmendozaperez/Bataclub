@@ -287,9 +287,66 @@ namespace WS_ConsCliente
             if (cn.State == ConnectionState.Open) cn.Close();
             return _valida;
         }
-        public static DataTable _data_cliente(string _dniruc)
+        /// <summary>
+        /// insertar clientes bata
+        /// </summary>
+        /// <param name="numero de dni"></param>
+        /// <param name="nombres"></param>
+        /// <param name="apelpat"></param>
+        /// <param name="apemat"></param>
+        /// <param name="email"></param>
+        /// <param name="telefono"></param>
+        /// <param name="codtda"></param>
+        /// <returns></returns>
+        public static Boolean _insertar_cliente_bata(string dniruc,string nombres,string apelpat,string apemat,
+                                                     string email,string telefono,string codtda)
         {
-            string sqlquery = "USP_ConsultaCliente";
+            Boolean valida = false;
+            string sqlquery = "USP_Ins_Mod_ClienteBata";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    try
+                    {
+                        if (cn.State == 0) cn.Open();
+                        using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@dniruc", dniruc);
+                            cmd.Parameters.AddWithValue("@nombres", nombres);
+                            cmd.Parameters.AddWithValue("@apelpat", apelpat);
+                            cmd.Parameters.AddWithValue("@apemat", apemat);
+                            cmd.Parameters.AddWithValue("@email", email);
+                            cmd.Parameters.AddWithValue("@telefono", telefono);
+                            cmd.Parameters.AddWithValue("@codtda", codtda);
+                            cmd.ExecuteNonQuery();
+                            valida = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                    if (cn != null)
+                        if (cn.State == ConnectionState.Open) cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                valida = false;                
+            }
+            return valida;
+        }
+        /// <summary>
+        /// consulta de clientes bata
+        /// </summary>
+        /// <param name="numero de dni"></param>
+        /// <returns></returns>
+        public static DataTable _consulta_cliente_bata(string _dniruc)
+        {
+            string sqlquery = "USP_Cons_ClienteBata";
             SqlConnection cn = null;
             SqlCommand cmd = null;
             SqlDataAdapter da = null;
@@ -301,7 +358,7 @@ namespace WS_ConsCliente
                 cmd = new SqlCommand(sqlquery, cn);
                 cmd.CommandTimeout = 0;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@dniruc", _dniruc);
+                cmd.Parameters.AddWithValue("@DNI", _dniruc);
                 da = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);
@@ -311,6 +368,7 @@ namespace WS_ConsCliente
             { 
                 dt=null;
             }
+            if (cn!=null)
             if (cn.State==ConnectionState.Open) cn.Close();
             return dt;
         }

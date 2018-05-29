@@ -72,6 +72,64 @@ namespace Bata.Clases
             }
             return _error;
         }
+        public static Boolean _insertar_cliente_bata(string dniruc, string nombres, string apelpat, string apemat,
+                                                     string email, string telefono, string codtda)
+        {
+            Boolean valida = false;
+            try
+            {
+                 ws_clientedniruc.Cons_ClienteSoapClient cliente_bata = new Cons_ClienteSoapClient();
+                valida = cliente_bata.ws_insertcliente_bata(dniruc,nombres,apelpat,apemat,
+                                                            email,telefono,codtda);
+            }
+            catch (Exception)
+            {
+                valida = false;                
+            }
+            return valida;
+        }
+        public static DataTable _consulta_cliente_bata(string _dniruc)
+        {
+            DataTable dt = null;
+            try
+            {
+                dt = new DataTable();
+                dt.TableName = "Cliente";
+                dt.Columns.Add("fc_ruc", typeof(string));
+                dt.Columns.Add("fc_nomb", typeof(string));
+                dt.Columns.Add("fc_apep", typeof(string));
+                dt.Columns.Add("fc_apem", typeof(string));
+                dt.Columns.Add("fc_tele", typeof(string));
+                dt.Columns.Add("fc_mail", typeof(string));
+                dt.Columns.Add("fc_dcli", typeof(string));
+                dt.Columns.Add("fc_cubi", typeof(string));
+
+                ws_clientedniruc.Cons_ClienteSoapClient cliente_bata = new Cons_ClienteSoapClient();
+
+                DataTable dt_bata = cliente_bata.ws_conscliente_bata(_dniruc);
+
+                if (dt_bata.Rows.Count>0)
+                {
+                    string _fc_ruc = dt_bata.Rows[0]["dniruc"].ToString();
+                    string _fc_nomb = dt_bata.Rows[0]["nombres"].ToString();// (datosCliente.Nombres != null) ? datosCliente.Nombres.ToString() : "";
+                    string _fc_apep = dt_bata.Rows[0]["apelpat"].ToString();// (datosCliente.Apellidos != null) ? datosCliente.Apellidos.ToString() : "";
+                    string _fc_apem = dt_bata.Rows[0]["apemat"].ToString();// (datosCliente.ApellidoMaterno != null) ? datosCliente.ApellidoMaterno.ToString() : "";
+                    string _fc_tele = dt_bata.Rows[0]["telefono"].ToString();// (datosCliente.Celular != null) ? datosCliente.Celular : "";
+                    //if (_fc_tele.Length == 0) _fc_tele = (datosCliente.Fono != null) ? datosCliente.Fono.ToString() : "";
+                    string _fc_mail = dt_bata.Rows[0]["email"].ToString();// (datosCliente.eMail != null) ? datosCliente.eMail.ToString() : "";
+                    string _fc_dcli = ""; //dt_bata.Rows[0]["dniruc"].ToString();// (datosCliente.Localidad != null) ? datosCliente.Localidad.ToString() : "";
+                    dt.Rows.Add(_fc_ruc, _fc_nomb.ToUpper(), _fc_apep.ToUpper(), _fc_apem, _fc_tele, _fc_mail, _fc_dcli.ToUpper(), "");
+                }
+
+            }
+            catch (Exception)
+            {
+                dt = null;
+
+            }
+            return dt;
+        }
+
         public static DataTable _consultacliente(string _dniruc,ref Boolean flujo_metri,ref Boolean nuevo_bataclub)
         {
             DataTable dt = null;
@@ -171,7 +229,7 @@ namespace Bata.Clases
             }
             return dt;
         }
-
+        
         public static string _actualiza_cliente(string _ruc, string _nombres, string _apepat, string _apemat,
                                                  string _telefono, string _email, string _tda,ref string _correo_envio,ref string _telef_envia)
         {

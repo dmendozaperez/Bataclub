@@ -60,6 +60,14 @@ namespace Bata.ws_clientedniruc {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable ws_conscliente(string _dniruc);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_conscliente_bata", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ws_conscliente_bata(string _dniruc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_insertcliente_bata", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ws_insertcliente_bata(string dniruc, string nombres, string apelpat, string apemat, string email, string telefono, string codtda);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_persona_reniec", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable ws_persona_reniec(string _dni);
@@ -644,6 +652,14 @@ namespace Bata.ws_clientedniruc {
         
         public System.Data.DataTable ws_conscliente(string _dniruc) {
             return base.Channel.ws_conscliente(_dniruc);
+        }
+        
+        public System.Data.DataTable ws_conscliente_bata(string _dniruc) {
+            return base.Channel.ws_conscliente_bata(_dniruc);
+        }
+        
+        public bool ws_insertcliente_bata(string dniruc, string nombres, string apelpat, string apemat, string email, string telefono, string codtda) {
+            return base.Channel.ws_insertcliente_bata(dniruc, nombres, apelpat, apemat, email, telefono, codtda);
         }
         
         public System.Data.DataTable ws_persona_reniec(string _dni) {

@@ -85,10 +85,12 @@ namespace ConsultReniec
 
         #region Constructor
 
-        public PersonaReniec()
+        public PersonaReniec(Boolean win_cli=false)
         {
             try
             {
+
+                if (win_cli) return;
                 myCookie = null;
                 myCookie = new CookieContainer();
 

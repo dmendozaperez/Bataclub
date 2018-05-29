@@ -406,11 +406,11 @@
                         </TextBox.Effect>
                     </TextBox>
                     <TextBox Name="txtdni" Height="23" TextWrapping="Wrap" Text="dni" FontSize="12" Width="140" HorizontalAlignment="Left"  FontWeight="Bold"  IsReadOnly="True" Grid.Row="2" Grid.Column="1" Margin="0,4"  />
-                    <TextBox Name="txtnombres" Height="23" TextWrapping="Wrap" Text="nombres" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="3" Margin="0,4"/>
-                    <TextBox Name="txtapepat" Height="23" TextWrapping="Wrap" Text="apepat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="4" Margin="0,4"/>
-                    <TextBox Name="txtapemat" Height="23" TextWrapping="Wrap" Text="apemat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="5" Margin="0,4"/>
+                    <TextBox Name="txtnombres" Height="23" MaxLength="100" TextWrapping="Wrap" Text="nombres" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="3" Margin="0,4"/>
+                    <TextBox Name="txtapepat" Height="23" MaxLength="100" TextWrapping="Wrap" Text="apepat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="4" Margin="0,4"/>
+                    <TextBox Name="txtapemat" Height="23" MaxLength="100" TextWrapping="Wrap" Text="apemat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="5" Margin="0,4"/>
                     <TextBox Name="txtdireccion" MaxLength="80" CharacterCasing="Upper" Height="23" TextWrapping="Wrap" Text="direccion" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="6" TextChanged="txtdireccion_TextChanged" Margin="0,4"/>
-                    <TextBox Name="txttelefono" MaxLength="14" CharacterCasing="Upper" Height="23" TextWrapping="Wrap" Text="telefono" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="7" TextChanged="txttelefono_TextChanged" Margin="0,4"/>
+                    <TextBox Name="txttelefono" MaxLength="14"  CharacterCasing="Upper" Height="23" TextWrapping="Wrap" Text="telefono" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="7" TextChanged="txttelefono_TextChanged" Margin="0,4"/>
                     <TextBox Name="txtemail" MaxLength="80" Height="23" TextWrapping="Wrap" Text="email" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="8" TextChanged="txtemail_TextChanged" Margin="0,4"/>
                     <TextBox Name="txtubigeo" Height="23" TextWrapping="Wrap" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Text="ubigeo" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="9"/>
                     <Button x:Name="btnactualizar" Height="39"  FontWeight="Bold" Cursor="Hand" Content="Enviar Datos al Pos" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" VerticalAlignment="Center" Click="btnactualizar_Click" Margin="0,4,6,-2"/>

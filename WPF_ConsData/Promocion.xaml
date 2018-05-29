@@ -186,10 +186,10 @@
                         </TextBox.Effect>
                     </TextBox>
                     <TextBox Name="txtdni" Height="23" TextWrapping="Wrap" Text="dni" FontSize="12" Width="140" HorizontalAlignment="Left"  FontWeight="Bold"  IsReadOnly="True" Grid.Row="1" Grid.Column="1"  />
-                    <TextBox Name="txtnombres" Height="23" TextWrapping="Wrap" Text="nombres" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="2"/>
-                    <TextBox Name="txtapepat" Height="23" TextWrapping="Wrap" Text="apepat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="3"/>
-                    <TextBox Name="txtapemat" Height="23" TextWrapping="Wrap" Text="apemat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="4"/>
-                    <TextBox Name="txtdireccion" MaxLength="80" CharacterCasing="Upper" Height="23" TextWrapping="Wrap" Text="direccion" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="5" TextChanged="txtdireccion_TextChanged"/>
+                    <TextBox Name="txtnombres" MaxLength="100" Height="23" TextWrapping="Wrap" Text="nombres" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="2"/>
+                    <TextBox Name="txtapepat" MaxLength="100" Height="23" TextWrapping="Wrap" Text="apepat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="3"/>
+                    <TextBox Name="txtapemat" MaxLength="100" Height="23" TextWrapping="Wrap" Text="apemat" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="4"/>
+                    <TextBox Name="txtdireccion"  MaxLength="80" CharacterCasing="Upper" Height="23" TextWrapping="Wrap" Text="direccion" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="5" TextChanged="txtdireccion_TextChanged"/>
                     <TextBox Name="txttelefono" MaxLength="14" CharacterCasing="Upper" Height="23" TextWrapping="Wrap" Text="telefono" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="6" TextChanged="txttelefono_TextChanged"/>
                     <TextBox Name="txtemail" MaxLength="80" Height="23" TextWrapping="Wrap" Text="email" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="7" TextChanged="txtemail_TextChanged"/>
                     <TextBox Name="txtubigeo" Height="23" TextWrapping="Wrap" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Text="ubigeo" FontSize="12"  FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" Grid.Row="8"/>
