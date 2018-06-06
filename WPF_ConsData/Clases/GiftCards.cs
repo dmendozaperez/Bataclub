@@ -706,9 +706,9 @@ namespace Bata.Clases
                                 /*****************FMC******************/
                                 /**************************************/
                                 //grabo nueva linea
-                                string sql_ins_fmc = "INSERT INTO " + tab_fmc + " (V_TFOR, V_PROC, V_CFOR, V_SFOR, V_NFOR, V_FFOR, V_MONE, V_TASA, V_ALMO, V_ALMD, V_TANE, V_ANEX, V_TDOC, V_SUNA, V_SDOC, V_NDOC, V_FDOC, V_TREF, V_SREF, V_NREF, V_TIPO, V_ARTI, V_REGL, V_COLO, V_CANT, V_PRES, V_PRED, V_VVTS, V_VVTD, V_AUTO, V_PTOT, V_IMPR, V_CUSE, V_MUSE, V_FCRE, V_FMOD, V_FTRX, V_MEMO, V_CTRA, V_MOTR, V_PAR1, V_PAR2, V_PAR3, V_LLE1, V_LLE2, V_LLE3, V_TIPE, V_RUC2, V_RZO2, V_HSTD) ";
+                                string sql_ins_fmc = "INSERT INTO " + tab_fmc + " (V_TFOR, V_PROC, V_CFOR, V_SFOR, V_NFOR, V_FFOR, V_MONE, V_TASA, V_ALMO, V_ALMD, V_TANE, V_ANEX, V_TDOC, V_SUNA, V_SDOC, V_NDOC, V_FDOC, V_TREF, V_SREF, V_NREF, V_TIPO, V_ARTI, V_REGL, V_COLO, V_CANT, V_PRES, V_PRED, V_VVTS, V_VVTD, V_AUTO, V_PTOT, V_IMPR, V_CUSE, V_MUSE, V_FCRE, V_FMOD, V_FTRX, V_MEMO, V_CTRA, V_MOTR, V_PAR1, V_PAR2, V_PAR3, V_LLE1, V_LLE2, V_LLE3, V_TIPE, V_RUC2, V_RZO2) ";//V_HSTD
                                 tabla_error = tab_fmc;
-                                sql_ins_fmc += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '01', 1, '" + cod_almacen + "', '" + dat_dat_mov.Rows[0]["D_ALMD"].ToString() + "', '', '','" + tp_doc + "','" + dat_dat_mov.Rows[0]["D_SUNA"].ToString() + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '', '', '', '', '', '','', " + row["Cantidad"].ToString() + ", 0, 0, 0, 0, '', " + (Convert.ToDecimal(row["Monto"]) * Convert.ToInt32(row["Cantidad"])).ToString() + ", '2', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'), CTOD('  /  /    '), '', '', '', '', '', '', '', '', '', '', '', '', '') ";
+                                sql_ins_fmc += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '01', 1, '" + cod_almacen + "', '" + dat_dat_mov.Rows[0]["D_ALMD"].ToString() + "', '', '','" + tp_doc + "','" + dat_dat_mov.Rows[0]["D_SUNA"].ToString() + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '', '', '', '', '', '','', " + row["Cantidad"].ToString() + ", 0, 0, 0, 0, '', " + (Convert.ToDecimal(row["Monto"]) * Convert.ToInt32(row["Cantidad"])).ToString() + ", '2', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'), CTOD('  /  /    '), '', '', '', '', '', '', '', '', '', '', '', '') ";//, ''
                                 System.Data.OleDb.OleDbCommand com_ins_fmc = new System.Data.OleDb.OleDbCommand(sql_ins_fmc, dbConn);
                                 com_ins_fmc.ExecuteNonQuery();
                                 fmc = true;
@@ -721,9 +721,9 @@ namespace Bata.Clases
                                 /*****************FMD******************/
                                 /**************************************/
                                 //grabo nueva linea
-                                string sql_ins_fmd = "INSERT INTO " + tab_fmd + " (I_TFOR, I_PROC, I_CFOR, I_SFOR, I_NFOR, I_TIPO, I_ARTI, I_REGL, I_COLO, I_ITEM, I_UNIC, I_EQU1, I_UNIM, I_CANC, I_CANM, I_PRES, I_PRED, I_VVTS, I_VVTD, I_PLIS, I_PTOT, I_IMPR, I_CUSE, I_MUSE, I_FCRE, I_FMOD, I_FALL, I_SOLU, I_UMOD, I_FECM, I_HMOD) ";
+                                string sql_ins_fmd = "INSERT INTO " + tab_fmd + " (I_TFOR, I_PROC, I_CFOR, I_SFOR, I_NFOR, I_TIPO, I_ARTI, I_REGL, I_COLO, I_ITEM, I_UNIC, I_EQU1, I_UNIM, I_CANC, I_CANM, I_PRES, I_PRED, I_VVTS, I_VVTD, I_PLIS, I_PTOT, I_IMPR, I_CUSE, I_MUSE, I_FCRE, I_FMOD) ";//, I_FALL, I_SOLU, I_UMOD, I_FECM, I_HMOD
                                 tabla_error = tab_fmd;
-                                sql_ins_fmd += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', 'A', '" + row["Articulo"].ToString() + "1', '00', '', '" + contador.ToString().PadLeft(3).Replace(" ", "0") + "', '', " + row["Cantidad"].ToString() + ", '', 0, " + row["Cantidad"].ToString() + ", 0, " + row["Monto"].ToString() + ", 0, 0, " + row["Cantidad"].ToString() + ", 0, '1', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'), '', '', '', CTOD('  /  /    '), '')";
+                                sql_ins_fmd += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', 'A', '" + row["Articulo"].ToString() + "1', '00', '', '" + contador.ToString().PadLeft(3).Replace(" ", "0") + "', '', " + row["Cantidad"].ToString() + ", '', 0, " + row["Cantidad"].ToString() + ", 0, " + row["Monto"].ToString() + ", 0, 0, " + row["Cantidad"].ToString() + ", 0, '1', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'))";//, '', '', '', CTOD('  /  /    '), ''
                                 System.Data.OleDb.OleDbCommand com_ins_fmd = new System.Data.OleDb.OleDbCommand(sql_ins_fmd, dbConn);
                                 com_ins_fmd.ExecuteNonQuery();
                                 fmd = true;
@@ -883,7 +883,7 @@ namespace Bata.Clases
 
                     // Cierra conexión
                     dbConn.Close();
-                    throw new System.ArgumentException(msaje_error, tabla_error);
+                    throw new System.ArgumentException(msaje_error+ex.Message, tabla_error);
                     //throw ex;
                 }
             }
