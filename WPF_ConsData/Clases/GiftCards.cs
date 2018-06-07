@@ -705,10 +705,26 @@ namespace Bata.Clases
                                 /**************************************/
                                 /*****************FMC******************/
                                 /**************************************/
-                                //grabo nueva linea
-                                string sql_ins_fmc = "INSERT INTO " + tab_fmc + " (V_TFOR, V_PROC, V_CFOR, V_SFOR, V_NFOR, V_FFOR, V_MONE, V_TASA, V_ALMO, V_ALMD, V_TANE, V_ANEX, V_TDOC, V_SUNA, V_SDOC, V_NDOC, V_FDOC, V_TREF, V_SREF, V_NREF, V_TIPO, V_ARTI, V_REGL, V_COLO, V_CANT, V_PRES, V_PRED, V_VVTS, V_VVTD, V_AUTO, V_PTOT, V_IMPR, V_CUSE, V_MUSE, V_FCRE, V_FMOD, V_FTRX, V_MEMO, V_CTRA, V_MOTR, V_PAR1, V_PAR2, V_PAR3, V_LLE1, V_LLE2, V_LLE3, V_TIPE, V_RUC2, V_RZO2) ";//V_HSTD
+                                //Valida si existe V_HSTD
+                                string sql_val_fmc = "SELECT * FROM " + tab_fmc + " WHERE 1 = 0";
                                 tabla_error = tab_fmc;
-                                sql_ins_fmc += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '01', 1, '" + cod_almacen + "', '" + dat_dat_mov.Rows[0]["D_ALMD"].ToString() + "', '', '','" + tp_doc + "','" + dat_dat_mov.Rows[0]["D_SUNA"].ToString() + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '', '', '', '', '', '','', " + row["Cantidad"].ToString() + ", 0, 0, 0, 0, '', " + (Convert.ToDecimal(row["Monto"]) * Convert.ToInt32(row["Cantidad"])).ToString() + ", '2', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'), CTOD('  /  /    '), '', '', '', '', '', '', '', '', '', '', '', '') ";//, ''
+                                System.Data.OleDb.OleDbCommand com_val_fmc = new System.Data.OleDb.OleDbCommand(sql_val_fmc, dbConn);
+                                System.Data.OleDb.OleDbDataAdapter ada_val_fmc = new System.Data.OleDb.OleDbDataAdapter(com_val_fmc);
+                                DataTable dat_val_fmc = new DataTable();
+                                ada_val_fmc.Fill(dat_val_fmc);
+
+                                string str_ins_cab_fmc = "";
+                                string str_ins_dat_fmc = "";
+                                if (dat_val_fmc.Columns.Contains("V_HSTD"))
+                                {
+                                    str_ins_cab_fmc = ", V_HSTD";
+                                    str_ins_dat_fmc = ", ''";
+                                }
+
+                                //grabo nueva linea
+                                string sql_ins_fmc = "INSERT INTO " + tab_fmc + " (V_TFOR, V_PROC, V_CFOR, V_SFOR, V_NFOR, V_FFOR, V_MONE, V_TASA, V_ALMO, V_ALMD, V_TANE, V_ANEX, V_TDOC, V_SUNA, V_SDOC, V_NDOC, V_FDOC, V_TREF, V_SREF, V_NREF, V_TIPO, V_ARTI, V_REGL, V_COLO, V_CANT, V_PRES, V_PRED, V_VVTS, V_VVTD, V_AUTO, V_PTOT, V_IMPR, V_CUSE, V_MUSE, V_FCRE, V_FMOD, V_FTRX, V_MEMO, V_CTRA, V_MOTR, V_PAR1, V_PAR2, V_PAR3, V_LLE1, V_LLE2, V_LLE3, V_TIPE, V_RUC2, V_RZO2"+ str_ins_cab_fmc + ") ";//V_HSTD
+                                tabla_error = tab_fmc;
+                                sql_ins_fmc += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '01', 1, '" + cod_almacen + "', '" + dat_dat_mov.Rows[0]["D_ALMD"].ToString() + "', '', '','" + tp_doc + "','" + dat_dat_mov.Rows[0]["D_SUNA"].ToString() + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '', '', '', '', '', '','', " + row["Cantidad"].ToString() + ", 0, 0, 0, 0, '', " + (Convert.ToDecimal(row["Monto"]) * Convert.ToInt32(row["Cantidad"])).ToString() + ", '2', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'), CTOD('  /  /    '), '', '', '', '', '', '', '', '', '', '', '', ''" + str_ins_dat_fmc + ") ";//, ''
                                 System.Data.OleDb.OleDbCommand com_ins_fmc = new System.Data.OleDb.OleDbCommand(sql_ins_fmc, dbConn);
                                 com_ins_fmc.ExecuteNonQuery();
                                 fmc = true;
