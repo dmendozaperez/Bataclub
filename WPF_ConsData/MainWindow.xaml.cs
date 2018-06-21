@@ -554,13 +554,12 @@ namespace WPF_ConsData
             btnactualizar.IsEnabled = false;
             txttelefono.IsReadOnly = true;
             txtemail.IsReadOnly = true;
-            txtemail.Background = Brushes.White;
-            txttelefono.Background = Brushes.White;
-
             txtnombres.IsReadOnly = true;
             txtapemat.IsReadOnly = true;
             txtapepat.IsReadOnly = true;
 
+            txtemail.Background = Brushes.White;
+            txttelefono.Background = Brushes.White;        
             txtnombres.Background = Brushes.White;
             txtapemat.Background = Brushes.White;
             txtapepat.Background = Brushes.White;
@@ -629,16 +628,16 @@ namespace WPF_ConsData
                             txtdireccion.Text = dt.Rows[0]["fc_dcli"].ToString();
                             txtubigeo.Text = dt.Rows[0]["fc_cubi"].ToString();
 
-                            if (!_reniec_sunat)
-                            {
-                                txtnombres.IsReadOnly = false;
-                                txtapemat.IsReadOnly = false;
-                                txtapepat.IsReadOnly = false;
+                            //if (!_reniec_sunat)
+                            //{
+                            //    txtnombres.IsReadOnly = false;
+                            //    txtapemat.IsReadOnly = false;
+                            //    txtapepat.IsReadOnly = false;
 
-                                txtnombres.Background = Brushes.Khaki;
-                                txtapemat.Background = Brushes.Khaki;
-                                txtapepat.Background = Brushes.Khaki;
-                            }
+                            //    txtnombres.Background = Brushes.Khaki;
+                            //    txtapemat.Background = Brushes.Khaki;
+                            //    txtapepat.Background = Brushes.Khaki;
+                            //}
 
                         }
                         else
@@ -784,6 +783,7 @@ namespace WPF_ConsData
                     btnactualizar.IsEnabled = true;
                 }
             }
+            if (txtnombres.Background == Brushes.Khaki) txtnombres.Focus();
 
         }
 
@@ -822,7 +822,7 @@ namespace WPF_ConsData
                         }
                         else
                         {
-                            PersonaReniec myInfo = new PersonaReniec(); //Clientes._persona_reniec;                                
+                            PersonaReniec myInfo = new PersonaReniec(true); //Clientes._persona_reniec;                                
                                                                         //myInfo.GetInfo(_dni_ruc, Clientes._str_codigo_captcha_reniec);
                             DataTable dt2 = Clientes._consultaReniec(_dni_ruc);
 
@@ -836,7 +836,7 @@ namespace WPF_ConsData
                     }
                     else
                     {
-                        PersonaReniec myInfo = new PersonaReniec(); //Clientes._persona_reniec;                                
+                        PersonaReniec myInfo = new PersonaReniec(true); //Clientes._persona_reniec;                                
                                                                     //myInfo.GetInfo(_dni_ruc, Clientes._str_codigo_captcha_reniec);
                         DataTable dt2 = Clientes._consultaReniec(_dni_ruc);
 
@@ -1260,11 +1260,32 @@ namespace WPF_ConsData
                         txtdniruc.Focus();
                         break;
                     case 0:
-                        MessageBox.Show("Error Desconocido",
-                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
-                        txtdniruc.SelectAll();
-                        txtdniruc.Focus();
+                        MessageBox.Show("1. No se encuentra sus datos en nuestra base de datos \r\n2. Hay un Error en la Web Service RENIEC... \r\n \r\nPOR FAVOR INGRESE MANUALMENTE LOS DATOS EN LAS CASILLAS SOMBREADAS",
+                       "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        txtnombres.Background = Brushes.Khaki;
+                        txtapepat.Background = Brushes.Khaki;
+                        txtapemat.Background = Brushes.Khaki;
+                        txtemail.Background = Brushes.Khaki;
+                        txttelefono.Background = Brushes.Khaki;
+                        txtdni.Text = txtdniruc.Text;
+                        txttelefono.IsReadOnly = false;
+                        txtemail.IsReadOnly = false;
+                        txtnombres.IsReadOnly = false;
+                        txtapepat.IsReadOnly = false;
+                        txtapemat.IsReadOnly = false;
+
+
+                        //txtdniruc.SelectAll();
+                        //txtdniruc.Focus();
+                        txtnombres.Focus();
+                        //txtdniruc.SelectAll();
+                        //txtdniruc.Focus();
                         break;
+                        //MessageBox.Show("Web Service de Reniec esta INACTIVO",
+                        //"Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Error);
+                        //txtdniruc.SelectAll();
+                        //txtdniruc.Focus();
+                        //break;
                 }
             }
             catch (Exception ex)
@@ -1389,8 +1410,46 @@ namespace WPF_ConsData
         private void btnactualizar_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
-            if (txtdni.Text.Trim().Length==0)
+            {
+
+                if (txtdni.Text.Trim().Length > 0)
+                {
+                    if (txtnombres.Background == Brushes.Khaki)
+                    {
+                        if (txtnombres.Text.Trim().Length == 0)
+                        {
+                            MessageBox.Show("Ingrese el nombre del cliente",
+                                      "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            txtnombres.Focus();
+                            Mouse.OverrideCursor = null;
+                            return;
+                        }
+                        if (txtapepat.Text.Trim().Length == 0)
+                        {
+                            MessageBox.Show("Ingrese el apellido paterno del cliente",
+                                      "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            txtapepat.Focus();
+                            Mouse.OverrideCursor = null;
+                            return;
+
+                        }
+                        if (txtemail.Text.Trim().Length > 0)
+                        {
+                            if (!Clientes.ComprobarFormatoEmail(txtemail.Text))
+                            {
+                                MessageBox.Show("El formato del Email. es incorrecto",
+                                          "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                                txtemail.Focus();
+                                Mouse.OverrideCursor = null;
+                                return;
+                            }
+                        }
+                      
+                       // return;
+                    }
+                }
+
+                if (txtdni.Text.Trim().Length==0)
             {
                 MessageBox.Show("No hay Datos para actualizar.",
                                    "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);

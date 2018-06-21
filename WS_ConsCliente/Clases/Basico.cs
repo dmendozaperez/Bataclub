@@ -649,7 +649,54 @@ namespace WS_ConsCliente
                 if (cn.State == ConnectionState.Open) cn.Close();
             return _valida;
         }
-       
+
+        #endregion
+        #region<REGION DE SOPORTE>
+        public List<Soporte> get_soporte_list()
+        {
+            List<Soporte> lista = null;
+            string sqlquery = "USP_GetSoporteTienda";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    try
+                    {
+                        if (cn.State == 0) cn.Open();
+                        using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            SqlDataReader dr = cmd.ExecuteReader();
+
+                            if (dr.HasRows)
+                            {
+                                lista = new List<Soporte>();
+                                while(dr.Read())
+                                {
+                                    Soporte sop = new Soporte();
+                                    sop.nombre = dr["sop_nom"].ToString();
+                                    sop.celular = dr["sop_cel"].ToString();
+                                    lista.Add(sop);
+                                }
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        lista = null;
+                    }
+                    if (cn != null)
+                        if (cn.State == ConnectionState.Open) cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                lista = null;                
+            }
+            return lista;
+        }
         #endregion
     }
 

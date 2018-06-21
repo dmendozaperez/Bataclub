@@ -103,6 +103,10 @@ namespace Bata.ws_clientedniruc {
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_update_apltda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string ws_update_apltda(string _cod_tda, string _nom_apl, string _ver_apl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_lista_soporte", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Bata.ws_clientedniruc.Soporte[] ws_lista_soporte();
     }
     
     /// <remarks/>
@@ -152,6 +156,52 @@ namespace Bata.ws_clientedniruc {
             set {
                 this.fechacField = value;
                 this.RaisePropertyChanged("fechac");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
+    public partial class Soporte : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string nombreField;
+        
+        private string celularField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string celular {
+            get {
+                return this.celularField;
+            }
+            set {
+                this.celularField = value;
+                this.RaisePropertyChanged("celular");
             }
         }
         
@@ -696,6 +746,10 @@ namespace Bata.ws_clientedniruc {
         
         public string ws_update_apltda(string _cod_tda, string _nom_apl, string _ver_apl) {
             return base.Channel.ws_update_apltda(_cod_tda, _nom_apl, _ver_apl);
+        }
+        
+        public Bata.ws_clientedniruc.Soporte[] ws_lista_soporte() {
+            return base.Channel.ws_lista_soporte();
         }
     }
 }

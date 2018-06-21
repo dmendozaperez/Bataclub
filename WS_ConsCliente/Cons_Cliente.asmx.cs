@@ -509,8 +509,24 @@ namespace WS_ConsCliente
         }
         #endregion
 
-
-
+        #region<REGION PARA SOPORTE>
+        [WebMethod]
+        public List<Soporte> ws_lista_soporte()
+        {
+            List<Soporte> lista = null;
+            Basico get_sop = null;
+            try
+            {
+                get_sop = new Basico();
+                lista = get_sop.get_soporte_list();
+            }
+            catch (Exception)
+            {
+                lista = null;                    
+            }
+            return lista;
+        }
+        #endregion
 
     }
 }

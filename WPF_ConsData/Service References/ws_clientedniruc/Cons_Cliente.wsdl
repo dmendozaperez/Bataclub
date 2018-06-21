@@ -464,6 +464,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ws_lista_soporte">
+        <s:complexType />
+      </s:element>
+      <s:element name="ws_lista_soporteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_lista_soporteResult" type="tns:ArrayOfSoporte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSoporte">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Soporte" nillable="true" type="tns:Soporte" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Soporte">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="celular" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ws_validatdabgwbSoapIn">
@@ -598,6 +619,12 @@
   <wsdl:message name="ws_update_apltdaSoapOut">
     <wsdl:part name="parameters" element="tns:ws_update_apltdaResponse" />
   </wsdl:message>
+  <wsdl:message name="ws_lista_soporteSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_lista_soporte" />
+  </wsdl:message>
+  <wsdl:message name="ws_lista_soporteSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_lista_soporteResponse" />
+  </wsdl:message>
   <wsdl:portType name="Cons_ClienteSoap">
     <wsdl:operation name="ws_validatdabgwb">
       <wsdl:input message="tns:ws_validatdabgwbSoapIn" />
@@ -686,6 +713,10 @@
     <wsdl:operation name="ws_update_apltda">
       <wsdl:input message="tns:ws_update_apltdaSoapIn" />
       <wsdl:output message="tns:ws_update_apltdaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_lista_soporte">
+      <wsdl:input message="tns:ws_lista_soporteSoapIn" />
+      <wsdl:output message="tns:ws_lista_soporteSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Cons_ClienteSoap" type="tns:Cons_ClienteSoap">
@@ -888,6 +919,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ws_lista_soporte">
+      <soap:operation soapAction="http://www.consultabata.com/ws_lista_soporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Cons_ClienteSoap12" type="tns:Cons_ClienteSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1082,6 +1122,15 @@
     </wsdl:operation>
     <wsdl:operation name="ws_update_apltda">
       <soap12:operation soapAction="http://www.consultabata.com/ws_update_apltda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_lista_soporte">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_lista_soporte" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

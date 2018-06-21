@@ -337,22 +337,65 @@ namespace Bata
                 //tw.Dispose();
             }
         }
+
+        private void limpiar_ws_client()
+        {
+            string _ruta_txt = @"D:\Cons\Cliente";
+            try
+            {
+                string[] _archivos_txt = Directory.GetFiles(@_ruta_txt, "*.txt");
+                if (_archivos_txt.Length>0)
+                {
+                    for (Int32 a = 0; a < _archivos_txt.Length; ++a)
+                    {
+                        string _archivo = _archivos_txt[a].ToString();
+
+                        if (File.Exists(@_archivo))
+                        {
+                            File.Delete(@_archivo);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Environment.GetEnvironmentVariable("codtda")!=null)
-            _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
+            try
+            {
+                if (Environment.GetEnvironmentVariable("codtda") != null)
+                    _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
 
-            actualizar_click_once();
-            //_verifica_version();
+                actualizar_click_once();
+                //_verifica_version();
 
+                limpiar_ws_client();
+                /*deshabilitar boton de empl*/
+                //_tienda = "50283";
+                ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
+                Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
 
-            /*deshabilitar boton de empl*/
-            //_tienda = "50283";
-            ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
-            Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
+                btndesemp.Visibility = (btn_habilita == true) ? Visibility.Visible : Visibility.Hidden;
 
-            btndesemp.Visibility = (btn_habilita == true) ? Visibility.Visible : Visibility.Hidden;
+                /*lista de soporte de tienda*/
+                get_soporte_bata();
 
+            }
+            catch (Exception exc)
+            {
+                btndesemp.IsEnabled = false;
+                btnvales.IsEnabled = false;
+                btnGiftCard.IsEnabled = false;
+                btncliente.IsEnabled = false;
+                btnvalesc.IsEnabled = false;
+                MessageBox.Show(exc.Message, "Aviso", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+            }
+         
             //btndesemp.Visibility = Visibility.Hidden;
 
             //   actualizar_vale();
@@ -485,7 +528,22 @@ namespace Bata
         {
 
         }
+        private void get_soporte_bata()
+        {
+            ws_clientedniruc.Cons_ClienteSoapClient ws_lista_soporte = null;
+            try
+            {
+                ws_lista_soporte = new ws_clientedniruc.Cons_ClienteSoapClient();
+                var lista_soporte= ws_lista_soporte.ws_lista_soporte();
 
+                dg1.ItemsSource = lista_soporte;
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        }
         private void btncliente_Click(object sender, RoutedEventArgs e)
         {            
             
