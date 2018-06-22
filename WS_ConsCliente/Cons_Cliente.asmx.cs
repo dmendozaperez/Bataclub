@@ -246,7 +246,7 @@ namespace WS_ConsCliente
         public DataTable ws_persona_reniec(string _dni)
         {
             DataTable dt = null;
-            ConsultReniec.PersonaReniec myInfo= new ConsultReniec.PersonaReniec(); 
+            ConsultReniec.PersonaReniec myInfo= new ConsultReniec.PersonaReniec(true); 
             string _codigo_captcha = "";            
             try
             {
@@ -259,20 +259,20 @@ namespace WS_ConsCliente
                 string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
                 string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";
               
-                _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //_codigo_captcha = myInfo.UseTesseract(_tessdata);
                 myInfo.GetInfo(_dni, _codigo_captcha);
 
-                if (myInfo.Nombres==null)
-                {
-                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                    myInfo.GetInfo(_dni, _codigo_captcha);
-                }
+                //if (myInfo.Nombres==null)
+                //{
+                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //    myInfo.GetInfo(_dni, _codigo_captcha);
+                //}
 
-                if (myInfo.Nombres == null)
-                {
-                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                    myInfo.GetInfo(_dni, _codigo_captcha);
-                }
+                //if (myInfo.Nombres == null)
+                //{
+                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //    myInfo.GetInfo(_dni, _codigo_captcha);
+                //}
                 //if (myInfo.Nombres == "Error!")
                 //{
                 //myInfo.GetInfo(_dni, myInfo.UseTesseract(_tessdata));

@@ -282,6 +282,43 @@ namespace ConsultReniec
         {
             try
             {
+
+                #region<CONSULTA DE DATA ONPE POR DNI>
+                String myurl_onpe = string.Format("http://aplicaciones007.jne.gob.pe/srop_publico/Consulta/Afiliado/GetNombresCiudadano?DNI={0}", numDni);
+                HttpWebRequest myWebRequest_onpe = (HttpWebRequest)WebRequest.Create(myurl_onpe);
+                myWebRequest_onpe.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0";//esto creo que lo puse por gusto :/
+                myWebRequest_onpe.CookieContainer = myCookie;
+                myWebRequest_onpe.Credentials = CredentialCache.DefaultCredentials;
+                myWebRequest_onpe.Proxy = null;
+
+                HttpWebResponse myHttpWebResponse_onpe = (HttpWebResponse)myWebRequest_onpe.GetResponse();
+
+                Stream myStream_onpe = myHttpWebResponse_onpe.GetResponseStream();
+
+                StreamReader myStreamReader_onpe = new StreamReader(myStream_onpe);
+
+                string _WebSource_onpe = HttpUtility.HtmlDecode(myStreamReader_onpe.ReadToEnd());
+
+
+                if (_WebSource_onpe.Length>0)
+                {
+                    string[] nombres_onp = _WebSource_onpe.Split('|');
+
+                    if (nombres_onp.Length>0)
+                    {
+                        estado_reniec = 231;
+                        state = Resul.Ok;
+                        this._Nombres = nombres_onp[2].ToString().Trim() ;
+                        this._ApePaterno = nombres_onp[0].ToString().Trim(); 
+                        this._ApeMaterno = nombres_onp[1].ToString().Trim(); 
+                        return;
+                    }
+
+                }
+
+
+                #endregion
+
                 string myUrl = String.Format("https://cel.reniec.gob.pe/valreg/valreg.do?accion=buscar&nuDni={0}&imagen={1}",
                                         numDni, ImgCapcha);
 
@@ -366,7 +403,9 @@ namespace ConsultReniec
             }
             catch (Exception ex)
             {
-                throw ex;
+                estado_reniec = 0;
+                state = Resul.Error;
+                //throw ex;
             }
         }
     }
