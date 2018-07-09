@@ -192,9 +192,9 @@ namespace Bata
                             // Read the file and display it line by line.
                             using (StreamReader sr = new StreamReader(@_archivo))
                             {
-
-
-
+                                try
+                                {
+                               
                                 while ((line = sr.ReadLine()) != null)
                                 {
                                     string _cadena = "";
@@ -307,6 +307,14 @@ namespace Bata
                                     //System.Console.WriteLine(line);
                                     counter++;
                                 }
+                                }
+                                catch (Exception)
+                                {
+
+
+                                }
+                              
+
                             }
 
                             //System.IO.StreamReader file =

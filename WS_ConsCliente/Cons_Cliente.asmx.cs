@@ -370,24 +370,24 @@ namespace WS_ConsCliente
                 string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
                 string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";    
                 myInfo = new ConsultaSunat.PersonaSunat(true);
-                //_codigo_captcha = myInfo.UseTesseract(_tessdata);
+                _codigo_captcha = myInfo.UseTesseract(_tessdata);
                 myInfo.GetInfo(_ruc, _codigo_captcha);
 
-                //if (myInfo.Nombres == "Error!")
-                //{
-                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                //    myInfo.GetInfo(_ruc, _codigo_captcha);
-                //}
-                //if (myInfo.Nombres == "Error!")
-                //{
-                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                //    myInfo.GetInfo(_ruc, _codigo_captcha);
-                //}
-                //if (myInfo.Nombres == "Error!")
-                //{
-                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                //    myInfo.GetInfo(_ruc, _codigo_captcha);
-                //}
+                if (myInfo.Nombres == "Error!")
+                {
+                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                    myInfo.GetInfo(_ruc, _codigo_captcha);
+                }
+                if (myInfo.Nombres == "Error!")
+                {
+                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                    myInfo.GetInfo(_ruc, _codigo_captcha);
+                }
+                if (myInfo.Nombres == "Error!")
+                {
+                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                    myInfo.GetInfo(_ruc, _codigo_captcha);
+                }
 
 
                 if (myInfo.Nombres == "Error!")
