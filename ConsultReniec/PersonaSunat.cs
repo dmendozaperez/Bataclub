@@ -268,39 +268,39 @@ namespace ConsultaSunat
             string xRazSoc = ""; string xEst = ""; string xCon = ""; string xDir = ""; string xAg = "";
             try
             {
-                #region<API DE SUNAT CONSULTA DE RUC>
-                string myUrl_API = String.Format("https://api.sunat.cloud/ruc/{0}",
-                                       numDni);
+                //#region<API DE SUNAT CONSULTA DE RUC>
+                //string myUrl_API = String.Format("https://api.sunat.cloud/ruc/{0}",
+                //                       numDni);
 
-                HttpWebRequest myWebRequest_API = (HttpWebRequest)WebRequest.Create(myUrl_API);
-                myWebRequest_API.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0";
-                myWebRequest_API.CookieContainer = myCookie;
-                myWebRequest_API.Credentials = CredentialCache.DefaultCredentials;
-                myWebRequest_API.Proxy = null;
-                HttpWebResponse myHttpWebResponse_API = (HttpWebResponse)myWebRequest_API.GetResponse();
-                Stream myStream_API = myHttpWebResponse_API.GetResponseStream();
-                Encoding encode_API = System.Text.Encoding.GetEncoding("utf-8");
-                StreamReader myStreamReader_API = new StreamReader(myStream_API, encode_API);
+                //HttpWebRequest myWebRequest_API = (HttpWebRequest)WebRequest.Create(myUrl_API);
+                //myWebRequest_API.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0";
+                //myWebRequest_API.CookieContainer = myCookie;
+                //myWebRequest_API.Credentials = CredentialCache.DefaultCredentials;
+                //myWebRequest_API.Proxy = null;
+                //HttpWebResponse myHttpWebResponse_API = (HttpWebResponse)myWebRequest_API.GetResponse();
+                //Stream myStream_API = myHttpWebResponse_API.GetResponseStream();
+                //Encoding encode_API = System.Text.Encoding.GetEncoding("utf-8");
+                //StreamReader myStreamReader_API = new StreamReader(myStream_API, encode_API);
 
-                var jason= myStreamReader_API.ReadToEnd();
-                DataSunat ent_sunat;
-                ent_sunat = JsonConvert.DeserializeObject<DataSunat>(jason);
+                //var jason= myStreamReader_API.ReadToEnd();
+                //DataSunat ent_sunat;
+                //ent_sunat = JsonConvert.DeserializeObject<DataSunat>(jason);
 
-                if (ent_sunat!=null)
-                {
-                    _Nombres = ent_sunat.razon_social;
-                    _direccion = ent_sunat.direccion;
-                    _telefono = ent_sunat.telefono;
-                    return;
-                }
-
-
-                //Leemos los datos
-                string xDat_API = HttpUtility.HtmlDecode(myStreamReader_API.ReadToEnd());
+                //if (ent_sunat!=null)
+                //{
+                //    _Nombres = ent_sunat.razon_social;
+                //    _direccion = ent_sunat.direccion;
+                //    _telefono = ent_sunat.telefono;
+                //    return;
+                //}
 
 
+                ////Leemos los datos
+                //string xDat_API = HttpUtility.HtmlDecode(myStreamReader_API.ReadToEnd());
 
-                #endregion
+
+
+                //#endregion
 
                 //A este link le pasamos los datos , RUC y valor del captcha
                 //string myUrl = String.Format("http://www.sunat.gob.pe/cl-ti-itmrconsruc/jcrS00Alias?accion=consPorRuc&nroRuc={0}&codigo={1}",
