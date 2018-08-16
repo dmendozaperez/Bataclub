@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8562ac8f-f8e4-4a4c-8234-cfb0bc26005e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e7e3e957-4852-4e01-93e0-f0763d24eebd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://posperu.bgr.pe/ws_sunat/Cons_Cliente.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://posperu.bgr.pe/Ws_ConsutaSunatReniec/Sunat_Reniec_PE.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Cons_Cliente.disco" MetadataType="Disco" ID="23296d5f-2fe4-4b30-8a6b-dbf47042dbc4" SourceId="1" SourceUrl="http://posperu.bgr.pe/ws_sunat/Cons_Cliente.asmx?disco" />
-    <MetadataFile FileName="Cons_Cliente.wsdl" MetadataType="Wsdl" ID="9c6b9ab2-b5e1-4aec-9203-89f4e7c32ad7" SourceId="1" SourceUrl="http://posperu.bgr.pe/ws_sunat/Cons_Cliente.asmx?wsdl" />
+    <MetadataFile FileName="Sunat_Reniec_PE.disco" MetadataType="Disco" ID="2dbaae55-fe00-4a02-a3a7-57156158b1f3" SourceId="1" SourceUrl="http://posperu.bgr.pe/Ws_ConsutaSunatReniec/Sunat_Reniec_PE.asmx?disco" />
+    <MetadataFile FileName="Sunat_Reniec_PE.wsdl" MetadataType="Wsdl" ID="93af17b7-665f-40d0-8798-047a2d1e1d15" SourceId="1" SourceUrl="http://posperu.bgr.pe/Ws_ConsutaSunatReniec/Sunat_Reniec_PE.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

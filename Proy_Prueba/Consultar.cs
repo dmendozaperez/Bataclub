@@ -19,7 +19,7 @@ namespace Proy_Prueba
         private void button1_Click(object sender, EventArgs e)
         {
             ConsultaCliente.Cons_ClienteSoapClient consulta = new ConsultaCliente.Cons_ClienteSoapClient();
-            var cliente = consulta.ws_persona_reniec(textBox1.Text);
+            var cliente = consulta.ws_persona_sunat(textBox1.Text);
             DataTable dt =(DataTable) cliente;
             string _valor = "";
 

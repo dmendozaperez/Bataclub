@@ -94,7 +94,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\ConsultaCliente\Cons_Cliente1.wsdl" />
+    <None Include="Service References\ConsultaCliente\Cons_Cliente.wsdl" />
     <None Include="Service References\ConsultaCliente\Proy_Prueba.ConsultaCliente.Barra.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -130,13 +130,16 @@
     <None Include="Service References\ConsultaCliente\Proy_Prueba.ConsultaCliente.PromBata.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ConsultaCliente\Proy_Prueba.ConsultaCliente.Soporte.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ConsultaCliente\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ConsultaCliente\Cons_Cliente1.disco" />
+    <None Include="Service References\ConsultaCliente\Cons_Cliente.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

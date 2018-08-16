@@ -671,6 +671,14 @@ namespace Bata
         private void btnsoport_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("http://soporte.bgr.pe/glpi");
+
+            // Process.Start("http://localhost:53228/ArticuloStock/Index_Acceso?emp=ok");
+
+            //Process.Start("http://www.bgr.pe/bataweb/ArticuloStock/Index_Acceso?varemp=1FCCD4D0-19C6-45AC-AFAC-FC0EF4AF32D5");
+
+            // Response.Cookies["Usuario"].Value = "Invitado";
+            //Response.Cookies["contraseña"].Value = "Invitado123";
+            //Response.Redirect("../ArticuloStock/Index");
         }
     }
 }

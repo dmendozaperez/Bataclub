@@ -47,9 +47,10 @@ namespace ConsultaSunat
         {
             try
             {
-                if (ruc_client) return;
                 myCookie = null;
                 myCookie = new CookieContainer();
+                if (ruc_client) return;
+              
                 ServicePointManager.Expect100Continue = true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
                 ReadCapcha();
@@ -115,9 +116,9 @@ namespace ConsultaSunat
                     //  Console.WriteLine("Text recognized: " + text);
                 }
             }
-            catch
-            { 
-                
+            catch(Exception exc)
+            {
+                _direccion = exc.Message + "==>ruta:" + _ruta;
             }
             //Retornamos luego del trabajo del OCR el texto obtenido 
             return text;

@@ -258,21 +258,21 @@ namespace WS_ConsCliente
                 dt.Columns.Add("estado", typeof(Int32));
                 string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
                 string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";
-              
-                //_codigo_captcha = myInfo.UseTesseract(_tessdata);
+
+                _codigo_captcha = myInfo.UseTesseract(_tessdata);
                 myInfo.GetInfo(_dni, _codigo_captcha);
 
-                //if (myInfo.Nombres==null)
-                //{
-                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                //    myInfo.GetInfo(_dni, _codigo_captcha);
-                //}
+                if (myInfo.Nombres == null)
+                {
+                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                    myInfo.GetInfo(_dni, _codigo_captcha);
+                }
 
-                //if (myInfo.Nombres == null)
-                //{
-                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                //    myInfo.GetInfo(_dni, _codigo_captcha);
-                //}
+                if (myInfo.Nombres == null)
+                {
+                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                    myInfo.GetInfo(_dni, _codigo_captcha);
+                }
                 //if (myInfo.Nombres == "Error!")
                 //{
                 //myInfo.GetInfo(_dni, myInfo.UseTesseract(_tessdata));
@@ -304,8 +304,7 @@ namespace WS_ConsCliente
             string _codigo_captcha = "";
             try
             {
-                data = new Data_Sunat();
-                
+               
 
                 string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
                 string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";
@@ -367,40 +366,59 @@ namespace WS_ConsCliente
                 dt.Columns.Add("ruc", typeof(string));
                 dt.Columns.Add("telefono", typeof(string));
 
-                string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
-                string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";    
+                
+
+                WsSunat.validateLogin valida_user = new WsSunat.validateLogin();
+                valida_user.Username = "BataPeru";
+                valida_user.Password = "Bata2018**.";
+
+                WsSunat.Sunat_Reniec_PESoapClient c = new WsSunat.Sunat_Reniec_PESoapClient();
+                var data_sunat = c.ws_persona_sunat(valida_user, _ruc);
+
+
+                //string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
+                //string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";    
                 myInfo = new ConsultaSunat.PersonaSunat(true);
-                _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                myInfo.GetInfo(_ruc, _codigo_captcha);
+                //_codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //myInfo.GetInfo(_ruc, _codigo_captcha);
 
-                if (myInfo.Nombres == "Error!")
-                {
-                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                    myInfo.GetInfo(_ruc, _codigo_captcha);
-                }
-                if (myInfo.Nombres == "Error!")
-                {
-                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                    myInfo.GetInfo(_ruc, _codigo_captcha);
-                }
-                if (myInfo.Nombres == "Error!")
-                {
-                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                    myInfo.GetInfo(_ruc, _codigo_captcha);
-                }
+                //if (myInfo.Nombres == "Error!")
+                //{
+                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //    myInfo.GetInfo(_ruc, _codigo_captcha);
+                //}
+                //if (myInfo.Nombres == "Error!")
+                //{
+                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //    myInfo.GetInfo(_ruc, _codigo_captcha);
+                //}
+                //if (myInfo.Nombres == "Error!")
+                //{
+                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //    myInfo.GetInfo(_ruc, _codigo_captcha);
+                //}
 
-
-                if (myInfo.Nombres == "Error!")
+                if (data_sunat.Valida_Sunat.Estado=="0")
                 {
-                    //myInfo.GetInfo(_ruc, myInfo.UseTesseract(_tessdata));
-                    dt.Rows.Add(myInfo.direccion, myInfo.Nombres, _ruc,myInfo.telefono);
-
+                    dt.Rows.Add(data_sunat.Direccion, data_sunat.Razon_Social, _ruc, data_sunat.Telefono);
                 }
                 else
                 {
-                    dt.Rows.Add(myInfo.direccion, myInfo.Nombres, _ruc, myInfo.telefono);
-                  
+                    
+                    dt.Rows.Add(myInfo.direccion, "Error!", _ruc, myInfo.telefono);
                 }
+
+                //if (myInfo.Nombres == "Error!")
+                //{
+                //    //myInfo.GetInfo(_ruc, myInfo.UseTesseract(_tessdata));
+                //    dt.Rows.Add(myInfo.direccion, myInfo.Nombres, _ruc,myInfo.telefono);
+
+                //}
+                //else
+                //{
+                //    dt.Rows.Add(myInfo.direccion, myInfo.Nombres, _ruc, myInfo.telefono);
+                  
+                //}
                 dt.TableName = "cliente";
             }
             catch

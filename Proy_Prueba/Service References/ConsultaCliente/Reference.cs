@@ -60,6 +60,14 @@ namespace Proy_Prueba.ConsultaCliente {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable ws_conscliente(string _dniruc);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_conscliente_bata", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ws_conscliente_bata(string _dniruc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_insertcliente_bata", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ws_insertcliente_bata(string dniruc, string nombres, string apelpat, string apemat, string email, string telefono, string codtda);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_persona_reniec", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable ws_persona_reniec(string _dni);
@@ -72,6 +80,22 @@ namespace Proy_Prueba.ConsultaCliente {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable ws_persona_sunat(string _ruc);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_ActivaGiftCard", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void ws_ActivaGiftCard(string numero, string dni_activa, string nombres, string apepat, string apemat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_GrabarSQL_Ticket", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void ws_GrabarSQL_Ticket(string tienda, string serie, string codigo, string fecha, string dni, string nombres, string apepat, string apemat, string forpag, string tarjeta, string nro_tarj, string detail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_BuscarGiftCard", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ws_BuscarGiftCard(string numero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_BuscarTicketGF", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ws_BuscarTicketGF(string empresa, string serie, string numero);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_verifica_version_apltda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         bool ws_verifica_version_apltda(string _cod_tda, string _nom_apl, string _ver_apl);
@@ -79,6 +103,10 @@ namespace Proy_Prueba.ConsultaCliente {
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_update_apltda", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string ws_update_apltda(string _cod_tda, string _nom_apl, string _ver_apl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_lista_soporte", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Proy_Prueba.ConsultaCliente.Soporte[] ws_lista_soporte();
     }
     
     /// <remarks/>
@@ -128,6 +156,52 @@ namespace Proy_Prueba.ConsultaCliente {
             set {
                 this.fechacField = value;
                 this.RaisePropertyChanged("fechac");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
+    public partial class Soporte : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string nombreField;
+        
+        private string celularField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string celular {
+            get {
+                return this.celularField;
+            }
+            set {
+                this.celularField = value;
+                this.RaisePropertyChanged("celular");
             }
         }
         
@@ -630,6 +704,14 @@ namespace Proy_Prueba.ConsultaCliente {
             return base.Channel.ws_conscliente(_dniruc);
         }
         
+        public System.Data.DataTable ws_conscliente_bata(string _dniruc) {
+            return base.Channel.ws_conscliente_bata(_dniruc);
+        }
+        
+        public bool ws_insertcliente_bata(string dniruc, string nombres, string apelpat, string apemat, string email, string telefono, string codtda) {
+            return base.Channel.ws_insertcliente_bata(dniruc, nombres, apelpat, apemat, email, telefono, codtda);
+        }
+        
         public System.Data.DataTable ws_persona_reniec(string _dni) {
             return base.Channel.ws_persona_reniec(_dni);
         }
@@ -642,12 +724,32 @@ namespace Proy_Prueba.ConsultaCliente {
             return base.Channel.ws_persona_sunat(_ruc);
         }
         
+        public void ws_ActivaGiftCard(string numero, string dni_activa, string nombres, string apepat, string apemat) {
+            base.Channel.ws_ActivaGiftCard(numero, dni_activa, nombres, apepat, apemat);
+        }
+        
+        public void ws_GrabarSQL_Ticket(string tienda, string serie, string codigo, string fecha, string dni, string nombres, string apepat, string apemat, string forpag, string tarjeta, string nro_tarj, string detail) {
+            base.Channel.ws_GrabarSQL_Ticket(tienda, serie, codigo, fecha, dni, nombres, apepat, apemat, forpag, tarjeta, nro_tarj, detail);
+        }
+        
+        public System.Data.DataTable ws_BuscarGiftCard(string numero) {
+            return base.Channel.ws_BuscarGiftCard(numero);
+        }
+        
+        public System.Data.DataTable ws_BuscarTicketGF(string empresa, string serie, string numero) {
+            return base.Channel.ws_BuscarTicketGF(empresa, serie, numero);
+        }
+        
         public bool ws_verifica_version_apltda(string _cod_tda, string _nom_apl, string _ver_apl) {
             return base.Channel.ws_verifica_version_apltda(_cod_tda, _nom_apl, _ver_apl);
         }
         
         public string ws_update_apltda(string _cod_tda, string _nom_apl, string _ver_apl) {
             return base.Channel.ws_update_apltda(_cod_tda, _nom_apl, _ver_apl);
+        }
+        
+        public Proy_Prueba.ConsultaCliente.Soporte[] ws_lista_soporte() {
+            return base.Channel.ws_lista_soporte();
         }
     }
 }
