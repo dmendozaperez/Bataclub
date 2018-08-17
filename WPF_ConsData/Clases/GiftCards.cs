@@ -543,6 +543,10 @@ namespace Bata.Clases
                             }
                             numero = codigo;
 
+                            // Acumular cantidades y monto total
+                            decimal monto_fmc = 0;
+                            Int32 cant_fmc = 0;
+
                             // Empezamos a realizar las modificaciones de Stock por registro
                             foreach (DataRow row in detalle.Rows)
                             {
@@ -721,17 +725,25 @@ namespace Bata.Clases
                                     str_ins_dat_fmc = ", ''";
                                 }
 
-                                //grabo nueva linea
-                                string sql_ins_fmc = "INSERT INTO " + tab_fmc + " (V_TFOR, V_PROC, V_CFOR, V_SFOR, V_NFOR, V_FFOR, V_MONE, V_TASA, V_ALMO, V_ALMD, V_TANE, V_ANEX, V_TDOC, V_SUNA, V_SDOC, V_NDOC, V_FDOC, V_TREF, V_SREF, V_NREF, V_TIPO, V_ARTI, V_REGL, V_COLO, V_CANT, V_PRES, V_PRED, V_VVTS, V_VVTD, V_AUTO, V_PTOT, V_IMPR, V_CUSE, V_MUSE, V_FCRE, V_FMOD, V_FTRX, V_MEMO, V_CTRA, V_MOTR, V_PAR1, V_PAR2, V_PAR3, V_LLE1, V_LLE2, V_LLE3, V_TIPE, V_RUC2, V_RZO2"+ str_ins_cab_fmc + ") ";//V_HSTD
-                                tabla_error = tab_fmc;
-                                sql_ins_fmc += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '01', 1, '" + cod_almacen + "', '" + dat_dat_mov.Rows[0]["D_ALMD"].ToString() + "', '', '','" + tp_doc + "','" + dat_dat_mov.Rows[0]["D_SUNA"].ToString() + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '', '', '', '', '', '','', " + row["Cantidad"].ToString() + ", 0, 0, 0, 0, '', " + (Convert.ToDecimal(row["Monto"]) * Convert.ToInt32(row["Cantidad"])).ToString() + ", '2', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'), CTOD('  /  /    '), '', '', '', '', '', '', '', '', '', '', '', ''" + str_ins_dat_fmc + ") ";//, ''
-                                System.Data.OleDb.OleDbCommand com_ins_fmc = new System.Data.OleDb.OleDbCommand(sql_ins_fmc, dbConn);
-                                com_ins_fmc.ExecuteNonQuery();
-                                fmc = true;
-                                detalle_rb[0] = row["Articulo"].ToString();
-                                detalle_rb[1] = row["Cantidad"].ToString();
-                                detalle_rb[2] = row["Monto"].ToString();
-                                fmc_det_rb.Add(detalle_rb);
+                                cant_fmc = cant_fmc + Convert.ToInt32(row["Cantidad"]);
+                                monto_fmc = monto_fmc + (Convert.ToDecimal(row["Monto"])* Convert.ToDecimal(row["Cantidad"]));
+
+                                // Solo ingresa cuando el contador es igual
+                                if (contador == detalle.Rows.Count)
+                                {
+                                    //grabo nueva linea
+                                    string sql_ins_fmc = "INSERT INTO " + tab_fmc + " (V_TFOR, V_PROC, V_CFOR, V_SFOR, V_NFOR, V_FFOR, V_MONE, V_TASA, V_ALMO, V_ALMD, V_TANE, V_ANEX, V_TDOC, V_SUNA, V_SDOC, V_NDOC, V_FDOC, V_TREF, V_SREF, V_NREF, V_TIPO, V_ARTI, V_REGL, V_COLO, V_CANT, V_PRES, V_PRED, V_VVTS, V_VVTD, V_AUTO, V_PTOT, V_IMPR, V_CUSE, V_MUSE, V_FCRE, V_FMOD, V_FTRX, V_MEMO, V_CTRA, V_MOTR, V_PAR1, V_PAR2, V_PAR3, V_LLE1, V_LLE2, V_LLE3, V_TIPE, V_RUC2, V_RZO2" + str_ins_cab_fmc + ") ";//V_HSTD
+                                    tabla_error = tab_fmc;
+                                    sql_ins_fmc += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '01', 1, '" + cod_almacen + "', '" + dat_dat_mov.Rows[0]["D_ALMD"].ToString() + "', '', '','" + tp_doc + "','" + dat_dat_mov.Rows[0]["D_SUNA"].ToString() + "', '" + serie + "', '" + numero + "', CTOD('" + fecha + "'), '', '', '', '', '', '','', " + cant_fmc.ToString() + ", 0, 0, 0, 0, '', " + monto_fmc.ToString() + ", '2', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "'), CTOD('  /  /    '), '', '', '', '', '', '', '', '', '', '', '', ''" + str_ins_dat_fmc + ") ";//, ''
+                                    System.Data.OleDb.OleDbCommand com_ins_fmc = new System.Data.OleDb.OleDbCommand(sql_ins_fmc, dbConn);
+                                    com_ins_fmc.ExecuteNonQuery();
+                                    fmc = true;
+
+                                    detalle_rb[0] = row["Articulo"].ToString();
+                                    detalle_rb[1] = cant_fmc.ToString();
+                                    detalle_rb[2] = cant_fmc.ToString();
+                                    fmc_det_rb.Add(detalle_rb);
+                                }
 
                                 /**************************************/
                                 /*****************FMD******************/
