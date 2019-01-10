@@ -49,6 +49,9 @@
     <Reference Include="AsyncCtpLibrary">
       <HintPath>..\..\..\..\AppData\Roaming\Skype\My Skype Received Files\AsyncCtpLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Encripta">
+      <HintPath>..\..\..\Web Service Bata Tienda\WSDL Tienda\WSDL Tienda\WSDL Tienda\EncryptaData\Encripta.dll</HintPath>
+    </Reference>
     <Reference Include="Jayrock">
       <HintPath>..\..\..\..\AppData\Roaming\Skype\My Skype Received Files\Jayrock.dll</HintPath>
     </Reference>

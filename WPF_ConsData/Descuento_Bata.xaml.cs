@@ -223,7 +223,7 @@ namespace Bata
             //Tight Loop:  Loop until the ProgressBar.Value reaches the max
             do
             {
-                value += 8;
+                value += 15;
 
                 /*Update the Value of the ProgressBar:
 		          1)  Pass the "updatePbDelegate" delegate that points to the ProgressBar1.SetValue method
@@ -571,7 +571,7 @@ namespace Bata
                     tiempoFinal = DateTime.Now;
                     TimeSpan diffTime = tiempoFinal - tiempoInicial;
                     long segundos = diffTime.Milliseconds; //DateA DateDiff(DateInterval.Second, tiempoInicial, tiempoFinal)
-                    if (segundos >= 250)
+                    if (segundos >= 500)
                     {
                         MessageBox.Show("Entrada no permitida por teclado",
                        "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);

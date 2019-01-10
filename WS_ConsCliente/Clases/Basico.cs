@@ -86,6 +86,92 @@ namespace WS_ConsCliente
         #endregion
 
         #region<METODO PARA VALES>
+
+        public Boolean get_valida_bc_cl_not_exists(string dni)
+        {
+            string sqlquery = "USP_GET_BATACLUB_NO_EXISTE_CL";
+            Boolean valida = false;
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    try
+                    {
+                        if (cn.State == 0) cn.Open();
+                        using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@DNI", dni);
+                            cmd.Parameters.Add("@NOEXISTE", SqlDbType.Bit);
+                            cmd.Parameters["@NOEXISTE"].Direction = ParameterDirection.Output;
+                            cmd.ExecuteNonQuery();
+                            valida =Convert.ToBoolean(cmd.Parameters["@NOEXISTE"].Value);
+                        }
+                    }
+                    catch 
+                    {
+                        valida = false;                         
+                    }
+                    if (cn != null)
+                        if (cn.State == ConnectionState.Open) cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+               valida = false;
+            }
+            return valida;
+        }
+
+        /*impresion de bataclub*/
+        public List<BataClubFormato> get_formato_bataclub()
+        {
+            List<BataClubFormato> lista = null;
+            string sqlquery = "USP_GetFormatoBataClubImp";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    try
+                    {
+                        if (cn.State == 0) cn.Open();
+                        using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                        {
+                            cmd.CommandTimeout = 0;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            SqlDataReader dr = cmd.ExecuteReader();
+
+                            if (dr.HasRows)
+                            {
+                                lista = new List<BataClubFormato>();
+                                while(dr.Read())
+                                {
+                                    BataClubFormato bc = new BataClubFormato();
+                                    bc.id = dr["id"].ToString();
+                                    bc.texto= dr["texto"].ToString();
+                                    lista.Add(bc);
+                                }
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        lista = null; ;
+                    }
+                    if (cn != null)
+                        if (cn.State== ConnectionState.Open) cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                lista = null;                
+            }
+            return lista;
+        }
+
         public PromBata get_prombata(string cod,string tda,string dni)
         {
             PromBata getdata = null;
@@ -394,6 +480,7 @@ namespace WS_ConsCliente
                         cmd.Parameters.AddWithValue("@fecha_fin", set_cupon.fechafin);
                         cmd.Parameters.AddWithValue("@paresmax", set_cupon.paresmax);
                         cmd.Parameters.AddWithValue("@Grupo", set_cupon.grupo);
+                        cmd.Parameters.AddWithValue("@cod_tda_gen", set_cupon.tda_gen_cup);
 
                         cmd.Parameters.Add("@barra",SqlDbType.VarChar,20);
                         cmd.Parameters.Add("@serget", SqlDbType.VarChar, 6);

@@ -784,9 +784,9 @@ namespace Bata.Clases
                                     str_ins_dat_fmd = str_ins_dat_fmd + ", ''";
                                 }
                                 //grabo nueva linea
-                                string sql_ins_fmd = "INSERT INTO " + tab_fmd + " (I_TFOR, I_PROC, I_CFOR, I_SFOR, I_NFOR, I_TIPO, I_ARTI, I_REGL, I_COLO, I_ITEM, I_UNIC, I_EQU1, I_UNIM, I_CANC, I_CANM, I_PRES, I_PRED, I_VVTS, I_VVTD, I_PLIS, I_PTOT, I_IMPR, I_CUSE, I_MUSE, I_FCRE, I_FMOD" + str_ins_cab_fmd + ") ";//, I_FALL, I_SOLU, I_UMOD, I_FECM, I_HMOD
+                                string sql_ins_fmd = "INSERT INTO " + tab_fmd + " (I_TFOR, I_PROC, I_CFOR, I_SFOR, I_NFOR, I_TIPO, I_ARTI, I_REGL, I_COLO, I_ITEM, I_UNIC, I_EQU1, I_UNIM, I_CANC, I_CANM, I_PRES, I_PRED, I_VVTS, I_VVTD, I_PLIS, I_PTOT, I_IMPR, I_CUSE, I_MUSE, I_FCRE, I_FMOD,I_DREF" + str_ins_cab_fmd + ") ";//, I_FALL, I_SOLU, I_UMOD, I_FECM, I_HMOD
                                 tabla_error = tab_fmd;
-                                sql_ins_fmd += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', 'A', '" + row["Articulo"].ToString() + "1', '00', '', '" + contador.ToString().PadLeft(3).Replace(" ", "0") + "', '', " + row["Cantidad"].ToString() + ", '', 0, " + row["Cantidad"].ToString() + ", 0, " + row["Monto"].ToString() + ", 0, 0, " + row["Cantidad"].ToString() + ", 0, '1', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "')" + str_ins_dat_fmd + ")";//, '', '', '', CTOD('  /  /    '), ''
+                                sql_ins_fmd += "VALUES ('" + dat_dat_mov.Rows[0]["D_TIPO"].ToString() + "', '2', '" + tp_doc + "', '" + serie + "', '" + numero + "', 'A', '" + row["Articulo"].ToString() + "1', '00', '', '" + contador.ToString().PadLeft(3).Replace(" ", "0") + "', '', " + row["Cantidad"].ToString() + ", '', 0, " + row["Cantidad"].ToString() + ", 0, " + row["Monto"].ToString() + ", 0, 0, " + row["Cantidad"].ToString() + ", 0, '1', 'VEN', 'VEN', CTOD('" + fecha + "'), CTOD('" + fecha + "')" + ",''" + str_ins_dat_fmd + ")";//, '', '', '', CTOD('  /  /    '), ''
                                 System.Data.OleDb.OleDbCommand com_ins_fmd = new System.Data.OleDb.OleDbCommand(sql_ins_fmd, dbConn);
                                 com_ins_fmd.ExecuteNonQuery();
                                 fmd = true;

@@ -13,7 +13,7 @@ namespace Basico_Metricard
     
     public class BasicoMetri
     {
-        private static string conexion= "Server=10.10.10.208;Database=BdTienda;User ID=sa;Password=Bata2013;Trusted_Connection=False;";
+        private static string conexion= "Server=POSPERUBD.BGR.PE;Database=BDPOS;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;";
 
 
         private static Boolean _update_cupon_metricard(string _barra,ref string _error)
@@ -556,12 +556,13 @@ namespace Basico_Metricard
             DataTable dttienda = null;
             //string _error = "";
             ServicioConversionClient cliente = null;
+            string paso = "";
             try
             {
 
                 string _hora_ejecucion = hora_venta_ejecucion("01");
 
-                DateTime myDt = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
+                DateTime myDt = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
 
                 string _hora_actual = myDt.ToString("HH:mm");
 
@@ -652,7 +653,7 @@ namespace Basico_Metricard
                                                  PRE_ARTIC = G.Key.PRE_ARTIC
                                              };
                         /*******************************/
-
+                        paso = "paso 1";
                         /*agrupar documento cabezera de documento*/
                         var grupo_doc = from item in dtVentas.AsEnumerable()
                                         group item by
@@ -702,17 +703,22 @@ namespace Basico_Metricard
                                             EST_BARRA = G.Key.EST_BARRA
                                         };
 
+                        paso = "paso 2";
+
                         if (grupo_doc != null)
                         {
+                            paso = "paso null";
                             if (grupo_doc.Count() > 0)
                             {
+                                paso = "paso count";
                                 /*LLAMAR INSTANCIA DE LA WS DE METRI*/
                                 cliente = new ServicioConversionClient();
-                                                               
+                                paso = "paso instancia";
                                 /*CREACION DE TIENDAS QUE NO FIGUREN EN METRICARD*/
                                 #region<CREACION DE TIENDAS>
                                 if (grupo_tda != null)
                                 {
+                                    paso = "paso tda ini";
                                     foreach (var key in grupo_tda)
                                     {
                                         Tienda tienda = cliente.ConsultarTiendaPorCodigo(key.COD_ENTID);
@@ -726,11 +732,13 @@ namespace Basico_Metricard
 
                                         }
                                     }
+                                    paso = "paso tda fin";
                                 }
                                 #endregion
                                 #region<CREACION DE LINEA>
                                 if (grupo_linea != null)
                                 {
+                                    paso = "paso linea ini";
                                     foreach (var key in grupo_linea)
                                     {
                                         TipoProducto linea = cliente.ConsultarTipoProducto(key.COD_LINEA);
@@ -742,12 +750,14 @@ namespace Basico_Metricard
                                             RespuestaServicio respuesta_linea = cliente.AgregarTipoProducto(linea);
                                         }
                                     }
+                                    paso = "paso linea fin";
                                 }
                                 #endregion
                                 #region<CREACION DE ARTICULOS>
                                 if (grupo_articulo != null)
                                 {
                                     decimal _contar = grupo_articulo.Count();
+                                    paso = "paso articulo ini";
                                     foreach (var key in grupo_articulo)
                                     {
                                         Producto articulo = cliente.ConsultarProducto(key.COD_ARTIC);
@@ -767,19 +777,22 @@ namespace Basico_Metricard
                                             RespuestaServicio respuesta_articulo = cliente.AgregarProducto(articulo);
                                         }
                                     }
+                                    paso = "paso articulo fin";
                                 }
                                 #endregion                                
                             }
                             #region<ENVIO DE DOCUMENTOS CABECERA Y DETALLE>
                             foreach (var key in grupo_doc)
                             {
-
+                                paso = "paso 3.1";
                                 bool _existe_doc = cliente.ExisteConversion(key.SERIE_DOC + key.NUMERO_DOC);
 
                                 if (_existe_doc)
                                 {
                                     Boolean _anular_doc = cliente.AnularConversion(key.SERIE_DOC + key.NUMERO_DOC);
                                 }
+
+                                paso = "paso 3";
 
                                 Documento documento = new Documento();
                                 documento.ApellidosCliente = key.APE_CLIENTE;
@@ -799,6 +812,9 @@ namespace Basico_Metricard
                                 documento.NombresCliente = key.NOM_CLIENTE;
                                 documento.Impuesto = key.IMPUESTO;
                                 documento.CodigoCampana = key.PROMOCION;
+
+
+                                paso = "paso 4";
 
                                 Tienda tda_doc;// = cliente.ConsultarTiendaPorCodigo(key.COD_ENTID);
                                 tda_doc = cliente.ConsultarTiendaPorCodigo(key.COD_ENTID);
@@ -857,7 +873,7 @@ namespace Basico_Metricard
             }
             catch (Exception exc)
             {
-                _error = exc.Message;
+                _error = exc.Message + "==>" + paso  ;
             }
 
         }

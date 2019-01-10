@@ -19,6 +19,9 @@ using System.Windows.Threading;
 using System.Data;
 using System.Data.OleDb;
 using System.Diagnostics;
+using Epson_Ticket;
+using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace Bata
 {
@@ -371,6 +374,27 @@ namespace Bata
                 
             }
         }
+
+        private void version_click_once()
+        {
+            try
+            {
+                Version myVersion=null;
+                if (ApplicationDeployment.IsNetworkDeployed)
+                { 
+                    myVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                }
+                if (myVersion!= null)
+                {
+                    this.Title = "Bata-Desktop Aplication > POS.NET > Version >" + myVersion.ToString();
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -379,11 +403,11 @@ namespace Bata
                     _tienda = "50" + Environment.GetEnvironmentVariable("codtda").ToString();
 
                 actualizar_click_once();
-                //_verifica_version();
-
+                _verifica_version();
+                version_click_once();
                 limpiar_ws_client();
                 /*deshabilitar boton de empl*/
-                //_tienda = "50283";
+               // _tienda = "50283";
                 ws_clientedniruc.Cons_ClienteSoapClient opc_tda = new ws_clientedniruc.Cons_ClienteSoapClient();
                 Boolean btn_habilita = opc_tda.ws_validatdabgwb(_tienda);
 
@@ -552,9 +576,218 @@ namespace Bata
                 
             }
         }
+        private static System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
+            return returnImage;
+        }
+        private static string[] caracteres =
+       {
+        "§","°",
+        " ","á",
+        "‚","é",
+        "¡","í",
+        "¢","ó",
+        "£","ú",
+        "µ","Á",
+        " ","É",
+        "Ö","Í",
+        "à","Ó",
+        "é","Ú",
+        "¥","Ñ",
+        "¤","ñ",
+    };
+        private static string ReemplazarCaracteresEspeciales(string origen)
+        {
+            string destino = "";
+            List<string> listCaracteres = new List<string>();
+            for (int i = 0; i < origen.Length; i++)
+            {
+                listCaracteres.Add(origen[i].ToString());
+            }
+
+            for (int i = 0; i < listCaracteres.Count; i++)
+            {
+                for (int j = 0; j < caracteres.Length; j = j + 2)
+                {
+                    if (listCaracteres[i] == caracteres[j])
+                    {
+                        listCaracteres[i] = listCaracteres[i].Replace(listCaracteres[i], caracteres[j + 1]);
+                        j = caracteres.Length + 1;
+                    }
+                }
+            }
+
+            for (int i = 0; i < listCaracteres.Count; i++)
+            {
+                destino = destino + listCaracteres[i];
+            }
+
+            return destino;
+        }
         private void btncliente_Click(object sender, RoutedEventArgs e)
-        {            
-            
+        {
+
+            //#region<IMPRIMIR TICKETS>
+           
+            //Ticket ticket = new Ticket();
+
+            //string file = @"D:\INTERFA\CARVAJAL1\IN\Boletas\QR\B1438123.txt";
+            //StreamReader sr = new StreamReader(@file, Encoding.Default);
+
+            //string linea;
+            //string line;
+            //int counter = 0;
+            //while ((line = sr.ReadLine()) != null)
+            //{
+            //    string str = line.PadLeft(40, ' ');
+            //    str = line.PadRight(40, ' ');
+
+            //    ticket.AddHeaderLine(str);
+            //    //System.Console.WriteLine(line);
+            //    counter++;
+            //}
+
+            ////ticket.AddHeaderLine("                    Bata         ");
+            ////ticket.AddHeaderLine("EXPEDIDO EN:");
+            ////ticket.AddHeaderLine("CALLE CONOCIDA");
+            ////ticket.AddHeaderLine("PUEBLA, PUEBLA");
+            ////ticket.AddHeaderLine("RFC: CSI-020226-MV4");
+
+            ////byte[] im = System.IO.File.ReadAllBytes(@"D:\qrprueba.png");
+
+            ////Image Imagen = byteArrayToImage(im);
+
+            ////Por ejemplo
+
+            ////ticket.AddSubHeaderLine("Ticket # 1");
+            ////ticket.AddSubHeaderLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+
+            ////ticket.AddItem("Cantidad", "Nombre producto", "Total");
+
+            ////ticket.AddTotal("SUBTOTAL", "12.00");
+            ////ticket.AddTotal("IVA", "0");
+            ////ticket.AddTotal("TOTAL", "24");
+            ////ticket.AddTotal("", "");
+            ////ticket.AddTotal("RECIBIDO", "0");
+            ////ticket.AddTotal("CAMBIO", "0");
+            ////ticket.AddTotal("", "");
+
+            ////ticket.AddFooterLine("VUELVA PRONTO");
+            //byte[] im = System.IO.File.ReadAllBytes(@"D:\qrprueba.png");
+            ////byteArrayToImage(im);
+
+            //System.Drawing.Image im1 = byteArrayToImage(im);
+            //Bitmap bmp = new Bitmap(im1, new System.Drawing.Size(100, 100));
+
+            ////Bitmap bmp = new Bitmap(im, new System.Drawing.Size(100, 100));
+            //ticket.HeaderImage = bmp;
+            //ticket.PrintTicket("Ticket");
+
+            ////string file = @"D:\INTERFA\CARVAJAL1\IN\Boletas\QR\B1438123.txt";
+            ////StreamReader sr = new StreamReader(@file, Encoding.Default);
+            ////string _formato_doc = sr.ReadToEnd();
+            ////sr.Close();
+
+            ////string[] str = Regex.Split(_formato_doc, "<td>");
+
+            ////string str_cab = str[0].Trim();
+            ////str_cab = ReemplazarCaracteresEspeciales(str_cab.TrimEnd());
+            ////str_cab = str_cab + "\n";
+            ////str_cab = str_cab + "\n";
+            ////str_cab = str_cab.Replace("\n", "");
+
+            ////string[] str_div = str_cab.Split('\r');
+
+            ////Ticket ticket = new Ticket();
+            ////string linea;
+            ////string line;
+            ////int counter = 0;
+            ////while ((line = sr.ReadLine()) != null)
+            ////{
+            ////    string str = line.PadLeft(40, ' ');
+            ////    str = line.PadRight(40, ' ');
+
+            ////    ticket.AddHeaderLine(str);
+            ////    //System.Console.WriteLine(line);
+            ////    counter++;
+            ////}
+
+            ////foreach (string str1 in sr.ReadLine())
+            ////{
+            ////    ticket.AddHeaderLine(str1);
+            ////}
+
+            ////ticket.AddItem(str_cab);
+            ////ticket.AddSubHeaderLine(str_cab);
+            ////ticket.PrintTicket("Ticket");
+
+            ////List<string> valor = new List<string>();
+            ////valor.Add("A4F32A98EF993BC");
+            ////valor.Add("F367E8BB72C3000");
+            ////valor.Add("FD09947C418D0AC");
+            ////valor.Add("CDE088389A5D104");
+            ////valor.Add("C957F07FEA65008");
+            ////valor.Add("75624C893F95204");
+            ////valor.Add("80FF4F1D13930E3");
+            ////valor.Add("BC88F9C7B36C650");
+            ////valor.Add("99C655EDE68BC80"); 
+            ////valor.Add("64C8A0EEDE59E84");
+            ////valor.Add("882821BA87B33F6");
+
+            ////Ticket ticket = new Ticket();
+
+            ////ticket.AddHeaderLine("ChafiTienda");
+            ////ticket.AddHeaderLine("EXPEDIDO EN:");
+            ////ticket.AddHeaderLine("CALLE CONOCIDA");
+            ////ticket.AddHeaderLine("PUEBLA, PUEBLA");
+            ////ticket.AddHeaderLine("RFC: CSI-020226-MV4");
+
+          
+
+            ////System.Drawing.Image Imagen = byteArrayToImage(im);
+
+            ////Por ejemplo
+
+            ////ticket.AddSubHeaderLine("Ticket # 1");
+            ////ticket.AddSubHeaderLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
+
+            ////ticket.AddItem("Cantidad", "Nombre producto", "Total");
+
+            ////ticket.AddTotal("SUBTOTAL", "12.00");
+            ////ticket.AddTotal("IVA", "0");
+            ////ticket.AddTotal("TOTAL", "24");
+            ////ticket.AddTotal("", "");
+            ////ticket.AddTotal("RECIBIDO", "0");
+            ////ticket.AddTotal("CAMBIO", "0");
+            ////ticket.AddTotal("", "");
+
+            ////ticket.AddFooterLine("VUELVA PRONTO");
+            ////ticket.HeaderImage = Imagen;
+            ////ticket.PrintTicket("Ticket");
+
+
+            ////foreach (string v in valor)
+            ////{
+            ////    Basico.Imprime_Bataclub(v.ToString());
+            ////}
+
+
+
+            ////CrearTicket tk = new CrearTicket();
+            ////BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
+            ////Codigo.IncludeLabel = true;
+            ////System.Drawing.Image im = Codigo.Encode(BarcodeLib.TYPE.CODE128, "020F92BB8B52853",System.Drawing.Color.Black, System.Drawing.Color.White, 400, 100);
+
+            //////im.Save(@"D:\DBF\FMC\imagen.jpg");
+
+            //////Bitmap bmp = new Bitmap(im, new System.Drawing.Size(100, 100));
+            ////tk.HeaderImage = im;
+            ////tk.PrintQR("AQ");
+            //return;
+            //#endregion
+
             if (!MainWindow._activo_form)
             {
                 //_verifica_version();
@@ -606,7 +839,8 @@ namespace Bata
                 string dni = dt.Rows[i]["DNI_Venta"].ToString();
                 Boolean _flujo = false;
                     Boolean nuevocliente = false;
-                    DataTable dtmetri = Clientes._consultacliente(dni,ref _flujo,ref nuevocliente);
+                    Boolean existe_cl_bata = false;
+                    DataTable dtmetri = Clientes._consultacliente(dni,ref _flujo,ref nuevocliente,ref existe_cl_bata);
 
                 if (dtmetri!=null)
                 {
@@ -679,6 +913,29 @@ namespace Bata
             // Response.Cookies["Usuario"].Value = "Invitado";
             //Response.Cookies["contraseña"].Value = "Invitado123";
             //Response.Redirect("../ArticuloStock/Index");
+        }
+
+        private void btnstk_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                //string strCambiante = DateTime.Now.ToString("M/d/yyyy");
+                //string nombre = strCambiante + "_" + Environment.MachineName;
+                string strparam = string.Empty;
+                byte[] encryted = System.Text.Encoding.Unicode.GetBytes(_tienda);
+                strparam = Convert.ToBase64String(encryted);
+
+                ProcessStartInfo startInfo = new ProcessStartInfo("http://posperu.bgr.pe/BataWeb/LoginIntermedio/Login?variable=" + strparam);
+                Process.Start(startInfo);
+
+
+               
+            }
+            catch
+            {
+
+            }
         }
     }
 }

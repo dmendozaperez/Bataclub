@@ -130,7 +130,7 @@ namespace Bata.Clases
             return dt;
         }
 
-        public static DataTable _consultacliente(string _dniruc,ref Boolean flujo_metri,ref Boolean nuevo_bataclub)
+        public static DataTable _consultacliente(string _dniruc,ref Boolean flujo_metri,ref Boolean nuevo_bataclub,ref Boolean no_existe_cl_bata)
         {
             DataTable dt = null;
             
@@ -164,6 +164,12 @@ namespace Bata.Clases
                     string _fc_dcli =(datosCliente.Localidad!=null)? datosCliente.Localidad.ToString():"";
                     dt.Rows.Add(_fc_ruc, _fc_nomb.ToUpper(), _fc_apep.ToUpper(), _fc_apem, _fc_tele, _fc_mail, _fc_dcli.ToUpper(), "");
                     flujo_metri = datosCliente.RegistradoEnFlujosBataClub;
+
+
+                    #region<ESTA REGION ES PARA VALIDAR SI EXISTE EL CLIENTE>
+                    ws_clientedniruc.Cons_ClienteSoapClient valida_cliente = new Cons_ClienteSoapClient();
+                    no_existe_cl_bata = valida_cliente.ws_bc_cl_not_exists(_dniruc);
+                    #endregion
 
                 }
                 else

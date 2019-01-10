@@ -23,6 +23,43 @@ namespace WS_ConsCliente
     public class Cons_Cliente : System.Web.Services.WebService
     {
 
+
+        [WebMethod]
+        public Boolean ws_bc_cl_not_exists(string dni)
+        {
+            Boolean _noexiste = false;
+            Basico valida_not = null;
+            try
+            {
+                valida_not=new Basico();
+                _noexiste=valida_not.get_valida_bc_cl_not_exists(dni);
+
+            }
+            catch (Exception)
+            {
+
+                _noexiste=false;
+            }
+            return _noexiste;
+        }
+
+        [WebMethod]
+        public List<BataClubFormato> ws_formato_bataclub()
+        {
+            List<BataClubFormato> lista = null;
+            Basico get_format = null;
+            try
+            {
+                get_format = new Basico();
+                lista = get_format.get_formato_bataclub();
+            }
+            catch (Exception)
+            {
+                lista = null;
+            }
+            return lista;
+        }
+
         [WebMethod]
         public Boolean ws_validatdabgwb(string _cod_tda)
         {

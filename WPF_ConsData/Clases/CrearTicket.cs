@@ -428,12 +428,12 @@ namespace Epson_Ticket
                 return;
             try
             {                
-                this.gfx.DrawImage(this.headerImage, new Point((int)22, (int)this.YPosition()));
+                this.gfx.DrawImage(this.headerImage, new Point(-15, (int)this.YPosition()));
 
                 float f = this.YPosition();
              
                 this.imageHeight = 28;
-                this.imageWith = 100;
+                this.imageWith = 200;
             }
             catch (Exception ex)
             {

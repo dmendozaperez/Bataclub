@@ -23,5 +23,7 @@ namespace WS_ConsCliente.Clases
         public string correlativo { get; set; }
         public string serie { get; set; }
         public string tipcup { get; set; }
+
+        public string tda_gen_cup { get; set; }
     }
 }

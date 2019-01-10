@@ -45,6 +45,8 @@ namespace WPF_ConsData
 
         private Boolean nuevo_bataclub = false;
 
+        private Boolean no_existe_cl_bata = false;
+
         private PromBata getpromo_bata = null;
 
         string _tienda { set; get; }
@@ -473,7 +475,7 @@ namespace WPF_ConsData
             pn1.Visibility = Visibility.Collapsed;
             lblmsg.Visibility = Visibility.Collapsed;
 
-            if (/*nuevo_bataclub &&*/ txtdni.Text.Length>0)
+            if (nuevo_bataclub && txtdni.Text.Length>0)
             {
                 /*promocion automatica solo para registros nuevos*/
                 //getpromo_bata = new PromBata();
@@ -481,6 +483,18 @@ namespace WPF_ConsData
                 PromBata ejebata = new PromBata();
 
                 getpromo_bata = ejebata.lista("01",_tienda,txtdni.Text.Trim());
+
+            }
+
+            if (no_existe_cl_bata)
+            {
+                /*promocion automatica solo para registros nuevos*/
+                //getpromo_bata = new PromBata();
+
+                PromBata ejebata = new PromBata();
+
+                getpromo_bata = ejebata.lista("02", _tienda, txtdni.Text.Trim());
+
 
             }
 
@@ -539,6 +553,7 @@ namespace WPF_ConsData
         //}
         private void limpiar_objec()
         {
+            no_existe_cl_bata = false;
             nuevo_bataclub = false;
             btnactualizar.Content = "Actualizar";
             getpromo_bata = null;
@@ -803,8 +818,9 @@ namespace WPF_ConsData
                 //{
                 if (_dni_ruc.Length == 8)
                 {
+                    no_existe_cl_bata = false;
                     //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
-                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub);
+                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
                     dtdni = dt;
                     if (dt != null)
                     {
@@ -852,8 +868,8 @@ namespace WPF_ConsData
                 }
                 else
                 {
-
-                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub);
+                    //Boolean existe_cl_bata = false;
+                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
                     dtruc = dt1;
                     if (dt1 != null)
                     {
@@ -1030,8 +1046,9 @@ namespace WPF_ConsData
                 //{
                     if (_dni_ruc.Length == 8)
                     {
+                        
                         //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
-                        DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub);
+                        DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
                         
                         if (dt != null)
                         {
@@ -1078,7 +1095,7 @@ namespace WPF_ConsData
                     else
                     {
 
-                        DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub);
+                        DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
                         if (dt1 != null)
                         {
                             if (dt1.Rows.Count > 0)
@@ -1504,6 +1521,7 @@ namespace WPF_ConsData
                             set_cupon.fechafin = getpromo_bata.fecha_fin;
                             set_cupon.paresmax = getpromo_bata.max_par;
                             set_cupon.grupo = getpromo_bata.nom_prom;
+                            set_cupon.tda_gen_cup = _tienda;
 
                             PromBata prom = new PromBata();
                             CuponGenerado get_cupon = prom.getcupon_generado(set_cupon);
@@ -1526,7 +1544,10 @@ namespace WPF_ConsData
                                 }
                                 else
                                 {
-                                    _crear__actualiza_dbf(get_cupon);
+                                    /*IMPRIMIR CUPON*/
+                                    Basico.Imprime_Bataclub(get_cupon.barra); 
+                                    /**/
+                                    //_crear__actualiza_dbf(get_cupon);
                                      Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
                                     if (_principal != null)
                                     {

@@ -16,6 +16,14 @@ namespace Bata.ws_clientedniruc {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.consultabata.com/", ConfigurationName="ws_clientedniruc.Cons_ClienteSoap")]
     public interface Cons_ClienteSoap {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_bc_cl_not_exists", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ws_bc_cl_not_exists(string dni);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_formato_bataclub", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Bata.ws_clientedniruc.BataClubFormato[] ws_formato_bataclub();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_validatdabgwb", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         bool ws_validatdabgwb(string _cod_tda);
@@ -110,52 +118,38 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
-    public partial class Barra : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class BataClubFormato : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string barraField;
+        private string idField;
         
-        private string promocionField;
-        
-        private System.DateTime fechacField;
+        private string textoField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string barra {
+        public string id {
             get {
-                return this.barraField;
+                return this.idField;
             }
             set {
-                this.barraField = value;
-                this.RaisePropertyChanged("barra");
+                this.idField = value;
+                this.RaisePropertyChanged("id");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string promocion {
+        public string texto {
             get {
-                return this.promocionField;
+                return this.textoField;
             }
             set {
-                this.promocionField = value;
-                this.RaisePropertyChanged("promocion");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public System.DateTime fechac {
-            get {
-                return this.fechacField;
-            }
-            set {
-                this.fechacField = value;
-                this.RaisePropertyChanged("fechac");
+                this.textoField = value;
+                this.RaisePropertyChanged("texto");
             }
         }
         
@@ -170,7 +164,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -216,7 +210,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -304,7 +298,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -406,7 +400,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -442,6 +436,8 @@ namespace Bata.ws_clientedniruc {
         private string serieField;
         
         private string tipcupField;
+        
+        private string tda_gen_cupField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -623,6 +619,78 @@ namespace Bata.ws_clientedniruc {
             }
         }
         
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        public string tda_gen_cup {
+            get {
+                return this.tda_gen_cupField;
+            }
+            set {
+                this.tda_gen_cupField = value;
+                this.RaisePropertyChanged("tda_gen_cup");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
+    public partial class Barra : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string barraField;
+        
+        private string promocionField;
+        
+        private System.DateTime fechacField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string barra {
+            get {
+                return this.barraField;
+            }
+            set {
+                this.barraField = value;
+                this.RaisePropertyChanged("barra");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string promocion {
+            get {
+                return this.promocionField;
+            }
+            set {
+                this.promocionField = value;
+                this.RaisePropertyChanged("promocion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public System.DateTime fechac {
+            get {
+                return this.fechacField;
+            }
+            set {
+                this.fechacField = value;
+                this.RaisePropertyChanged("fechac");
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -658,6 +726,14 @@ namespace Bata.ws_clientedniruc {
         
         public Cons_ClienteSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool ws_bc_cl_not_exists(string dni) {
+            return base.Channel.ws_bc_cl_not_exists(dni);
+        }
+        
+        public Bata.ws_clientedniruc.BataClubFormato[] ws_formato_bataclub() {
+            return base.Channel.ws_formato_bataclub();
         }
         
         public bool ws_validatdabgwb(string _cod_tda) {

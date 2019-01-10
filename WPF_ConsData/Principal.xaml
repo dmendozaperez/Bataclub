@@ -6,7 +6,7 @@
         mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         WindowStartupLocation="CenterScreen" 
         Title="Bata-Desktop Aplication > POS.NET"
-        Height="500" Width="679" Icon="pin_bata.ico" ResizeMode="CanMinimize" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
+        Height="513" Width="679" Icon="pin_bata.ico" ResizeMode="CanMinimize" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
     <Window.Resources>
         <DataTemplate x:Key="DataTemplate1">
             <Grid TextBlock.Foreground="White">
@@ -87,7 +87,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name="btncliente" Background="Transparent" Margin="5,-20,0,0" Grid.Row="0" Grid.Column="0" Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btncliente_Click">
+            <Button Name="btncliente" Background="Transparent" Margin="5,-50,0,0" Grid.Row="0" Grid.Column="0" Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btncliente_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -110,7 +110,7 @@
             </Button>
             <TextBlock Text="BATACLUB" Visibility="Hidden"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,-105,10,0" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>
-            <Button Name="btnvales" Background="Transparent" Grid.Row="0" Margin="15,-20,0,0" Grid.Column="1" Height="86" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="btnvales_Click">
+            <Button Name="btnvales" Background="Transparent" Grid.Row="0" Margin="15,-50,0,0" Grid.Column="1" Height="60" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Click="btnvales_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -130,7 +130,7 @@
                                           HorizontalAlignment="Right"  Width="168" Margin="0,5,10,0" Grid.Column="1"/>
                 </Grid>
             </Button>
-            <Button Name="btnvalesc"  Grid.Column="2" Background="Transparent" Margin="0,-20,0,0"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnvalesc_Click">
+            <Button Name="btnvalesc"  Grid.Column="2" Background="Transparent" Margin="0,-50,0,0"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnvalesc_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -166,7 +166,7 @@
             </Grid.ColumnDefinitions>
             <!--<TextBlock Text="DESCUENTO EMPLEADO"  VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
                                           HorizontalAlignment="Right" Margin="0,1,218,162" Grid.Column="0" Width="168" Foreground="#FFFB0D0D" FontFamily="Tekton Pro Cond"/>-->
-            <Button Name="btndesemp" Grid.Column="0" Background="Transparent" Margin="5,-50,0,70"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
+            <Button Name="btndesemp" Grid.Column="0" Background="Transparent" Margin="5,-140,0,70"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btndesemp_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -188,7 +188,7 @@
                 </Grid>
             </Button>
 
-            <Button Name="btnsoport" Grid.Column="2" Background="Transparent" Margin="0,-50,0,70"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnsoport_Click" >
+            <Button Name="btnsoport" Grid.Column="2" Background="Transparent" Margin="0,-140,0,70"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnsoport_Click" >
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -212,7 +212,7 @@
 
             <!--> Se agregó opción Gift Card, para el proceso de activación / Henry Morales / 16-04-18 <-->
             <Button Width="100" Height="50" Visibility="Hidden" Margin="340,0,0,0" Click="Button_Click"></Button>
-            <Button x:Name="btnGiftCard" Background="Transparent" Grid.Row="0" Margin="15,-50,0,70"  Height="86" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btngiftcard_Click" Grid.Column="1">
+            <Button x:Name="btnGiftCard" Background="Transparent" Grid.Row="0" Margin="15,-140,0,70"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btngiftcard_Click" Grid.Column="1">
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -233,14 +233,35 @@
 
                 </Grid>
             </Button>
+            <Button x:Name="btnstk" Background="Transparent" Grid.Row="0" Margin="15,0,0,70"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"  Grid.Column="1" Click="btnstk_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" ><Run Text="Consulta Web"/></TextBlock>
+                            <TextBlock><Run Text="Consulta Web"/></TextBlock>
+                            <TextBlock><Run Text="No lo presione hasta estar seguro de abrir la ventana."/></TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="59*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,0" Source="Design/Images/001_search.png" Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="CONSULTA WEB" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                        HorizontalAlignment="Right" Margin="0,5,10,0" Grid.Column="1" Width="168"/>
+
+                </Grid>
+            </Button>
         </Grid>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="3" Margin="0,0,0,99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="258*"/>
                 <ColumnDefinition Width="415*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Content="COMUNICATE CON SOPORTE DE TURNO PARA HORARIOS FUERA DE OFICINA"  Foreground="Black" FontWeight="Bold" Margin="0,-100,0,0"  Grid.ColumnSpan="2" />
-            <DataGrid Name="dg1"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"  Width="651"   IsReadOnly="True"   AutoGenerateColumns="False" Margin="6,-74,0,114" Grid.ColumnSpan="2" FontFamily="Tahoma" >
+            <GroupBox Content="COMUNICATE CON SOPORTE DE TURNO PARA HORARIOS FUERA DE OFICINA"  Foreground="Black" FontWeight="Bold" Margin="0,-90,0,108"  Grid.ColumnSpan="2" />
+            <DataGrid Name="dg1"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"  Width="651"   IsReadOnly="True"   AutoGenerateColumns="False" Margin="6,-68,0,10" Grid.ColumnSpan="2" FontFamily="Tahoma" >
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#FFDA6856"/>

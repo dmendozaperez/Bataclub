@@ -52,8 +52,8 @@ namespace Win_Des_BataClub.ws_bataclub {
         System.Threading.Tasks.Task<Win_Des_BataClub.ws_bataclub.data_genera_cupon> ws_genera_cuponAsync(string _nombres, string _email, string _dni, int _pordes, int _dias, int _pares_max, string _tipo_des);
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -66,7 +66,7 @@ namespace Win_Des_BataClub.ws_bataclub {
         
         private System.Xml.XmlAttribute[] anyAttrField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string user_password {
             get {
@@ -78,7 +78,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string user_name {
             get {
@@ -90,7 +90,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlAnyAttributeAttribute()]
         public System.Xml.XmlAttribute[] AnyAttr {
             get {
@@ -112,8 +112,8 @@ namespace Win_Des_BataClub.ws_bataclub {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -126,7 +126,7 @@ namespace Win_Des_BataClub.ws_bataclub {
         
         private string cod_barraField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public int cod_error {
             get {
@@ -138,7 +138,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string des_error {
             get {
@@ -150,7 +150,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string cod_barra {
             get {
@@ -172,8 +172,8 @@ namespace Win_Des_BataClub.ws_bataclub {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -182,7 +182,7 @@ namespace Win_Des_BataClub.ws_bataclub {
         
         private ListaCliente[] listaField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
         public ListaCliente[] Lista {
             get {
@@ -204,8 +204,8 @@ namespace Win_Des_BataClub.ws_bataclub {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -224,7 +224,7 @@ namespace Win_Des_BataClub.ws_bataclub {
         
         private string errorField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string dni {
             get {
@@ -236,7 +236,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string nombre {
             get {
@@ -248,7 +248,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string apellidos {
             get {
@@ -260,7 +260,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
         public string email {
             get {
@@ -272,7 +272,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string barra {
             get {
@@ -284,7 +284,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=5)]
         public string error {
             get {
@@ -306,8 +306,8 @@ namespace Win_Des_BataClub.ws_bataclub {
         }
     }
     
-    /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -318,7 +318,7 @@ namespace Win_Des_BataClub.ws_bataclub {
         
         private string des_errorField;
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public int cod_error {
             get {
@@ -330,7 +330,7 @@ namespace Win_Des_BataClub.ws_bataclub {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string des_error {
             get {

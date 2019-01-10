@@ -7,8 +7,8 @@ namespace www.bataclubvales.com.Bll
 {
     public class Conexion
     {
-        //static string strconexion = ConfigurationManager.ConnectionStrings["MyConexionSql"].ConnectionString;
-        static string strconexion = "Server=10.10.10.208;Database=BdBataClub;User ID=sa;Password=Bata2013;Trusted_Connection=False;";
+        static string strconexion = Encripta.encryption.RijndaelDecryptString(ConfigurationManager.ConnectionStrings["SQL_PE"].ConnectionString);
+        //static string strconexion = "Server=posperu.bgr.pe;Database=BDBATACLUB;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;";
         public static string myconexion()
         {
             return strconexion;

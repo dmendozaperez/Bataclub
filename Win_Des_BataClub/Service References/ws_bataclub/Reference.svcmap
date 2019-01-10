@@ -22,8 +22,8 @@
     <MetadataSource Address="http://www.bgr.pe/ws_bataclub/ws_bataclub.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ws_bataclub1.disco" MetadataType="Disco" ID="ea489076-1499-4290-b4b6-fe113cfc21a4" SourceId="1" SourceUrl="http://www.bgr.pe/ws_bataclub/ws_bataclub.asmx?disco" />
-    <MetadataFile FileName="ws_bataclub1.wsdl" MetadataType="Wsdl" ID="4783d2d0-6113-42dc-a42f-ccd5a0348036" SourceId="1" SourceUrl="http://www.bgr.pe/ws_bataclub/ws_bataclub.asmx?wsdl" />
+    <MetadataFile FileName="ws_bataclub1.disco" MetadataType="Disco" ID="78f40db1-ece8-4a71-ad58-7116fedf75ca" SourceId="1" SourceUrl="http://www.bgr.pe/ws_bataclub/ws_bataclub.asmx?disco" />
+    <MetadataFile FileName="ws_bataclub1.wsdl" MetadataType="Wsdl" ID="0832451e-1e6e-48ab-894b-e606b442b809" SourceId="1" SourceUrl="http://www.bgr.pe/ws_bataclub/ws_bataclub.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

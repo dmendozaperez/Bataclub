@@ -66,6 +66,7 @@ namespace Bata.Clases
                 list_cupon_str.paresmax = setgenerado.paresmax;
                 list_cupon_str.grupo = setgenerado.grupo;
                 list_cupon_str.barra = setgenerado.barra;
+                list_cupon_str.tda_gen_cup = setgenerado.tda_gen_cup;
 
                 genera_cupon = new ws_clientedniruc.Cons_ClienteSoapClient();
 
@@ -119,5 +120,6 @@ namespace Bata.Clases
         public string correlativo { get; set; }
         public string serie { get; set; }
         public string tipcup { get; set; }
+        public string tda_gen_cup { get; set; }
     }
 }
