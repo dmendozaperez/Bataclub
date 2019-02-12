@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>\\posperu.bgr.pe\wwwroot\Aplicacion_Windows\</PublishUrl>
+    <PublishUrl>\\172.28.7.9\inetpub\wwwroot\Aplicacion_Windows\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>234</ApplicationRevision>
+    <ApplicationRevision>235</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -139,11 +139,19 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MarcacionAsistencia.xaml.cs">
+      <DependentUpon>MarcacionAsistencia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Principal.xaml.cs">
       <DependentUpon>Principal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Promocion.xaml.cs">
       <DependentUpon>Promocion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BataTransaction\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\ServiceMetricard\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -195,6 +203,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MarcacionAsistencia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Principal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,6 +248,25 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\BataTransaction\Bata.BataTransaction.Fvdespc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransaction\Bata.BataTransaction.Impresion_QR.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransaction\Bata.BataTransaction.Paq_Get.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransaction\Bata.BataTransaction.Resultado_Tda_Ecu.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransaction\Bata.BataTransaction.Ruta_Update_File.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransaction\Bata.BataTransaction.Xml_Get.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BataTransaction\bata_transaccion.wsdl" />
     <None Include="Service References\ServiceMetricard\Bata.ServiceMetricard.Cliente.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -368,6 +399,7 @@
     <Resource Include="Usuarios.ico" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BataTransaction\" />
     <WCFMetadataStorage Include="Service References\ServiceMetricard\" />
     <WCFMetadataStorage Include="Service References\ws_clientedniruc\" />
   </ItemGroup>
@@ -419,6 +451,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ws_clientedniruc\Cons_Cliente.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataTransaction\bata_transaccion.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataTransaction\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataTransaction\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BataTransaction\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\Images\clock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -919,14 +919,37 @@ namespace Bata
         {
             try
             {
-
+                //_tienda = "50210";
                 //string strCambiante = DateTime.Now.ToString("M/d/yyyy");
                 //string nombre = strCambiante + "_" + Environment.MachineName;
                 string strparam = string.Empty;
-                byte[] encryted = System.Text.Encoding.Unicode.GetBytes(_tienda);
-                strparam = Convert.ToBase64String(encryted);
+                byte[] encryted = null;
+                #region<REGION PARA LAS TDAS XSTORE>
 
+                //_tienda = "50210";
+
+                if (_tienda==null || _tienda.Length==0)
+                {
+                    string strCambiante = DateTime.Now.ToString("M/d/yyyy");
+                    string nombre = strCambiante + "_" + Environment.MachineName;
+                    //string nombre = strCambiante + "_" + "TIENDA-140-1";
+                    //string strparam = string.Empty;
+                    encryted = System.Text.Encoding.Unicode.GetBytes(nombre);
+                    strparam = Convert.ToBase64String(encryted);
+                }
+                #endregion
+                else
+                { 
+                   // _tienda = "50290";
+                    encryted = System.Text.Encoding.Unicode.GetBytes(_tienda);
+                    strparam = Convert.ToBase64String(encryted);
+                }
                 ProcessStartInfo startInfo = new ProcessStartInfo("http://posperu.bgr.pe/BataWeb/LoginIntermedio/Login?variable=" + strparam);
+
+                //ProcessStartInfo startInfo = new ProcessStartInfo("http://localhost:53228/LoginIntermedio/Login?variable=" + strparam);
+
+                //ProcessStartInfo startInfo = new ProcessStartInfo("http://localhost/bataweb/LoginIntermedio/Login?variable=" + strparam);
+
                 Process.Start(startInfo);
 
 
@@ -935,6 +958,18 @@ namespace Bata
             catch
             {
 
+            }
+        }
+
+        private void btnMarcacion_Click(object sender, RoutedEventArgs e)
+        {
+            if (!MarcacionAsistencia._activo_form)
+            {
+                //_verifica_version();
+                MarcacionAsistencia frm = new MarcacionAsistencia();
+                frm.Show();
+                //this.Close();
+                MarcacionAsistencia._activo_form = true;
             }
         }
     }

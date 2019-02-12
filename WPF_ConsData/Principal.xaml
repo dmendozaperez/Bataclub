@@ -254,6 +254,29 @@
 
                 </Grid>
             </Button>
+            <!--> CQUINTO 29/01/2018: Se agrego boton Marcacion Asistencia, para la marcacion de asistencia de Supervisores <-->
+            <Button x:Name="btnMarcacion" Background="Transparent" Grid.Row="0" Margin="5,0,0,70"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"  Grid.Column="0" Click="btnMarcacion_Click" >
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" TextAlignment="Left" ><Run Text="Marcacion Horario"/></TextBlock>
+                            <TextBlock><Run Text="Marcacion Horario"/></TextBlock>
+                            <TextBlock><Run Text="No lo presione hasta estar seguro de abrir la ventana."/></TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Grid Width="210" Margin="-40,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="30,0,0,0" Source="Design/Images/clock.png" Width="Auto" HorizontalAlignment="Stretch" Grid.ColumnSpan="1" Height="Auto" VerticalAlignment="Stretch"/>
+                    <TextBlock Text="MARCAR ASISTENCIA" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"
+                        HorizontalAlignment="Right" Margin="-5,5,0,0" Grid.Column="1"  Grid.ColumnSpan="1"/>
+
+                </Grid>
+            </Button>
+
         </Grid>
         <Grid Grid.Row="3" Margin="0,0,0,99">
             <Grid.ColumnDefinitions>
