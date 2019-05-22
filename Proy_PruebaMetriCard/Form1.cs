@@ -66,5 +66,14 @@ namespace Proy_PruebaMetriCard
             }
 
         }
+
+        private void btnenviometri_Click(object sender, EventArgs e)
+        {
+            Int32 existe = 0;Int32 no_existe = 0;
+            Cursor.Current = Cursors.WaitCursor;
+            Basico_Metricard.BasicoMetri._envio_cliente_metri(ref existe,ref no_existe);
+            MessageBox.Show("ok se envio existe cliente==>" + existe.ToString() + " no existe cliente==>" + no_existe.ToString()  , "aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Cursor.Current = Cursors.Default;
+        }
     }
 }

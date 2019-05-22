@@ -293,27 +293,48 @@ namespace WS_ConsCliente
                 dt.Columns.Add("apepat", typeof(string));
                 dt.Columns.Add("apemat", typeof(string));
                 dt.Columns.Add("estado", typeof(Int32));
-                string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
-                string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";
 
-                _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                myInfo.GetInfo(_dni, _codigo_captcha);
-
-                if (myInfo.Nombres == null)
+                WsSunat.validateLogin conexion_ws = new WsSunat.validateLogin();
+                conexion_ws.Username = "BataPeru";
+                conexion_ws.Password = "Bata2018**.";
+                WsSunat.Sunat_Reniec_PESoapClient ws_data = new WsSunat.Sunat_Reniec_PESoapClient();
+                var data = ws_data.ws_persona_reniec(conexion_ws, _dni);
+                string nombres = "";string ape_pat = "";string ape_mat = "";
+                if (data!=null)
                 {
-                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                    myInfo.GetInfo(_dni, _codigo_captcha);
+                    if (data.Nombres.Trim().Length>0)
+                    {
+                        myInfo.estado_reniec = 231;
+                        nombres = data.Nombres;
+                        ape_pat = data.ApePat;
+                        ape_mat = data.ApeMat;
+                    }
                 }
 
-                if (myInfo.Nombres == null)
-                {
-                    _codigo_captcha = myInfo.UseTesseract(_tessdata);
-                    myInfo.GetInfo(_dni, _codigo_captcha);
-                }
+
+                //string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
+                //string _tessdata = Path.GetDirectoryName(filePath) + "\\tessdata";
+
+                //_codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //myInfo.GetInfo(_dni, _codigo_captcha);
+                //myInfo.estado_reniec
+
+                //if (myInfo.Nombres == null)
+                //{
+                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //    myInfo.GetInfo(_dni, _codigo_captcha);
+                //}
+
+                //if (myInfo.Nombres == null)
+                //{
+                //    _codigo_captcha = myInfo.UseTesseract(_tessdata);
+                //    myInfo.GetInfo(_dni, _codigo_captcha);
+                //}
                 //if (myInfo.Nombres == "Error!")
                 //{
                 //myInfo.GetInfo(_dni, myInfo.UseTesseract(_tessdata));
-                dt.Rows.Add(_dni, myInfo.Nombres,myInfo.ApePaterno,myInfo.ApeMaterno, myInfo.estado_reniec);
+                //dt.Rows.Add(_dni, myInfo.Nombres,myInfo.ApePaterno,myInfo.ApeMaterno, myInfo.estado_reniec);
+                dt.Rows.Add(_dni, nombres,ape_pat,ape_mat, myInfo.estado_reniec);
 
 
                 //_estado = myInfo.es;

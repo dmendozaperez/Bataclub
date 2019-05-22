@@ -630,7 +630,7 @@ namespace Bata
         {
 
             //#region<IMPRIMIR TICKETS>
-           
+
             //Ticket ticket = new Ticket();
 
             //string file = @"D:\INTERFA\CARVAJAL1\IN\Boletas\QR\B1438123.txt";
@@ -723,8 +723,8 @@ namespace Bata
             ////ticket.AddSubHeaderLine(str_cab);
             ////ticket.PrintTicket("Ticket");
 
-            ////List<string> valor = new List<string>();
-            ////valor.Add("A4F32A98EF993BC");
+            //List<string> valor = new List<string>();
+            //valor.Add("A4F32A98EF993BC");
             ////valor.Add("F367E8BB72C3000");
             ////valor.Add("FD09947C418D0AC");
             ////valor.Add("CDE088389A5D104");
@@ -744,7 +744,7 @@ namespace Bata
             ////ticket.AddHeaderLine("PUEBLA, PUEBLA");
             ////ticket.AddHeaderLine("RFC: CSI-020226-MV4");
 
-          
+
 
             ////System.Drawing.Image Imagen = byteArrayToImage(im);
 
@@ -768,13 +768,13 @@ namespace Bata
             ////ticket.PrintTicket("Ticket");
 
 
-            ////foreach (string v in valor)
-            ////{
-            ////    Basico.Imprime_Bataclub(v.ToString());
-            ////}
+            //foreach (string v in valor)
+            //{
+            //    Basico.Imprime_Bataclub(v.ToString());
+            //}
 
 
-
+            //return;
             ////CrearTicket tk = new CrearTicket();
             ////BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
             ////Codigo.IncludeLabel = true;

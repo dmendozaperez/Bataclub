@@ -283,7 +283,7 @@
                 <ColumnDefinition Width="258*"/>
                 <ColumnDefinition Width="415*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Content="COMUNICATE CON SOPORTE DE TURNO PARA HORARIOS FUERA DE OFICINA"  Foreground="Black" FontWeight="Bold" Margin="0,-90,0,108"  Grid.ColumnSpan="2" />
+            <GroupBox Content="COMUNICATE CON SOPORTE {BATA - PERU}"  Foreground="Black" FontWeight="Bold" Margin="0,-90,0,108"  Grid.ColumnSpan="2" />
             <DataGrid Name="dg1"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"  Width="651"   IsReadOnly="True"   AutoGenerateColumns="False" Margin="6,-68,0,10" Grid.ColumnSpan="2" FontFamily="Tahoma" >
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -297,7 +297,7 @@
                     <DropShadowEffect/>
                 </DataGrid.Effect>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding nombre}"  ClipboardContentBinding="{x:Null}" Header="NOMBRES">
+                    <DataGridTextColumn Binding="{Binding nombre}"  ClipboardContentBinding="{x:Null}" Header="">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="FontWeight" Value="Bold"></Setter>
@@ -306,7 +306,7 @@
                         </DataGridTextColumn.ElementStyle>
                        
                     </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding celular}"  ClipboardContentBinding="{x:Null}" Header="CELULAR">
+                    <DataGridTextColumn Binding="{Binding celular}"  ClipboardContentBinding="{x:Null}" Header="">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="FontWeight" Value="Bold"></Setter>

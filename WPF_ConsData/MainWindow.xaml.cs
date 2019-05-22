@@ -475,7 +475,7 @@ namespace WPF_ConsData
             pn1.Visibility = Visibility.Collapsed;
             lblmsg.Visibility = Visibility.Collapsed;
 
-            if (nuevo_bataclub && txtdni.Text.Length>0)
+            if (/*nuevo_bataclub &&*/ txtdni.Text.Length>0)
             {
                 /*promocion automatica solo para registros nuevos*/
                 //getpromo_bata = new PromBata();

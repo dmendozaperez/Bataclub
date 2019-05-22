@@ -55,6 +55,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceMetricard\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServicioConversion\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +76,22 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceMetricard\Basico_Metricard.ServiceMetricard.Cliente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceMetricard\Basico_Metricard.ServiceMetricard.RespuestaServicio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceMetricard\ServicioCliente.wsdl" />
+    <None Include="Service References\ServiceMetricard\ServicioCliente.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceMetricard\ServicioCliente1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceMetricard\ServicioCliente2.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServicioConversion\Basico_Metricard.ServicioConversion.Campana.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -99,6 +120,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceMetricard\" />
     <WCFMetadataStorage Include="Service References\ServicioConversion\" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +134,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServicioConversion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceMetricard\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceMetricard\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceMetricard\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

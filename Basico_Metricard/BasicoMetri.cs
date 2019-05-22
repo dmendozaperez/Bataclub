@@ -13,7 +13,7 @@ namespace Basico_Metricard
     
     public class BasicoMetri
     {
-        private static string conexion= "Server=POSPERUBD.BGR.PE;Database=BDPOS;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;";
+        private static string conexion= "Server=172.28.7.14;Database=BDPOS;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;";
 
 
         private static Boolean _update_cupon_metricard(string _barra,ref string _error)
@@ -549,6 +549,61 @@ namespace Basico_Metricard
             
         }
 
+        public static void _envio_cliente_metri(ref Int32 existe,ref Int32 no_existe)
+        {
+            string sqlquery = "select d.dniruc,nombres=isnull(d.nombres,''),apelpat=isnull(d.apelpat,''),apemat=isnull(apemat,''),email=isnull(email,''),telefono=isnull(telefono,''),codtda=isnull(codtda,'') from cupones c " +
+                              "inner join clientepromocion d on d.dniruc = c.cup_dni_ori  where c.cup_promid in ('0071')";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(conexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.Text;
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+
+                            foreach(DataRow fila in dt.Rows)
+                            {
+                                string _ruc = fila["dniruc"].ToString();string _nombres = fila["nombres"].ToString();
+                                string _apepat = fila["apelpat"].ToString();string _apemat = fila["apemat"].ToString();
+                                string _email = fila["email"].ToString();string _telefono= fila["telefono"].ToString();
+                                string _tda = fila["codtda"].ToString();
+                                ServiceMetricard.ServicioClienteClient cliente_metri = new ServiceMetricard.ServicioClienteClient();
+
+                                bool existe_cliente = cliente_metri.EsCliente_DniString(_ruc);
+                                //insertando en la ws de metricard
+                                ServiceMetricard.Cliente update_cliente_metri = new ServiceMetricard.Cliente { DNI_String = _ruc, Nombres = _nombres, Apellidos = _apepat, ApellidoMaterno = _apemat, eMail = _email, Celular = _telefono, CodigoTienda = _tda };
+                                //si no existe entonces insertamos
+
+                                if (!existe_cliente)
+                                {
+                                    no_existe += 1;
+                                    var respuesta1 = cliente_metri.IngresarDatosNuevoCliente(update_cliente_metri);                                    
+                                    if (respuesta1.OperacionExitosa)
+                                    {
+                                            
+                                    }
+                                }
+                                else
+                                {
+                                    existe += 1;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+
+                
+            }
+        }
 
         public static void _ejecuta_proceso_enviaVenta_metricard(ref String _error)
         {
