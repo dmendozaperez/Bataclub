@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bata.ecommerce.pe/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bata.ecommerce.pe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bata.ecommerce.pe/">
+      <s:element name="ws_registrar_Cliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Ent_Cliente_BataClub" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ent_Cliente_BataClub">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="canal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellidoPater" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellidoMater" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="genero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fecNac" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ubigeo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tienda" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="registrado" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="miembro_bataclub" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="existe_cliente" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion_error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ws_registrar_ClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_registrar_ClienteResult" type="tns:Ent_MsgTransac" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ent_MsgTransac">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateAcceso" type="tns:ValidateAcceso" />
+      <s:complexType name="ValidateAcceso">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="ws_consultar_Cliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_consultar_ClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_consultar_ClienteResult" type="tns:Ent_Cliente_BataClub" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_genera_barra">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="barra" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_genera_barraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_genera_barraResult" type="tns:Ent_MsgTransacBarra" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ent_MsgTransacBarra">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="uri" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Ent_Cliente_BataClub" nillable="true" type="tns:Ent_Cliente_BataClub" />
+      <s:element name="Ent_MsgTransacBarra" nillable="true" type="tns:Ent_MsgTransacBarra" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ws_registrar_ClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_registrar_Cliente" />
+  </wsdl:message>
+  <wsdl:message name="ws_registrar_ClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_registrar_ClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_registrar_ClienteValidateAcceso">
+    <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
+  </wsdl:message>
+  <wsdl:message name="ws_consultar_ClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_consultar_Cliente" />
+  </wsdl:message>
+  <wsdl:message name="ws_consultar_ClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_consultar_ClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_consultar_ClienteValidateAcceso">
+    <wsdl:part name="ValidateAcceso" element="tns:ValidateAcceso" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_barraSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_genera_barra" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_barraSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_genera_barraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_consultar_ClienteHttpGetIn">
+    <wsdl:part name="dni" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_consultar_ClienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:Ent_Cliente_BataClub" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_barraHttpGetIn">
+    <wsdl:part name="user" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="barra" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_barraHttpGetOut">
+    <wsdl:part name="Body" element="tns:Ent_MsgTransacBarra" />
+  </wsdl:message>
+  <wsdl:message name="ws_consultar_ClienteHttpPostIn">
+    <wsdl:part name="dni" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_consultar_ClienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:Ent_Cliente_BataClub" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_barraHttpPostIn">
+    <wsdl:part name="user" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="barra" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_genera_barraHttpPostOut">
+    <wsdl:part name="Body" element="tns:Ent_MsgTransacBarra" />
+  </wsdl:message>
+  <wsdl:portType name="BataEcommerceSoap">
+    <wsdl:operation name="ws_registrar_Cliente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Enviar los datos del cliente</wsdl:documentation>
+      <wsdl:input message="tns:ws_registrar_ClienteSoapIn" />
+      <wsdl:output message="tns:ws_registrar_ClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_consultar_Cliente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Consultar los datos del cliente</wsdl:documentation>
+      <wsdl:input message="tns:ws_consultar_ClienteSoapIn" />
+      <wsdl:output message="tns:ws_consultar_ClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_barra">
+      <wsdl:input message="tns:ws_genera_barraSoapIn" />
+      <wsdl:output message="tns:ws_genera_barraSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BataEcommerceHttpGet">
+    <wsdl:operation name="ws_consultar_Cliente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Consultar los datos del cliente</wsdl:documentation>
+      <wsdl:input message="tns:ws_consultar_ClienteHttpGetIn" />
+      <wsdl:output message="tns:ws_consultar_ClienteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_barra">
+      <wsdl:input message="tns:ws_genera_barraHttpGetIn" />
+      <wsdl:output message="tns:ws_genera_barraHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BataEcommerceHttpPost">
+    <wsdl:operation name="ws_consultar_Cliente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Consultar los datos del cliente</wsdl:documentation>
+      <wsdl:input message="tns:ws_consultar_ClienteHttpPostIn" />
+      <wsdl:output message="tns:ws_consultar_ClienteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_barra">
+      <wsdl:input message="tns:ws_genera_barraHttpPostIn" />
+      <wsdl:output message="tns:ws_genera_barraHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BataEcommerceSoap" type="tns:BataEcommerceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_registrar_Cliente">
+      <soap:operation soapAction="http://bata.ecommerce.pe/ws_registrar_Cliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_registrar_ClienteValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_consultar_Cliente">
+      <soap:operation soapAction="http://bata.ecommerce.pe/ws_consultar_Cliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ws_consultar_ClienteValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_barra">
+      <soap:operation soapAction="http://bata.ecommerce.pe/ws_genera_barra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BataEcommerceSoap12" type="tns:BataEcommerceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ws_registrar_Cliente">
+      <soap12:operation soapAction="http://bata.ecommerce.pe/ws_registrar_Cliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_registrar_ClienteValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_consultar_Cliente">
+      <soap12:operation soapAction="http://bata.ecommerce.pe/ws_consultar_Cliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ws_consultar_ClienteValidateAcceso" part="ValidateAcceso" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_barra">
+      <soap12:operation soapAction="http://bata.ecommerce.pe/ws_genera_barra" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BataEcommerceHttpGet" type="tns:BataEcommerceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ws_consultar_Cliente">
+      <http:operation location="/ws_consultar_Cliente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_barra">
+      <http:operation location="/ws_genera_barra" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BataEcommerceHttpPost" type="tns:BataEcommerceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ws_consultar_Cliente">
+      <http:operation location="/ws_consultar_Cliente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_genera_barra">
+      <http:operation location="/ws_genera_barra" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BataEcommerce">
+    <wsdl:port name="BataEcommerceSoap" binding="tns:BataEcommerceSoap">
+      <soap:address location="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BataEcommerceSoap12" binding="tns:BataEcommerceSoap12">
+      <soap12:address location="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BataEcommerceHttpGet" binding="tns:BataEcommerceHttpGet">
+      <http:address location="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BataEcommerceHttpPost" binding="tns:BataEcommerceHttpPost">
+      <http:address location="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -50,7 +50,8 @@ namespace Win_Des_BataClub
             var array = new ws_bataclub.ListaItems();
             array.Lista = list_client.ToArray();
 
-            var list_client_return=generacupon.ws_genera_list_barra(array, 20, 10, 1, "Promocion_Red_Nuevos_201811");
+            
+            var list_client_return=generacupon.ws_genera_list_barra(array,20, 6, 1, "Cumpleaños_Mayo_2019");
 
             string _msg = "";
               //array.Lis

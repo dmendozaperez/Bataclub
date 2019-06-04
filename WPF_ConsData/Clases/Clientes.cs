@@ -145,37 +145,77 @@ namespace Bata.Clases
                 dt.Columns.Add("fc_tele", typeof(string));
                 dt.Columns.Add("fc_mail", typeof(string));
                 dt.Columns.Add("fc_dcli", typeof(string));
-                dt.Columns.Add("fc_cubi", typeof(string));                                
+                dt.Columns.Add("fc_cubi", typeof(string));
 
-                //consultando en la ws de metricard
-                ServiceMetricard.ServicioClienteClient cliente_metri = new ServiceMetricard.ServicioClienteClient();
+                #region<Modificando web service bata club bata>
+                Ws_BataClub.BataEcommerceSoapClient cliente_bataclub = new Ws_BataClub.BataEcommerceSoapClient();
+                Ws_BataClub.ValidateAcceso header = new Ws_BataClub.ValidateAcceso();
+                header.Username = "EA646294-11F4-4836-8C6E-F5D9B5F681FC";
+                header.Password = "DB959DFE-E49A-4F9B-8CD5-97364EE31FBA";
+                var datacliente = cliente_bataclub.ws_consultar_Cliente(header, _dniruc);
 
-                bool existe_cliente = cliente_metri.EsCliente_DniString(_dniruc);
-                if (existe_cliente)
+                if (datacliente!=null)
                 {
-                    var datosCliente = cliente_metri.ObtenerDatosCliente_DniString(_dniruc);
-                    string _fc_ruc = datosCliente.DNI_String.ToString();
-                    string _fc_nomb = (datosCliente.Nombres!=null)?datosCliente.Nombres.ToString():"";
-                    string _fc_apep = (datosCliente.Apellidos!=null)? datosCliente.Apellidos.ToString():"";
-                    string _fc_apem = (datosCliente.ApellidoMaterno != null) ? datosCliente.ApellidoMaterno.ToString() : "";
-                    string _fc_tele = (datosCliente.Celular != null)?datosCliente.Celular: "";
-                    if (_fc_tele.Length == 0) _fc_tele = (datosCliente.Fono != null) ? datosCliente.Fono.ToString() : "";
-                    string _fc_mail = (datosCliente.eMail!=null)? datosCliente.eMail.ToString():"";
-                    string _fc_dcli =(datosCliente.Localidad!=null)? datosCliente.Localidad.ToString():"";
-                    dt.Rows.Add(_fc_ruc, _fc_nomb.ToUpper(), _fc_apep.ToUpper(), _fc_apem, _fc_tele, _fc_mail, _fc_dcli.ToUpper(), "");
-                    flujo_metri = datosCliente.RegistradoEnFlujosBataClub;
+                    if (datacliente.existe_cliente)
+                    {
+                        //var datosCliente = cliente_metri.ObtenerDatosCliente_DniString(_dniruc);
+                        string _fc_ruc =  datacliente.dni.ToString();//  datosCliente.DNI_String.ToString();
+                        string _fc_nomb = datacliente.primerNombre;//(datosCliente.Nombres != null) ? datosCliente.Nombres.ToString() : "";
+                        string _fc_apep = datacliente.apellidoPater;// (datosCliente.Apellidos != null) ? datosCliente.Apellidos.ToString() : "";
+                        string _fc_apem = datacliente.apellidoMater;// (datosCliente.ApellidoMaterno != null) ? datosCliente.ApellidoMaterno.ToString() : "";
+                        string _fc_tele = datacliente.telefono;// (datosCliente.Celular != null) ? datosCliente.Celular : "";
+                        //if (_fc_tele.Length == 0) _fc_tele = (datosCliente.Fono != null) ? datosCliente.Fono.ToString() : "";
+                        string _fc_mail = datacliente.correo;// (datosCliente.eMail != null) ? datosCliente.eMail.ToString() : "";
+                        string _fc_dcli ="" ;//(datosCliente.Localidad != null) ? datosCliente.Localidad.ToString() : "";
+                        dt.Rows.Add(_fc_ruc, _fc_nomb.ToUpper(), _fc_apep.ToUpper(), _fc_apem, _fc_tele, _fc_mail, _fc_dcli.ToUpper(), "");
+                        flujo_metri = datacliente.miembro_bataclub;// datosCliente.RegistradoEnFlujosBataClub;
 
 
-                    #region<ESTA REGION ES PARA VALIDAR SI EXISTE EL CLIENTE>
-                    ws_clientedniruc.Cons_ClienteSoapClient valida_cliente = new Cons_ClienteSoapClient();
-                    no_existe_cl_bata = valida_cliente.ws_bc_cl_not_exists(_dniruc);
-                    #endregion
-
+                        #region<ESTA REGION ES PARA VALIDAR SI EXISTE EL CLIENTE>
+                        ws_clientedniruc.Cons_ClienteSoapClient valida_cliente = new Cons_ClienteSoapClient();
+                        no_existe_cl_bata = valida_cliente.ws_bc_cl_not_exists(_dniruc);
+                        #endregion
+                    }
+                    else
+                    {
+                        nuevo_bataclub = true;
+                    }
                 }
                 else
                 {
                     nuevo_bataclub = true;
                 }
+
+                #endregion
+                    //consultando en la ws de metricard
+                //    ServiceMetricard.ServicioClienteClient cliente_metri = new ServiceMetricard.ServicioClienteClient();
+
+                //bool existe_cliente = cliente_metri.EsCliente_DniString(_dniruc);
+                //if (existe_cliente)
+                //{
+                //    var datosCliente = cliente_metri.ObtenerDatosCliente_DniString(_dniruc);
+                //    string _fc_ruc = datosCliente.DNI_String.ToString();
+                //    string _fc_nomb = (datosCliente.Nombres!=null)?datosCliente.Nombres.ToString():"";
+                //    string _fc_apep = (datosCliente.Apellidos!=null)? datosCliente.Apellidos.ToString():"";
+                //    string _fc_apem = (datosCliente.ApellidoMaterno != null) ? datosCliente.ApellidoMaterno.ToString() : "";
+                //    string _fc_tele = (datosCliente.Celular != null)?datosCliente.Celular: "";
+                //    if (_fc_tele.Length == 0) _fc_tele = (datosCliente.Fono != null) ? datosCliente.Fono.ToString() : "";
+                //    string _fc_mail = (datosCliente.eMail!=null)? datosCliente.eMail.ToString():"";
+                //    string _fc_dcli =(datosCliente.Localidad!=null)? datosCliente.Localidad.ToString():"";
+                //    dt.Rows.Add(_fc_ruc, _fc_nomb.ToUpper(), _fc_apep.ToUpper(), _fc_apem, _fc_tele, _fc_mail, _fc_dcli.ToUpper(), "");
+                //    flujo_metri = datosCliente.RegistradoEnFlujosBataClub;
+
+
+                //    #region<ESTA REGION ES PARA VALIDAR SI EXISTE EL CLIENTE>
+                //    ws_clientedniruc.Cons_ClienteSoapClient valida_cliente = new Cons_ClienteSoapClient();
+                //    no_existe_cl_bata = valida_cliente.ws_bc_cl_not_exists(_dniruc);
+                //    #endregion
+
+                //}
+                //else
+                //{
+                //    nuevo_bataclub = true;
+                //}
 
 
                 //ws_clientedniruc.Cons_ClienteSoapClient ws_cliente=new ws_clientedniruc.Cons_ClienteSoapClient();
@@ -246,50 +286,128 @@ namespace Bata.Clases
                 _valida = ws_cliente.ws_update_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tda);
                 //return "";
                 //consultando en la ws de metricard
-                ServiceMetricard.ServicioClienteClient cliente_metri = new ServiceMetricard.ServicioClienteClient();
+
+                #region<REGION BATACLUB BATA>
+                Ws_BataClub.BataEcommerceSoapClient cliente_bataclub = new Ws_BataClub.BataEcommerceSoapClient();
+                Ws_BataClub.ValidateAcceso header = new Ws_BataClub.ValidateAcceso();
+                header.Username = "EA646294-11F4-4836-8C6E-F5D9B5F681FC";
+                header.Password = "DB959DFE-E49A-4F9B-8CD5-97364EE31FBA";
+
+                Ws_BataClub.Ent_Cliente_BataClub cliente = new Ws_BataClub.Ent_Cliente_BataClub();
+                cliente.canal = "03";
+                cliente.dni = _ruc;
+                cliente.primerNombre = _nombres;
+                cliente.apellidoPater = _apepat;
+                cliente.apellidoMater = _apemat;
+                cliente.correo = _email;
+                cliente.telefono = _telefono;
+                cliente.tienda = _tda;
                 
-                bool existe_cliente = cliente_metri.EsCliente_DniString(_ruc);
-                //insertando en la ws de metricard
-                ServiceMetricard.Cliente update_cliente_metri = new ServiceMetricard.Cliente { DNI_String = _ruc, Nombres = _nombres, Apellidos = _apepat,ApellidoMaterno=_apemat, eMail = _email, Celular = _telefono,CodigoTienda= _tda };
-                //si no existe entonces insertamos
-                
-                if (!existe_cliente)
+
+                var existe_cl = cliente_bataclub.ws_consultar_Cliente(header, _ruc);
+
+                var registra_cl = cliente_bataclub.ws_registrar_Cliente(header, cliente);
+
+
+                //if (!existe_cl.existe_cliente)
+                //{
+                //    if (_email.Length != 0)
+                //    {
+                //        var respuesta3 = cliente_metri.EnviarCorreoBienvenidaCliente_DniString(_ruc);
+                //        _correo_envio = "1";
+                //    }
+                //    else
+                //    {
+                //        _telef_envia = "1";
+                //    }
+                //}
+
+
+
+                if (registra_cl!=null)
                 {
-                    var respuesta1 = cliente_metri.IngresarDatosNuevoCliente(update_cliente_metri);
-                    if (!respuesta1.OperacionExitosa) _valida = respuesta1.Mensaje;//"Error de MetriCard";
-                    if (respuesta1.OperacionExitosa)
+                    /*se inserto correctamente*/
+                    if (registra_cl.codigo=="0")
                     {
-                        if (_email.Length!=0)
-                        { 
-                           var respuesta3 = cliente_metri.EnviarCorreoBienvenidaCliente_DniString(_ruc);
-                            _correo_envio = "1";
+                        if (!existe_cl.existe_cliente)
+                        {
+                            if (_email.Length != 0)
+                            {                             
+                                _correo_envio = "1";
+                            }
+                            else
+                            {
+                                _telef_envia = "1";
+                            }
                         }
                         else
                         {
-                            _telef_envia = "1";
+                            if (_email.Length != 0)
+                            {                                
+                                _correo_envio = "0";
+                            }
+                            else
+                            {
+                                _telef_envia = "0";
+                            }
                         }
-
                     }
+                    else
+                    {
+                        _valida = registra_cl.descripcion;
+                    }                    
+
                 }
                 else
                 {
-                    var respuesta2 = cliente_metri.ActualizarDatosCliente(update_cliente_metri);
-                    if (!respuesta2.OperacionExitosa) _valida = "Error de MetriCard";
-
-                    if (respuesta2.OperacionExitosa)
-                    {
-                        if (_email.Length != 0)
-                        {
-                            var respuesta3 = cliente_metri.EnviarCorreoBienvenidaCliente_DniString(_ruc);
-                            _correo_envio = "0";
-                        }
-                        else
-                        {
-                            _telef_envia = "0";
-                        }
-                    }
-
+                    _valida = "error de conexion de web service bata";
                 }
+                #endregion
+
+                //ServiceMetricard.ServicioClienteClient cliente_metri = new ServiceMetricard.ServicioClienteClient();
+                
+                //bool existe_cliente = cliente_metri.EsCliente_DniString(_ruc);
+                //insertando en la ws de metricard
+                //ServiceMetricard.Cliente update_cliente_metri = new ServiceMetricard.Cliente { DNI_String = _ruc, Nombres = _nombres, Apellidos = _apepat,ApellidoMaterno=_apemat, eMail = _email, Celular = _telefono,CodigoTienda= _tda };
+                //si no existe entonces insertamos
+                
+                //if (!existe_cliente)
+                //{
+                //    var respuesta1 = cliente_metri.IngresarDatosNuevoCliente(update_cliente_metri);
+                //    if (!respuesta1.OperacionExitosa) _valida = respuesta1.Mensaje;//"Error de MetriCard";
+                //    if (respuesta1.OperacionExitosa)
+                //    {
+                //        if (_email.Length!=0)
+                //        { 
+                //           var respuesta3 = cliente_metri.EnviarCorreoBienvenidaCliente_DniString(_ruc);
+                //            _correo_envio = "1";
+                //        }
+                //        else
+                //        {
+                //            _telef_envia = "1";
+                //        }
+
+                //    }
+                //}
+                //else
+                //{
+                //    var respuesta2 = cliente_metri.ActualizarDatosCliente(update_cliente_metri);
+                //    if (!respuesta2.OperacionExitosa) _valida = "Error de MetriCard";
+
+                //    if (respuesta2.OperacionExitosa)
+                //    {
+                //        if (_email.Length != 0)
+                //        {
+                //            var respuesta3 = cliente_metri.EnviarCorreoBienvenidaCliente_DniString(_ruc);
+                //            _correo_envio = "0";
+                //        }
+                //        else
+                //        {
+                //            _telef_envia = "0";
+                //        }
+                //    }
+
+                //}
 
 
                 //ServiceMetricard.ServicioClienteClient 

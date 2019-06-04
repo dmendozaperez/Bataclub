@@ -604,5 +604,9 @@ namespace WS_ConsCliente
         }
         #endregion
 
+        //#region<REGION DE BATACLUB>
+        //[WebMethod]
+
+        //#endregion
     }
 }

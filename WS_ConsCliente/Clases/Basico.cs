@@ -676,7 +676,21 @@ namespace WS_ConsCliente
         #endregion
 
         #region<REGION DE CONEXIONES DATA BATALUB>
+        //public static Cliente_Bataclub get_clienteB(string dni)
+        //{
+        //    string sqlquery = "USP_BATACLUB_EXISTE_DNI";
 
+        //    try
+        //    {
+
+        //    }
+        //    catch
+        //    {
+
+                
+        //    }
+
+        //}
         public static string _update_apltda(string _cod_tda,string _nom_apl,string _ver_apl)
         {
             String sqlquery = "USP_Update_AplTda";

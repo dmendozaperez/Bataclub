@@ -132,6 +132,7 @@
     <Compile Include="Clases\Barra.cs" />
     <Compile Include="Clases\Basico.cs" />
     <Compile Include="Clases\BataClubFormato.cs" />
+    <Compile Include="Clases\Cliente_Bataclub.cs" />
     <Compile Include="Clases\ConexionData.cs" />
     <Compile Include="Clases\Data_Sunat.cs" />
     <Compile Include="Clases\GeneraCuponBata.cs" />

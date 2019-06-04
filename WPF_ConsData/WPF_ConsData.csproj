@@ -158,6 +158,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Ws_BataClub\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ws_clientedniruc\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -283,6 +288,16 @@
     <None Include="Service References\ServiceMetricard\ServicioCliente2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Ws_BataClub\Bata.Ws_BataClub.Ent_Cliente_BataClub.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Ws_BataClub\Bata.Ws_BataClub.Ent_MsgTransac.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Ws_BataClub\Bata.Ws_BataClub.Ent_MsgTransacBarra.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Ws_BataClub\BataEcommerce.wsdl" />
     <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.Barra.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -401,6 +416,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BataTransaction\" />
     <WCFMetadataStorage Include="Service References\ServiceMetricard\" />
+    <WCFMetadataStorage Include="Service References\Ws_BataClub\" />
     <WCFMetadataStorage Include="Service References\ws_clientedniruc\" />
   </ItemGroup>
   <ItemGroup>
@@ -469,6 +485,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Design\Images\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ws_BataClub\BataEcommerce.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ws_BataClub\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ws_BataClub\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ws_BataClub\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
