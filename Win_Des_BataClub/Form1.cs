@@ -51,7 +51,7 @@ namespace Win_Des_BataClub
             array.Lista = list_client.ToArray();
 
             
-            var list_client_return=generacupon.ws_genera_list_barra(array,20, 6, 1, "Cumpleaños_Mayo_2019");
+            var list_client_return=generacupon.ws_genera_list_barra(array,20, 3, 1, "Dscto 20% Calzado de Hombre Jun-2019");
 
             string _msg = "";
               //array.Lis

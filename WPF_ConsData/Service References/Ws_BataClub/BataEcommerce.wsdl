@@ -22,6 +22,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="fecNac" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ubigeo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ubigeo_distrito" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="tienda" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="registrado" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="miembro_bataclub" type="s:boolean" />

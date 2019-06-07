@@ -1544,11 +1544,11 @@ namespace WPF_ConsData
                                 }
                                 else
                                 {
-                                    /*IMPRIMIR CUPON*/
-                                    Basico.Imprime_Bataclub(get_cupon.barra); 
-                                    /**/
-                                    //_crear__actualiza_dbf(get_cupon);
-                                     Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
+                                /*IMPRIMIR CUPON*/
+                                //Basico.Imprime_Bataclub(get_cupon.barra); 
+                                /**/
+                                _crear__actualiza_dbf(get_cupon);
+                                Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
                                     if (_principal != null)
                                     {
                                         _principal.WindowState = WindowState.Minimized;

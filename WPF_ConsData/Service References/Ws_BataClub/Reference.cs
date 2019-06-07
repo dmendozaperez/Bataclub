@@ -226,6 +226,8 @@ namespace Bata.Ws_BataClub {
         
         private string ubigeoField;
         
+        private string ubigeo_distritoField;
+        
         private string tiendaField;
         
         private bool registradoField;
@@ -370,6 +372,18 @@ namespace Bata.Ws_BataClub {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string ubigeo_distrito {
+            get {
+                return this.ubigeo_distritoField;
+            }
+            set {
+                this.ubigeo_distritoField = value;
+                this.RaisePropertyChanged("ubigeo_distrito");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
         public string tienda {
             get {
                 return this.tiendaField;
@@ -381,7 +395,7 @@ namespace Bata.Ws_BataClub {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
         public bool registrado {
             get {
                 return this.registradoField;
@@ -393,7 +407,7 @@ namespace Bata.Ws_BataClub {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
         public bool miembro_bataclub {
             get {
                 return this.miembro_bataclubField;
@@ -405,7 +419,7 @@ namespace Bata.Ws_BataClub {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
         public bool existe_cliente {
             get {
                 return this.existe_clienteField;
@@ -417,7 +431,7 @@ namespace Bata.Ws_BataClub {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        [System.Xml.Serialization.XmlElementAttribute(Order=16)]
         public string descripcion_error {
             get {
                 return this.descripcion_errorField;
