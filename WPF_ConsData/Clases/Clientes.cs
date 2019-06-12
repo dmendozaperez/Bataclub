@@ -152,7 +152,13 @@ namespace Bata.Clases
                 Ws_BataClub.ValidateAcceso header = new Ws_BataClub.ValidateAcceso();
                 header.Username = "EA646294-11F4-4836-8C6E-F5D9B5F681FC";
                 header.Password = "DB959DFE-E49A-4F9B-8CD5-97364EE31FBA";
-                var datacliente = cliente_bataclub.ws_consultar_Cliente(header, _dniruc);
+
+                Ws_BataClub.Cliente_Parameter_Bataclub parameter = new Ws_BataClub.Cliente_Parameter_Bataclub();
+                parameter.dni = _dniruc;
+                parameter.dni_barra = "";
+                parameter.envia_correo = "0"/*QUE NO ENVIE CORREO*/;
+
+                var datacliente = cliente_bataclub.ws_consultar_Cliente(header, parameter);
 
                 if (datacliente!=null)
                 {
@@ -282,8 +288,8 @@ namespace Bata.Clases
             string _valida = "";           
             try
             {
-                ws_clientedniruc.Cons_ClienteSoapClient ws_cliente = new ws_clientedniruc.Cons_ClienteSoapClient();
-                _valida = ws_cliente.ws_update_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tda);
+                //ws_clientedniruc.Cons_ClienteSoapClient ws_cliente = new ws_clientedniruc.Cons_ClienteSoapClient();
+                //_valida = ws_cliente.ws_update_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tda);
                 //return "";
                 //consultando en la ws de metricard
 
@@ -302,9 +308,12 @@ namespace Bata.Clases
                 cliente.correo = _email;
                 cliente.telefono = _telefono;
                 cliente.tienda = _tda;
-                
 
-                var existe_cl = cliente_bataclub.ws_consultar_Cliente(header, _ruc);
+                Ws_BataClub.Cliente_Parameter_Bataclub parameter = new Ws_BataClub.Cliente_Parameter_Bataclub();
+                parameter.dni = _ruc;
+                parameter.dni_barra = "";
+
+                var existe_cl = cliente_bataclub.ws_consultar_Cliente(header, parameter);
 
                 var registra_cl = cliente_bataclub.ws_registrar_Cliente(header, cliente);
 

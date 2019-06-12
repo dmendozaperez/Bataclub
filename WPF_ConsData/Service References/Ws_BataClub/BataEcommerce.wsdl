@@ -54,10 +54,17 @@
       <s:element name="ws_consultar_Cliente">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="tns:Cliente_Parameter_Bataclub" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="Cliente_Parameter_Bataclub">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dni_barra" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="envia_correo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ws_consultar_ClienteResponse">
         <s:complexType>
           <s:sequence>
@@ -88,7 +95,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="uri" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Ent_Cliente_BataClub" nillable="true" type="tns:Ent_Cliente_BataClub" />
       <s:element name="Ent_MsgTransacBarra" nillable="true" type="tns:Ent_MsgTransacBarra" />
     </s:schema>
   </wsdl:types>
@@ -116,12 +122,6 @@
   <wsdl:message name="ws_genera_barraSoapOut">
     <wsdl:part name="parameters" element="tns:ws_genera_barraResponse" />
   </wsdl:message>
-  <wsdl:message name="ws_consultar_ClienteHttpGetIn">
-    <wsdl:part name="dni" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="ws_consultar_ClienteHttpGetOut">
-    <wsdl:part name="Body" element="tns:Ent_Cliente_BataClub" />
-  </wsdl:message>
   <wsdl:message name="ws_genera_barraHttpGetIn">
     <wsdl:part name="user" type="s:string" />
     <wsdl:part name="password" type="s:string" />
@@ -129,12 +129,6 @@
   </wsdl:message>
   <wsdl:message name="ws_genera_barraHttpGetOut">
     <wsdl:part name="Body" element="tns:Ent_MsgTransacBarra" />
-  </wsdl:message>
-  <wsdl:message name="ws_consultar_ClienteHttpPostIn">
-    <wsdl:part name="dni" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="ws_consultar_ClienteHttpPostOut">
-    <wsdl:part name="Body" element="tns:Ent_Cliente_BataClub" />
   </wsdl:message>
   <wsdl:message name="ws_genera_barraHttpPostIn">
     <wsdl:part name="user" type="s:string" />
@@ -161,22 +155,12 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="BataEcommerceHttpGet">
-    <wsdl:operation name="ws_consultar_Cliente">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Consultar los datos del cliente</wsdl:documentation>
-      <wsdl:input message="tns:ws_consultar_ClienteHttpGetIn" />
-      <wsdl:output message="tns:ws_consultar_ClienteHttpGetOut" />
-    </wsdl:operation>
     <wsdl:operation name="ws_genera_barra">
       <wsdl:input message="tns:ws_genera_barraHttpGetIn" />
       <wsdl:output message="tns:ws_genera_barraHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="BataEcommerceHttpPost">
-    <wsdl:operation name="ws_consultar_Cliente">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Consultar los datos del cliente</wsdl:documentation>
-      <wsdl:input message="tns:ws_consultar_ClienteHttpPostIn" />
-      <wsdl:output message="tns:ws_consultar_ClienteHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="ws_genera_barra">
       <wsdl:input message="tns:ws_genera_barraHttpPostIn" />
       <wsdl:output message="tns:ws_genera_barraHttpPostOut" />
@@ -248,15 +232,6 @@
   </wsdl:binding>
   <wsdl:binding name="BataEcommerceHttpGet" type="tns:BataEcommerceHttpGet">
     <http:binding verb="GET" />
-    <wsdl:operation name="ws_consultar_Cliente">
-      <http:operation location="/ws_consultar_Cliente" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ws_genera_barra">
       <http:operation location="/ws_genera_barra" />
       <wsdl:input>
@@ -269,15 +244,6 @@
   </wsdl:binding>
   <wsdl:binding name="BataEcommerceHttpPost" type="tns:BataEcommerceHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="ws_consultar_Cliente">
-      <http:operation location="/ws_consultar_Cliente" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ws_genera_barra">
       <http:operation location="/ws_genera_barra" />
       <wsdl:input>

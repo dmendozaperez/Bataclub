@@ -156,6 +156,66 @@ namespace Bata.Ws_BataClub {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bata.ecommerce.pe/")]
+    public partial class Cliente_Parameter_Bataclub : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string dniField;
+        
+        private string dni_barraField;
+        
+        private string envia_correoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string dni {
+            get {
+                return this.dniField;
+            }
+            set {
+                this.dniField = value;
+                this.RaisePropertyChanged("dni");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string dni_barra {
+            get {
+                return this.dni_barraField;
+            }
+            set {
+                this.dni_barraField = value;
+                this.RaisePropertyChanged("dni_barra");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string envia_correo {
+            get {
+                return this.envia_correoField;
+            }
+            set {
+                this.envia_correoField = value;
+                this.RaisePropertyChanged("envia_correo");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://bata.ecommerce.pe/")]
     public partial class Ent_MsgTransac : object, System.ComponentModel.INotifyPropertyChanged {
         
         private string codigoField;
@@ -500,12 +560,12 @@ namespace Bata.Ws_BataClub {
         public Bata.Ws_BataClub.ValidateAcceso ValidateAcceso;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://bata.ecommerce.pe/", Order=0)]
-        public string dni;
+        public Bata.Ws_BataClub.Cliente_Parameter_Bataclub dni;
         
         public ws_consultar_ClienteRequest() {
         }
         
-        public ws_consultar_ClienteRequest(Bata.Ws_BataClub.ValidateAcceso ValidateAcceso, string dni) {
+        public ws_consultar_ClienteRequest(Bata.Ws_BataClub.ValidateAcceso ValidateAcceso, Bata.Ws_BataClub.Cliente_Parameter_Bataclub dni) {
             this.ValidateAcceso = ValidateAcceso;
             this.dni = dni;
         }
@@ -573,7 +633,7 @@ namespace Bata.Ws_BataClub {
             return base.Channel.ws_consultar_Cliente(request);
         }
         
-        public Bata.Ws_BataClub.Ent_Cliente_BataClub ws_consultar_Cliente(Bata.Ws_BataClub.ValidateAcceso ValidateAcceso, string dni) {
+        public Bata.Ws_BataClub.Ent_Cliente_BataClub ws_consultar_Cliente(Bata.Ws_BataClub.ValidateAcceso ValidateAcceso, Bata.Ws_BataClub.Cliente_Parameter_Bataclub dni) {
             Bata.Ws_BataClub.ws_consultar_ClienteRequest inValue = new Bata.Ws_BataClub.ws_consultar_ClienteRequest();
             inValue.ValidateAcceso = ValidateAcceso;
             inValue.dni = dni;

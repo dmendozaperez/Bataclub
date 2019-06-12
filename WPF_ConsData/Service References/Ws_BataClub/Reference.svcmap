@@ -21,8 +21,8 @@
     <MetadataSource Address="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="BataEcommerce.wsdl" MetadataType="Wsdl" ID="67b82fc0-38e3-4801-aba6-94b2c61f6071" SourceId="1" SourceUrl="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx?wsdl" />
-    <MetadataFile FileName="BataEcommerce.disco" MetadataType="Disco" ID="b5096df2-b65e-47c4-b05f-ef4b9f99a341" SourceId="1" SourceUrl="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx?disco" />
+    <MetadataFile FileName="BataEcommerce.wsdl" MetadataType="Wsdl" ID="dd9e736a-d9e2-4296-b113-79286bae82ea" SourceId="1" SourceUrl="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx?wsdl" />
+    <MetadataFile FileName="BataEcommerce.disco" MetadataType="Disco" ID="a4c25e6a-a3f4-45fe-9c3e-aa9a6c08c334" SourceId="1" SourceUrl="http://posperu.bgr.pe/ws_Ec/BataEcommerce.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
