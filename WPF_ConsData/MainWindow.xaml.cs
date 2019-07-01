@@ -200,15 +200,39 @@ namespace WPF_ConsData
             {
                 _tienda = "50" + _tienda.ToString();
             }
-           
+
+            if (_tienda.Length==0 || _tienda==null)
+            {
+                #region<REGION PARA LAS TDAS XSTORE>
+
+                //_tienda = "50210";
+
+                //if (_tienda == null || _tienda.Length == 0)
+                //{
+                    //string strCambiante = DateTime.Now.ToString("M/d/yyyy");
+                    string nombre = Environment.MachineName;
+                  //  string nombre ="TIENDA-140-1";
+                    int _ini_tda = nombre.IndexOf('-', 0) + 1;
+                    int _fin_tda= nombre.IndexOf('-', _ini_tda +1);
+                    string _tienda = nombre.Substring(_ini_tda,3);
+                    _tienda = "50" + _tienda;
+
+                    //string strparam = string.Empty;
+                    //                   encryted = System.Text.Encoding.Unicode.GetBytes(nombre);
+                    //                 strparam = Convert.ToBase64String(encryted);
+                }
+                #endregion
+            
+            
+
 
             //System.Collections.IDictionary variablesEntorno = Environment.GetEnvironmentVariables();
             //foreach (System.Collections.DictionaryEntry de in variablesEntorno)
             //{
             //    Console.WriteLine(de.Key + ": " + de.Value);
 
-                //    MessageBox.Show(de.Key + ": " + de.Value);
-                //}
+            //    MessageBox.Show(de.Key + ": " + de.Value);
+            //}
         }
         private void _generar_pase()
         {
