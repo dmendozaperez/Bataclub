@@ -164,6 +164,8 @@ namespace Bata.Ws_BataClub {
         
         private string envia_correoField;
         
+        private string correo_updateField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string dni {
@@ -197,6 +199,18 @@ namespace Bata.Ws_BataClub {
             set {
                 this.envia_correoField = value;
                 this.RaisePropertyChanged("envia_correo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string correo_update {
+            get {
+                return this.correo_updateField;
+            }
+            set {
+                this.correo_updateField = value;
+                this.RaisePropertyChanged("correo_update");
             }
         }
         

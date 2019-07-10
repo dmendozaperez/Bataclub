@@ -63,6 +63,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="dni_barra" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="envia_correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo_update" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="ws_consultar_ClienteResponse">

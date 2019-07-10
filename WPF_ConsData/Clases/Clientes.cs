@@ -312,6 +312,7 @@ namespace Bata.Clases
                 Ws_BataClub.Cliente_Parameter_Bataclub parameter = new Ws_BataClub.Cliente_Parameter_Bataclub();
                 parameter.dni = _ruc;
                 parameter.dni_barra = "";
+                parameter.correo_update = _email;
 
                 var existe_cl = cliente_bataclub.ws_consultar_Cliente(header, parameter);
 

@@ -928,7 +928,9 @@ namespace Bata
 
                 //_tienda = "50210";
 
-                if (_tienda==null || _tienda.Length==0)
+                if (_tienda == null) _tienda = "";
+
+                if ( _tienda.Length==0)
                 {
                     string strCambiante = DateTime.Now.ToString("M/d/yyyy");
                     string nombre = strCambiante + "_" + Environment.MachineName;
