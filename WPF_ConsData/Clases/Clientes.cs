@@ -130,7 +130,8 @@ namespace Bata.Clases
             return dt;
         }
 
-        public static DataTable _consultacliente(string _dniruc,ref Boolean flujo_metri,ref Boolean nuevo_bataclub,ref Boolean no_existe_cl_bata)
+        public static DataTable _consultacliente(string _dniruc,ref Boolean flujo_metri,
+                                                 ref Boolean nuevo_bataclub,ref Boolean no_existe_cl_bata,ref string barra_cliente)
         {
             DataTable dt = null;
             
@@ -162,6 +163,7 @@ namespace Bata.Clases
 
                 if (datacliente!=null)
                 {
+                    barra_cliente = datacliente.barra_cliente;
                     if (datacliente.existe_cliente)
                     {
                         //var datosCliente = cliente_metri.ObtenerDatosCliente_DniString(_dniruc);
@@ -172,7 +174,7 @@ namespace Bata.Clases
                         string _fc_tele = datacliente.telefono;// (datosCliente.Celular != null) ? datosCliente.Celular : "";
                         //if (_fc_tele.Length == 0) _fc_tele = (datosCliente.Fono != null) ? datosCliente.Fono.ToString() : "";
                         string _fc_mail = datacliente.correo;// (datosCliente.eMail != null) ? datosCliente.eMail.ToString() : "";
-                        string _fc_dcli ="" ;//(datosCliente.Localidad != null) ? datosCliente.Localidad.ToString() : "";
+                        string _fc_dcli = datacliente.ubigeo_distrito;// "" ;//(datosCliente.Localidad != null) ? datosCliente.Localidad.ToString() : "";
                         dt.Rows.Add(_fc_ruc, _fc_nomb.ToUpper(), _fc_apep.ToUpper(), _fc_apem, _fc_tele, _fc_mail, _fc_dcli.ToUpper(), "");
                         flujo_metri = datacliente.miembro_bataclub;// datosCliente.RegistradoEnFlujosBataClub;
 

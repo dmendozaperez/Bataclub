@@ -312,6 +312,8 @@ namespace Bata.Ws_BataClub {
         
         private string descripcion_errorField;
         
+        private string barra_clienteField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public string canal {
@@ -513,6 +515,18 @@ namespace Bata.Ws_BataClub {
             set {
                 this.descripcion_errorField = value;
                 this.RaisePropertyChanged("descripcion_error");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=17)]
+        public string barra_cliente {
+            get {
+                return this.barra_clienteField;
+            }
+            set {
+                this.barra_clienteField = value;
+                this.RaisePropertyChanged("barra_cliente");
             }
         }
         

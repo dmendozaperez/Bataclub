@@ -634,7 +634,8 @@ namespace Bata
                 {
                     Boolean nuevobataclub = false;
                     Boolean existe_cl_bata = false;
-                    DataTable dt1 = Clientes._consultacliente(_dni_ruc, ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata);
+                    string barra_cliente = "";
+                    DataTable dt1 = Clientes._consultacliente(_dni_ruc, ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata,ref barra_cliente);
                     dtruc = dt1;
                     if (dt1 != null)
                     {

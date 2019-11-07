@@ -840,7 +840,8 @@ namespace Bata
                 Boolean _flujo = false;
                     Boolean nuevocliente = false;
                     Boolean existe_cl_bata = false;
-                    DataTable dtmetri = Clientes._consultacliente(dni,ref _flujo,ref nuevocliente,ref existe_cl_bata);
+                    string barra_cliente = "";
+                    DataTable dtmetri = Clientes._consultacliente(dni,ref _flujo,ref nuevocliente,ref existe_cl_bata,ref barra_cliente);
 
                 if (dtmetri!=null)
                 {

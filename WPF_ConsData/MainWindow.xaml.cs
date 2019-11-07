@@ -22,6 +22,8 @@ using System.Data.OleDb;
 using System.IO;
 using System.ComponentModel;
 using System.Threading;
+using System.Diagnostics;
+
 namespace WPF_ConsData
 {
     /// <summary>
@@ -195,6 +197,7 @@ namespace WPF_ConsData
 
             if (Environment.GetEnvironmentVariable("codtda")!=null)
             _tienda = Environment.GetEnvironmentVariable("codtda");
+          //  _tienda = null;
 
             if (_tienda!=null)
             {
@@ -217,8 +220,8 @@ namespace WPF_ConsData
                   //  string nombre ="TIENDA-140-1";
                     int _ini_tda = nombre.IndexOf('-', 0) + 1;
                     int _fin_tda= nombre.IndexOf('-', _ini_tda +1);
-                    string _tienda = nombre.Substring(_ini_tda,3);
-                    _tienda = "50" + _tienda;
+                    string _tienda_pc = nombre.Substring(_ini_tda,3);
+                    _tienda = "50" + _tienda_pc;
 
                     //string strparam = string.Empty;
                     //                   encryted = System.Text.Encoding.Unicode.GetBytes(nombre);
@@ -465,8 +468,12 @@ namespace WPF_ConsData
                     Mouse.OverrideCursor = null;
                     return;
             }
+                //MessageBox.Show(_tienda,
+                //      "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                //Mouse.OverrideCursor = null;
+                //return;
 
-            if (_dni_ruc.Length != 8 && _dni_ruc.Length != 11)
+                if (_dni_ruc.Length != 8 && _dni_ruc.Length != 11)
             {
                 MessageBox.Show("El numero DNI ó RUC es incorrecto",
                       "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -846,8 +853,9 @@ namespace WPF_ConsData
                 if (_dni_ruc.Length == 8)
                 {
                     no_existe_cl_bata = false;
+                    string barra_cliente = "";
                     //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
-                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
+                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata,ref barra_cliente);
                     dtdni = dt;
                     if (dt != null)
                     {
@@ -896,7 +904,8 @@ namespace WPF_ConsData
                 else
                 {
                     //Boolean existe_cl_bata = false;
-                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
+                    string barra_cliente = "";
+                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata,ref barra_cliente);
                     dtruc = dt1;
                     if (dt1 != null)
                     {
@@ -1073,9 +1082,9 @@ namespace WPF_ConsData
                 //{
                     if (_dni_ruc.Length == 8)
                     {
-                        
-                        //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
-                        DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
+                    string barra_cliente = "";
+                    //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
+                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata,ref barra_cliente);
                         
                         if (dt != null)
                         {
@@ -1121,8 +1130,8 @@ namespace WPF_ConsData
                     }
                     else
                     {
-
-                        DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata);
+                    string barra_cliente = "";
+                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevo_bataclub,ref no_existe_cl_bata,ref barra_cliente);
                         if (dt1 != null)
                         {
                             if (dt1.Rows.Count > 0)
@@ -1663,6 +1672,53 @@ namespace WPF_ConsData
             {
 
             }
+        }
+
+        private void btbataclub_Click(object sender, RoutedEventArgs e)
+        {
+            string dniruc = txtdniruc.Text.Trim();
+            if (dniruc.Length == 0)
+            {
+                MessageBox.Show("Ingrese el numero DNI ó RUC",
+                     "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                txtdniruc.Focus();
+                return;
+            }
+            Mouse.OverrideCursor = Cursors.Wait;
+            string barra_cliente = "";
+            DataTable dt = Clientes._consultacliente(dniruc, ref RegistradoEnFlujosBataClub, ref nuevo_bataclub, ref no_existe_cl_bata,ref barra_cliente);
+
+            if (dt == null)
+            {
+                MessageBox.Show("El Numero de Dni no se encuentra en nuestra base de datos",
+                   "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                Mouse.OverrideCursor = null;
+                txtdniruc.Focus();
+                return;
+            }
+            if (dt.Rows.Count==0)
+            {
+                MessageBox.Show("El Numero de Dni no se encuentra en nuestra base de datos",
+                   "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                Mouse.OverrideCursor = null;
+                txtdniruc.Focus();
+                return;
+            }
+            if (dt.Rows.Count>0)
+            {
+                if (barra_cliente.Length>0)
+                {
+                    string uri_act = "https://bata.pe/bataclub/actualizar.php?barra=" + barra_cliente;
+                    ProcessStartInfo startInfo = new ProcessStartInfo(uri_act);
+
+                    //ProcessStartInfo startInfo = new ProcessStartInfo("http://localhost:53228/LoginIntermedio/Login?variable=" + strparam);
+
+                    //ProcessStartInfo startInfo = new ProcessStartInfo("http://localhost/bataweb/LoginIntermedio/Login?variable=" + strparam);
+
+                    Process.Start(startInfo);
+                }
+            }
+            Mouse.OverrideCursor = null;
         }
     }
 }

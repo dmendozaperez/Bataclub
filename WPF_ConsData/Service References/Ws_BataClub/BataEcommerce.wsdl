@@ -28,6 +28,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="miembro_bataclub" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="existe_cliente" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="descripcion_error" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="barra_cliente" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="ws_registrar_ClienteResponse">

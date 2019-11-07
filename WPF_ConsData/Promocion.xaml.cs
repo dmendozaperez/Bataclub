@@ -268,8 +268,9 @@ namespace Bata
                 {
                     Boolean nuevobataclub = false;
                     Boolean existe_cl_bata = false;
+                    string barra_cliente = "";
                     //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
-                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata);
+                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata,ref barra_cliente);
                     dtdni = dt;
                     if (dt != null)
                     {
@@ -316,7 +317,8 @@ namespace Bata
                 {
                     Boolean nuevocliente = false;
                     Boolean existe_cl_bata = false;
-                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevocliente,ref existe_cl_bata);
+                    string barra_cliente = "";
+                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevocliente,ref existe_cl_bata,ref barra_cliente);
                     dtruc = dt1;
                     if (dt1 != null)
                     {
@@ -913,8 +915,9 @@ namespace Bata
                 {
                     Boolean nuevobataclub = false;
                     Boolean existe_cl_bata = false;
+                    string barra_cliente = "";
                     //en este lado de codigo , verifificamos la web service de bata antes de consultar en reniec
-                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata);
+                    DataTable dt = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata,ref barra_cliente);
                     if (dt != null)
                     {
                         if (dt.Rows.Count > 0)
@@ -954,7 +957,8 @@ namespace Bata
                 {
                     Boolean nuevobataclub = false;
                     Boolean existe_cl_bata = false;
-                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata);
+                    string barra_cliente = "";
+                    DataTable dt1 = Clientes._consultacliente(_dni_ruc,ref RegistradoEnFlujosBataClub,ref nuevobataclub,ref existe_cl_bata,ref barra_cliente);
                     if (dt1 != null)
                     {
                         if (dt1.Rows.Count > 0)
