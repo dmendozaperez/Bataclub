@@ -386,7 +386,8 @@ namespace Bata
                 }
                 if (myVersion!= null)
                 {
-                    this.Title = "Bata-Desktop Aplication > POS.NET > Version >" + myVersion.ToString();
+                    string tda = _tienda.Substring(2, 3).ToString();
+                    this.Title = "Bata-Desktop Aplication > POS.NET > Version >" + myVersion.ToString() + " > Tienda: " + tda;
                 }
             }
             catch (Exception)

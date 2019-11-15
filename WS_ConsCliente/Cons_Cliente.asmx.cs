@@ -146,6 +146,22 @@ namespace WS_ConsCliente
             }
             return bus;
         }
+
+        [WebMethod]
+        public List<Barra> ws_buscar_barra_dni_tienda(string dni,string tienda)
+        {
+            List<Barra> bus = null;
+            try
+            {
+                bus = Basico.buscar_barra_dni_tienda(dni, tienda);
+            }
+            catch
+            {
+                bus = null;
+            }
+            return bus;
+        }
+
         [WebMethod]
         public GeneraCuponBata generacupon()
         {

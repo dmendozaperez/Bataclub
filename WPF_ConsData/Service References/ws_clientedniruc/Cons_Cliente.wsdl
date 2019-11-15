@@ -146,6 +146,21 @@
           <s:element minOccurs="1" maxOccurs="1" name="fechac" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ws_buscar_barra_dni_tienda">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tienda" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_buscar_barra_dni_tiendaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_buscar_barra_dni_tiendaResult" type="tns:ArrayOfBarra" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="generacupon">
         <s:complexType />
       </s:element>
@@ -565,6 +580,12 @@
   <wsdl:message name="ws_buscar_barra_dniSoapOut">
     <wsdl:part name="parameters" element="tns:ws_buscar_barra_dniResponse" />
   </wsdl:message>
+  <wsdl:message name="ws_buscar_barra_dni_tiendaSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_buscar_barra_dni_tienda" />
+  </wsdl:message>
+  <wsdl:message name="ws_buscar_barra_dni_tiendaSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_buscar_barra_dni_tiendaResponse" />
+  </wsdl:message>
   <wsdl:message name="generacuponSoapIn">
     <wsdl:part name="parameters" element="tns:generacupon" />
   </wsdl:message>
@@ -702,6 +723,10 @@
       <wsdl:input message="tns:ws_buscar_barra_dniSoapIn" />
       <wsdl:output message="tns:ws_buscar_barra_dniSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ws_buscar_barra_dni_tienda">
+      <wsdl:input message="tns:ws_buscar_barra_dni_tiendaSoapIn" />
+      <wsdl:output message="tns:ws_buscar_barra_dni_tiendaSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="generacupon">
       <wsdl:input message="tns:generacuponSoapIn" />
       <wsdl:output message="tns:generacuponSoapOut" />
@@ -833,6 +858,15 @@
     </wsdl:operation>
     <wsdl:operation name="ws_buscar_barra_dni">
       <soap:operation soapAction="http://www.consultabata.com/ws_buscar_barra_dni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_buscar_barra_dni_tienda">
+      <soap:operation soapAction="http://www.consultabata.com/ws_buscar_barra_dni_tienda" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1061,6 +1095,15 @@
     </wsdl:operation>
     <wsdl:operation name="ws_buscar_barra_dni">
       <soap12:operation soapAction="http://www.consultabata.com/ws_buscar_barra_dni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ws_buscar_barra_dni_tienda">
+      <soap12:operation soapAction="http://www.consultabata.com/ws_buscar_barra_dni_tienda" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

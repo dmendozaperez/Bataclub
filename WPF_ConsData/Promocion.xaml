@@ -102,7 +102,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Content="N° Vale" HorizontalAlignment="Right" Grid.Column="0" FontSize="12" FontWeight="Bold" Height="28" Width="70" Margin="0,21"></Label>
-                        <TextBox Name="txtbuscar" CharacterCasing="Upper" MaxLength="17" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" FontWeight="Bold" Height="28" Width="151" KeyDown="txtbuscar_KeyDown" PreviewTextInput="txtbuscar_PreviewTextInput" Grid.ColumnSpan="5" Margin="0,21" TextChanged="txtbuscar_TextChanged" >
+                        <TextBox Name="txtbuscar" CharacterCasing="Upper" MaxLength="18" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" FontWeight="Bold" Height="28" Width="151" KeyDown="txtbuscar_KeyDown" PreviewTextInput="txtbuscar_PreviewTextInput" Grid.ColumnSpan="5" Margin="0,21" TextChanged="txtbuscar_TextChanged" >
                             <TextBox.Effect>
                                 <DropShadowEffect/>
                             </TextBox.Effect>

@@ -548,6 +548,45 @@ namespace WS_ConsCliente
             return listar;
         }
 
+        public static List<Barra> buscar_barra_dni_tienda(string _dni,string _cod_tda)
+        {
+            List<Barra> listar = null;
+            string sqlquery = "USP_BATACLUB_CONSULTACUPONES_ACTIVO_TDA";
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    if (cn.State == 0) cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@dni", _dni);
+                        cmd.Parameters.AddWithValue("@cod_tda", _cod_tda);
+                        SqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.HasRows)
+                        {
+                            listar = new List<Barra>();
+                            while (dr.Read())
+                            {
+                                Barra ag = new Barra();
+                                ag.barra = dr["barra"].ToString();
+                                ag.promocion = dr["promocion"].ToString();
+                                ag.fechac = Convert.ToDateTime(dr["fechac"]);
+                                listar.Add(ag);
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                listar = null;
+            }
+            return listar;
+        }
+
         #region<METODOS GIFT CARD>
         public static DataTable BuscarGiftCard(string numero)
         {

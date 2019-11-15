@@ -44,6 +44,10 @@ namespace Bata.ws_clientedniruc {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Bata.ws_clientedniruc.Barra[] ws_buscar_barra_dni(string dni);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_buscar_barra_dni_tienda", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Bata.ws_clientedniruc.Barra[] ws_buscar_barra_dni_tienda(string dni, string tienda);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/generacupon", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Bata.ws_clientedniruc.GeneraCuponBata generacupon();
@@ -118,7 +122,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -164,7 +168,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -210,7 +214,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -298,7 +302,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -400,7 +404,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -642,7 +646,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -754,6 +758,10 @@ namespace Bata.ws_clientedniruc {
         
         public Bata.ws_clientedniruc.Barra[] ws_buscar_barra_dni(string dni) {
             return base.Channel.ws_buscar_barra_dni(dni);
+        }
+        
+        public Bata.ws_clientedniruc.Barra[] ws_buscar_barra_dni_tienda(string dni, string tienda) {
+            return base.Channel.ws_buscar_barra_dni_tienda(dni, tienda);
         }
         
         public Bata.ws_clientedniruc.GeneraCuponBata generacupon() {

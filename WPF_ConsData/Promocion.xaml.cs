@@ -1227,7 +1227,7 @@ namespace Bata
         private void txtbuscar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string _strbuscar = txtbuscar.Text.Trim().ToString();
-            if (_strbuscar.Length == 15)
+            if (_strbuscar.Length == 15 || _strbuscar.Length == 18)
             {
                 validar_buscar = true;
                 buscar();

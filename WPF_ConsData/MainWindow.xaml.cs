@@ -227,10 +227,10 @@ namespace WPF_ConsData
                     //                   encryted = System.Text.Encoding.Unicode.GetBytes(nombre);
                     //                 strparam = Convert.ToBase64String(encryted);
                 }
-                #endregion
-            
-            
+            #endregion
 
+
+           // _tienda = "50210";
 
             //System.Collections.IDictionary variablesEntorno = Environment.GetEnvironmentVariables();
             //foreach (System.Collections.DictionaryEntry de in variablesEntorno)
@@ -640,7 +640,8 @@ namespace WPF_ConsData
             try
             {
                 ws_cliente= new Bata.ws_clientedniruc.Cons_ClienteSoapClient();
-                var listar = ws_cliente.ws_buscar_barra_dni(dni);
+                //var listar = ws_cliente.ws_buscar_barra_dni(dni);
+                var listar = ws_cliente.ws_buscar_barra_dni_tienda(dni,_tienda);
                 if (listar != null)
                 {
                     dg1.ItemsSource = listar;
@@ -1719,6 +1720,42 @@ namespace WPF_ConsData
                 }
             }
             Mouse.OverrideCursor = null;
+        }
+
+        private void dg1_CopyingRowClipboardContent(object sender, DataGridRowClipboardEventArgs e)
+        {
+
+            int y = 0;
+
+            for (int i = 0; i < e.EndColumnDisplayIndex; i++)
+            {
+                if (i != dg1.CurrentCell.Column.DisplayIndex)
+                {
+                    e.ClipboardRowContent.RemoveAt(i - y);
+                    y++;
+                }
+            }
+        }
+
+        private void btncopy_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var button = sender as Button;
+                if (button != null)
+                {
+                    var task = button.DataContext as Bata.ws_clientedniruc.Barra;
+
+                    Clipboard.SetDataObject(task.barra, true);
+                 
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+           
         }
     }
 }
