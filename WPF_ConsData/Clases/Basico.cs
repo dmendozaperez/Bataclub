@@ -127,7 +127,7 @@ namespace Bata.Clases
 
                 ws_clientedniruc.Cons_ClienteSoapClient format_bc = new ws_clientedniruc.Cons_ClienteSoapClient();
 
-                var imp= format_bc.ws_formato_bataclub();
+                var imp=format_bc.ws_formato_bataclub();
 
 
 
@@ -150,13 +150,13 @@ namespace Bata.Clases
                 tk.lineasGuio();
                 tk.ImprimirTicket(impresora);
                 tk.lineasGuio();
-                
+
                 BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
                 Codigo.IncludeLabel = true;
                 System.Drawing.Image im = Codigo.Encode(BarcodeLib.TYPE.CODE128, Barra, System.Drawing.Color.Black, System.Drawing.Color.White, 400, 100);
-               
+
                 tk.HeaderImage = im;
-                
+
                 tk.PrintQR(impresora);
             }
             catch (Exception)
