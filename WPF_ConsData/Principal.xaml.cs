@@ -277,7 +277,7 @@ namespace Bata
                                         string _telefono_venta = "";
 
                                         //-- Agregamos condicion para GiftCard - Henry Morales - 16/04/18
-                                        if (_serie== "302001" || _serie == "302003" || _serie == "000051" || _serie == "000055")
+                                        if (_serie== "302001" || _serie == "302002" || _serie == "302003" || _serie == "000051" || _serie == "000055")
                                         { 
                                             /*en este proceso vamos a capturar el archivo dbf cuando se genero en el in*/
 

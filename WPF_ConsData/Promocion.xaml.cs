@@ -665,7 +665,8 @@ namespace Bata
 
                     #region<BATACLUB CLIENTES>
                     string _correo_envio = "";string _telef_envia = "";
-                    string _valida = Clientes._actualiza_cliente(_dniruc, _nombre, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
+                    string _enviar_correo_cl = "no";
+                    string _valida = Clientes._actualiza_cliente(_dniruc, _nombre, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia, _enviar_correo_cl);
                     #endregion
 
                     Clientes._insertar_cliente_bata(_dniruc, _nombre, _apepat, _apemat, _email, _telefono, _tienda);

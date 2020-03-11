@@ -98,7 +98,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Content="         N° Vale" HorizontalAlignment="Right" Grid.Column="6" FontSize="12" FontWeight="Bold" Width="101" Margin="0,3,101,22" Name="ingnum"/>
-                        <TextBox Name="txtbuscar" CharacterCasing="Upper" MaxLength="17" HorizontalAlignment="Left" FontSize="13" FontWeight="Bold" Height="28" Width="151" KeyDown="txtbuscar_KeyDown" PreviewTextInput="txtbuscar_PreviewTextInput" Margin="109,5,0,37" TextChanged="txtbuscar_TextChanged" Grid.Column="6" Grid.ColumnSpan="2" >
+                        <TextBox Name="txtbuscar" CharacterCasing="Upper" MaxLength="18" HorizontalAlignment="Left" FontSize="13" FontWeight="Bold" Height="28" Width="151" KeyDown="txtbuscar_KeyDown" PreviewTextInput="txtbuscar_PreviewTextInput" Margin="109,5,0,37" TextChanged="txtbuscar_TextChanged" Grid.Column="6" Grid.ColumnSpan="2" >
                             <TextBox.Effect>
                                 <DropShadowEffect/>
                             </TextBox.Effect>
@@ -129,6 +129,7 @@
                         <ComboBox x:Name="ComboTipo" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="201" Grid.ColumnSpan="4" Height="25" SelectionChanged="combo_changed">
                             <ComboBoxItem Content="Vale de Compra" IsSelected="True"/>
                             <ComboBoxItem Content="Gift Card"/>
+                            <!--<ComboBoxItem Content="Vale de Empleado"/>-->
                         </ComboBox>
                     </Grid>
                     <!--<Grid Grid.Row="1" Grid.ColumnSpan="3">-->

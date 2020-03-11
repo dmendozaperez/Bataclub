@@ -115,7 +115,7 @@ namespace Bata
             string _strbuscar = txtbuscar.Text.Trim().ToString();
             //-- Modificado por : Henry Morales - 16/04/18
             //-- Adecuar GiftCard; se agregó condición
-            if (_strbuscar.Length == 15 && ComboTipo.SelectedIndex == 0)
+            if ((_strbuscar.Length == 15 || _strbuscar.Length == 16) && ComboTipo.SelectedIndex == 0)
             {
                 validar_buscar = true;
                 buscar();

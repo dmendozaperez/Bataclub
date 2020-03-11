@@ -285,7 +285,8 @@ namespace Bata.Clases
         }
         
         public static string _actualiza_cliente(string _ruc, string _nombres, string _apepat, string _apemat,
-                                                 string _telefono, string _email, string _tda,ref string _correo_envio,ref string _telef_envia)
+                                                 string _telefono, string _email, string _tda,ref string _correo_envio,ref string _telef_envia,
+                                                 String _enviar_correo_cliente="")
         {
             string _valida = "";           
             try
@@ -315,7 +316,7 @@ namespace Bata.Clases
                 parameter.dni = _ruc;
                 parameter.dni_barra = "";
                 parameter.correo_update = _email;
-
+                parameter.envia_correo = _enviar_correo_cliente;
                 var existe_cl = cliente_bataclub.ws_consultar_Cliente(header, parameter);
 
                 var registra_cl = cliente_bataclub.ws_registrar_Cliente(header, cliente);
