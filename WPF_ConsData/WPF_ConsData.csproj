@@ -16,7 +16,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>\\172.28.7.9\inetpub\wwwroot\Aplicacion_Windows\</PublishUrl>
+    <PublishUrl>\\192.168.2.6\inetpub\wwwroot\Aplicacion_Windows\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>251</ApplicationRevision>
+    <ApplicationRevision>252</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

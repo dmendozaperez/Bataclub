@@ -216,7 +216,7 @@ namespace Bata
                     if (_valida != "3")
                     {
 
-                        if (_monto>0)
+                        if (_monto>0 && _empruc.Length>0)
                         {                        
                             if (dtcuponlista!=null)
                             {
