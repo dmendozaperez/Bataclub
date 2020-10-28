@@ -6,7 +6,7 @@
         mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         WindowStartupLocation="CenterScreen" 
         Title="Bata-Desktop Aplication > POS.NET"
-        Height="513" Width="679" Icon="pin_bata.ico" ResizeMode="CanMinimize" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
+        Height="350" Width="679" Icon="pin_bata.ico" ResizeMode="CanMinimize" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
     <Window.Resources>
         <DataTemplate x:Key="DataTemplate1">
             <Grid TextBlock.Foreground="White">
@@ -24,7 +24,7 @@
             <RowDefinition Height="95" />
             <RowDefinition Height="120" />
             <RowDefinition Height="180" />
-            <RowDefinition Height="180" />
+            <!--<RowDefinition Height="0" />-->
         </Grid.RowDefinitions>
         <!-- CABECERA DE LA VENTANA -->
         <Grid Grid.Row="0">
@@ -192,7 +192,7 @@
                 </Grid>
             </Button>
 
-            <Button Name="btnsoport" Grid.Column="2" Background="Transparent" Margin="0,-140,0,70"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnsoport_Click" >
+            <Button Name="btnsoport" Visibility="Hidden" Grid.Column="2" Background="Transparent" Margin="0,-140,0,70"  Height="60" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Click="btnsoport_Click" >
                 <Button.ToolTip>
                     <ToolTip>
                         <StackPanel>
@@ -282,13 +282,14 @@
             </Button>
 
         </Grid>
-        <Grid Grid.Row="3" Margin="0,0,0,99">
+        <Grid Visibility="Hidden" Grid.Row="3" Margin="0,0,0,99">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="258*"/>
                 <ColumnDefinition Width="415*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Content="COMUNICATE CON SOPORTE {BATA - PERU}"  Foreground="Black" FontWeight="Bold" Margin="0,-90,0,108"  Grid.ColumnSpan="2" />
-            <DataGrid Name="dg1"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"  Width="651"   IsReadOnly="True"   AutoGenerateColumns="False" Margin="6,-68,0,10" Grid.ColumnSpan="2" FontFamily="Tahoma" >
+            <GroupBox Content=""  Foreground="Black" FontWeight="Bold" Margin="0,-90,0,108"  Grid.ColumnSpan="2" />
+            <Label Content="Atenciones por el SISTEMA DE MESA DE AYUDA: http://soporte.emcomer.pe:8080/" Visibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,34,0" ></Label>
+            <DataGrid Visibility="Hidden" Name="dg1"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"  Width="651"   IsReadOnly="True"   AutoGenerateColumns="False" Margin="6,-68,0,10" Grid.ColumnSpan="2" FontFamily="Tahoma" >
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#FFDA6856"/>
