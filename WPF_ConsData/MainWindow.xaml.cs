@@ -1709,7 +1709,7 @@ namespace WPF_ConsData
             {
                 if (barra_cliente.Length>0)
                 {
-                    string uri_act = "https://bata.pe/bataclub/actualizar.php?barra=" + barra_cliente;
+                    string uri_act = "https://bataclub.pe/actualizar.php?barra=" + barra_cliente;
                     ProcessStartInfo startInfo = new ProcessStartInfo(uri_act);
 
                     //ProcessStartInfo startInfo = new ProcessStartInfo("http://localhost:53228/LoginIntermedio/Login?variable=" + strparam);
