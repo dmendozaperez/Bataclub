@@ -620,6 +620,23 @@ namespace WS_ConsCliente
         }
         #endregion
 
+        #region<REGION DE LISTA DE DOMINIOS>
+        [WebMethod]
+        public List<Dominios> ws_lista_dominios()
+        {
+            List<Dominios> listar = null;
+            try
+            {
+                listar = Basico.get_dominios();
+            }
+            catch (Exception)
+            {
+
+                listar = new List<Dominios>();
+            }
+            return listar;
+        }
+        #endregion
         //#region<REGION DE BATACLUB>
         //[WebMethod]
 

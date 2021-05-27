@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>254</ApplicationRevision>
+    <ApplicationRevision>257</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -305,6 +305,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.Data_Sunat.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.Dominios.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ws_clientedniruc\Bata.ws_clientedniruc.GeneraCuponBata.datasource">

@@ -103,7 +103,7 @@
                         </Grid.ColumnDefinitions>
                         <Image Margin="5,0,0,0"   Width="32" HorizontalAlignment="Left" Grid.ColumnSpan="2" Source="Design/Images/lupa.jpg"></Image>
                         <TextBlock Text="Consultar" VerticalAlignment="Center"  FontWeight="Bold"
-                                          Margin="10,0,70,0" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.Column="1"></TextBlock>
+                                          Margin="39,6,70,6" Grid.ColumnSpan="2" Grid.Column="1"/>
                     </Grid>
                 </Button>
                 <MediaElement Name="meLoader" ScrubbingEnabled="True"  Source="../../Design/Images/ajax_loader.gif"
@@ -138,18 +138,22 @@
                         <TextBlock Text="E-Mail" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
                                Width="163" Margin="18,198,0,0" FontSize="13" Grid.Column="1" />
                         <TextBlock Text="Ubigeo" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"                                
-                               Width="163" Margin="18,230,0,0" FontSize="13" Grid.Column="1" />
-                        <TextBox Name="txtdni" TextWrapping="Wrap" Text="dni" FontSize="12"  Margin="180,1,192,224" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
-                        <TextBox Name="txtnombres" TextWrapping="Wrap" CharacterCasing="Upper" Text="nombres" FontSize="12" Margin="180,33,10,192" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
-                        <TextBox Name="txtapepat" Height="23" TextWrapping="Wrap" CharacterCasing="Upper" Text="apepat" FontSize="12" Margin="180,68,10,163" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                               Width="163" Margin="18,237,0,0" FontSize="13" Grid.Column="1" />
+                        <TextBox Name="txtdni" TextWrapping="Wrap" Text="dni" FontSize="12" TabIndex="1"  Margin="180,1,192,224" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtnombres" TextWrapping="Wrap" CharacterCasing="Upper" TabIndex="2" Text="nombres" FontSize="12" Margin="180,33,10,192" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtapepat" Height="23" TextWrapping="Wrap" TabIndex="3" CharacterCasing="Upper" Text="apepat" FontSize="12" Margin="180,68,10,163" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
                         <TextBox Name="txtdireccion" Height="23" TextWrapping="Wrap" Text="direccion" FontSize="12" Margin="180,127,10,104" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
-                        <TextBox Name="txtapemat" Height="23" TextWrapping="Wrap" CharacterCasing="Upper" Text="apemat" FontSize="12" Margin="180,99,10,132" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
-                        <TextBox Name="txtemail" MaxLength="40" TabIndex="2" Height="23" TextWrapping="Wrap" Text="email" FontSize="12" Margin="180,197,142,34" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" TextChanged="txtemail_TextChanged"/>
-                        <TextBox Name="txttelefono" TabIndex="1" MaxLength="14" Height="23" TextWrapping="Wrap" Text="telefono" FontSize="12" Margin="180,160,142,71" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" TextChanged="txttelefono_TextChanged"/>
-                        <TextBox Name="txtubigeo" TextWrapping="Wrap" Text="ubigeo" FontSize="12" Margin="180,228,241,0" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
-                        <Button x:Name="btnactualizar" Cursor="Hand" Content="Actualizar" Margin="409,228,10,-7" Grid.Column="1" Click="btnactualizar_Click"/>
-                        <Label x:Name="label" Content="}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="45" Foreground="Red"  Margin="369,147,118,31" Height="76" Width="28"/>
-                        <TextBlock x:Name="label2" TextWrapping="Wrap"  Text="Ingrese Telefono, Celular ó E-Mail para activar el Descuento" TextAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="13" Foreground="Red"  Margin="395,155,6,21" Height="78" Width="114"/>
+                        <TextBox Name="txtapemat" Height="23"  TabIndex="4" TextWrapping="Wrap" CharacterCasing="Upper" Text="apemat" FontSize="12" Margin="180,99,10,132" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txttelefono" TabIndex="6" MaxLength="14" Height="23" TextWrapping="Wrap" Text="telefono" FontSize="12" Margin="180,160,142,71" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" TextChanged="txttelefono_TextChanged"/>
+                        <TextBlock Text="Seleccione Dominio" Foreground="Maroon" FontWeight="Bold" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"   Width="126" Margin="386,151,0,0" FontSize="13" Grid.Column="1" />
+                        <ComboBox x:Name="cbodominio"  FontSize="14" FontWeight="Bold" TabIndex="9" HorizontalAlignment="Left" Margin="386,169,0,0" VerticalAlignment="Top" Width="123" Height="26" SelectionChanged="cbodominio_SelectionChanged" Grid.Column="1"/>
+                        <TextBox Name="txtemail" MaxLength="40"  TabIndex="7" TextWrapping="Wrap" Text="email" FontSize="12" Margin="180,200,167,31" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1" TextChanged="txtemail_TextChanged"/>
+                        <TextBlock Text="@" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="33" Margin="350,194,0,0" FontSize="25" TextAlignment="Left" FontWeight="Bold" Grid.Column="1" />
+                        <TextBox x:Name="txtdominio" MaxLength="40" TabIndex="8" TextWrapping="Wrap" Text="dominio" FontSize="12" Margin="373,201,7,31" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <TextBox Name="txtubigeo" TextWrapping="Wrap" Text="ubigeo" FontSize="12" Margin="180,235,241,-7" FontWeight="Bold"  IsReadOnly="True" Grid.Column="1"/>
+                        <Button x:Name="btnactualizar" Cursor="Hand" Content="Actualizar" Margin="409,238,10,-7" Grid.Column="1" Click="btnactualizar_Click"/>
+                        <Label x:Name="label" Visibility="Hidden" Content="}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="45" Foreground="Red"  Margin="369,147,118,31" Height="76" Width="28"/>
+                        <TextBlock x:Name="label2" Visibility="Hidden" TextWrapping="Wrap"  Text="Ingrese Telefono, Celular ó E-Mail para activar el Descuento" TextAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"   FontSize="13" Foreground="Red"  Margin="395,155,6,21" Height="78" Width="114"/>
                     </Grid>
                 </TabItem>
                 <TabItem Name="tab2" Header=" > Cupones Disponibles">
@@ -175,7 +179,7 @@
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
                                     <DataGridTextColumn Binding="{Binding barra}"  Header="Barra" IsReadOnly="True"  >
-                                        
+
                                     </DataGridTextColumn>
                                     <DataGridTextColumn Binding="{Binding promocion}" IsReadOnly="True" ClipboardContentBinding="{x:Null}" Header="Campaña">
                                     </DataGridTextColumn>
@@ -195,7 +199,11 @@
             <Label Name="lblmsg" Visibility="Visible" Content="Espere un momento por favor..." Margin="272,180,0.32,20.2" FontWeight="Bold" FontSize="13" Grid.ColumnSpan="2"></Label>
             <Label x:Name="label1" Visibility="Hidden" FontWeight="Bold" Content="Nota: Si tiene problemas con el correo de BATACLUB por favor dale click aqui" Foreground="#FF36228F" HorizontalAlignment="Left" Margin="11,50,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="477"/>
             <Button Width="441" FontWeight="Bold" Content="Nota: Si tiene problemas con el correo de BATACLUB por favor dale click aqui" BorderThickness="0" Name="btbataclub" Foreground="#FF36228F"  Cursor="Hand"  HorizontalAlignment="Left" Margin="9,50,0,170" TabIndex="1" Grid.ColumnSpan="2" Background="#00000000" BorderBrush="Black" Click="btbataclub_Click"  />
+
+
+
         </Grid>
+
     </Grid>
 
 </Window>

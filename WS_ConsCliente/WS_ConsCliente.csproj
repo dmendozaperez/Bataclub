@@ -135,6 +135,7 @@
     <Compile Include="Clases\Cliente_Bataclub.cs" />
     <Compile Include="Clases\ConexionData.cs" />
     <Compile Include="Clases\Data_Sunat.cs" />
+    <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\GeneraCuponBata.cs" />
     <Compile Include="Clases\Soporte.cs" />
     <Compile Include="Cons_Cliente.asmx.cs">

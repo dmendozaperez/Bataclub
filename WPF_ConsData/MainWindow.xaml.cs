@@ -52,6 +52,11 @@ namespace WPF_ConsData
         private PromBata getpromo_bata = null;
 
         string _tienda { set; get; }
+
+        private string defecto_dominio = "";
+
+        private string correo_formato = "";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -229,8 +234,19 @@ namespace WPF_ConsData
                 }
             #endregion
 
+            Bata.ws_clientedniruc.Cons_ClienteSoapClient ws_dominio = new Bata.ws_clientedniruc.Cons_ClienteSoapClient();
 
-           // _tienda = "50210";
+            var lista_dominio = ws_dominio.ws_lista_dominios();
+
+            cbodominio.ItemsSource = lista_dominio;
+            cbodominio.DisplayMemberPath = "des_dom";
+            cbodominio.SelectedValuePath = "cod_dom";
+
+            var obj_def_dom = lista_dominio.Where(a => a.def_dom == true).ToList();
+
+            defecto_dominio = obj_def_dom[0].cod_dom;
+
+            // _tienda = "50210";
 
             //System.Collections.IDictionary variablesEntorno = Environment.GetEnvironmentVariables();
             //foreach (System.Collections.DictionaryEntry de in variablesEntorno)
@@ -271,7 +287,7 @@ namespace WPF_ConsData
                     string _apemat = txtapemat.Text.Trim();
                     string _direccion = txtdireccion.Text.Trim();
                     string _telefono = txttelefono.Text.Trim();
-                    string _email = txtemail.Text.Trim();
+                    string _email = correo_formato;// txtemail.Text.Trim();
                     string _ubigeo = txtubigeo.Text.Trim();
 
                     _nombre = _nombre.Replace(",", " ");
@@ -350,7 +366,7 @@ namespace WPF_ConsData
                     string _apemat = txtapemat.Text.Trim();
                     string _direccion = txtdireccion.Text.Trim();
                     string _telefono = txttelefono.Text.Trim();
-                    string _email = txtemail.Text.Trim();
+                    string _email = correo_formato;// txtemail.Text.Trim();
                     string _ubigeo = txtubigeo.Text.Trim();
 
                     _nombre = _nombre.Replace(",", " ");
@@ -598,21 +614,31 @@ namespace WPF_ConsData
             txtdireccion.Text = "";
             txtapemat.Text = "";
             txtemail.Text = "";
+            txtdominio.Text = "";
             txttelefono.Text = "";
             txtubigeo.Text = "";
+
+            correo_formato = "";
+
             btnactualizar.IsEnabled = false;
             txttelefono.IsReadOnly = true;
             txtemail.IsReadOnly = true;
+            txtdominio.IsReadOnly = true;
             txtnombres.IsReadOnly = true;
             txtapemat.IsReadOnly = true;
             txtapepat.IsReadOnly = true;
 
+           // cbodominio.SelectedIndex = -1;
+            cbodominio.IsEnabled = false;
+           
+
+            txtdominio.Background= Brushes.White;
             txtemail.Background = Brushes.White;
             txttelefono.Background = Brushes.White;        
             txtnombres.Background = Brushes.White;
             txtapemat.Background = Brushes.White;
             txtapepat.Background = Brushes.White;
-
+            cbodominio.Background= Brushes.White;
 
             btnactualizar.IsEnabled = false;
             txttelefono.IsReadOnly = true;
@@ -674,7 +700,13 @@ namespace WPF_ConsData
                             txtapepat.Text = dt.Rows[0]["fc_apep"].ToString();
                             txtapemat.Text = dt.Rows[0]["fc_apem"].ToString();
                             txttelefono.Text = dt.Rows[0]["fc_tele"].ToString();
-                            txtemail.Text = dt.Rows[0]["fc_mail"].ToString();
+
+                            _formatear_correo(dt.Rows[0]["fc_mail"].ToString());
+                            //string correo = dt.Rows[0]["fc_mail"].ToString();
+                            //string[] correo_arr = correo.Split('@');
+
+                            //txtemail.Text = dt.Rows[0]["fc_mail"].ToString();
+
                             txtdireccion.Text = dt.Rows[0]["fc_dcli"].ToString();
                             txtubigeo.Text = dt.Rows[0]["fc_cubi"].ToString();
 
@@ -824,19 +856,60 @@ namespace WPF_ConsData
             {
 
                 txtemail.Background = Brushes.Khaki;
+                txtdominio.Background = Brushes.Khaki;
                 txttelefono.Background = Brushes.Khaki;
+                cbodominio.Background = Brushes.Khaki;
                 txtemail.IsReadOnly = false;
+                txtdominio.IsReadOnly = false;
                 txttelefono.IsReadOnly = false;
+                cbodominio.IsEnabled = true;
 
-                if (txtemail.Text.Trim().Length > 0 || txttelefono.Text.Trim().Length > 0)
+                if (txtemail.Text.Trim().Length==0)
+                {
+                    cbodominio.SelectedValue = defecto_dominio;
+                    txtdominio.Text = defecto_dominio;
+                    txtdominio.IsEnabled = false;
+                }
+
+                if (txtemail.Text.Trim().Length > 0 && txttelefono.Text.Trim().Length > 0)
                 {
                     btnactualizar.IsEnabled = true;
-                }
+                } 
             }
             if (txtnombres.Background == Brushes.Khaki) txtnombres.Focus();
 
         }
 
+        private void _formatear_correo(string correo)
+        {
+            try
+            {
+                string[] array = correo.Split('@');
+
+                
+
+                txtemail.Text = array[0].ToString();
+                txtdominio.Text = array[1].ToString();
+
+            
+                cbodominio.SelectedValue = array[1].ToString();
+
+                if (cbodominio.SelectedValue == null)
+                {
+                    cbodominio.IsEnabled = true;
+                    cbodominio.SelectedValue = "Otros";
+                    txtdominio.IsEnabled = true;
+                }
+                    
+
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show("Verifique el correo por favor, no tiene el foramto correcto",
+                            "Bata - Mensaje De Advertencia", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                txtemail.Text = correo;
+            }
+        }
         private void _consulta_dni_ruc_loading(string _dni_ruc)
         {
            
@@ -1267,11 +1340,14 @@ namespace WPF_ConsData
             {
                
                 txtemail.Background = Brushes.Khaki;
+                txtdominio.Background = Brushes.Khaki;
                 txttelefono.Background = Brushes.Khaki;
+                cbodominio.Background = Brushes.Khaki;
                 txtemail.IsReadOnly = false;
+                txtdominio.IsReadOnly = false;
                 txttelefono.IsReadOnly = false;
-
-                if (txtemail.Text.Trim().Length > 0 || txttelefono.Text.Trim().Length > 0)
+                cbodominio.IsEnabled = true;
+                if (txtemail.Text.Trim().Length > 0 && txttelefono.Text.Trim().Length > 0)
                 {
                     btnactualizar.IsEnabled = true;
                 }              
@@ -1320,15 +1396,18 @@ namespace WPF_ConsData
                         txtapepat.Background = Brushes.Khaki;
                         txtapemat.Background = Brushes.Khaki;
                         txtemail.Background = Brushes.Khaki;
+                        cbodominio.Background= Brushes.Khaki;
                         txttelefono.Background = Brushes.Khaki;
                         txtdni.Text = txtdniruc.Text;
                         txttelefono.IsReadOnly = false;
                         txtemail.IsReadOnly = false;
+                        cbodominio.IsEnabled = true;
+                        txtdominio.IsReadOnly = false;
                         txtnombres.IsReadOnly = false;
                         txtapepat.IsReadOnly = false;
                         txtapemat.IsReadOnly = false;
 
-
+                        cbodominio.SelectedValue = defecto_dominio;
                         //txtdniruc.SelectAll();
                         //txtdniruc.Focus();
                         txtnombres.Focus();
@@ -1391,7 +1470,7 @@ namespace WPF_ConsData
                     string _apemat = txtapemat.Text.Trim();
                     string _direccion = txtdireccion.Text.Trim();
                     string _telefono = txttelefono.Text.Trim();
-                    string _email = txtemail.Text.Trim();
+                    string _email = correo_formato;// txtemail.Text.Trim();
                     string _ubigeo = txtubigeo.Text.Trim();
 
                     _nombre = _nombre.Replace(",", " ");
@@ -1465,6 +1544,7 @@ namespace WPF_ConsData
         {
             try
             {
+                correo_formato = txtemail.Text.Trim() + "@" + txtdominio.Text.Trim();
 
                 if (txtdni.Text.Trim().Length > 0)
                 {
@@ -1487,9 +1567,9 @@ namespace WPF_ConsData
                             return;
 
                         }
-                        if (txtemail.Text.Trim().Length > 0)
+                        if (correo_formato.Length > 0)
                         {
-                            if (!Clientes.ComprobarFormatoEmail(txtemail.Text))
+                            if (!Clientes.ComprobarFormatoEmail(correo_formato))
                             {
                                 MessageBox.Show("El formato del Email. es incorrecto",
                                           "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -1520,91 +1600,103 @@ namespace WPF_ConsData
 
             if (txtemail.Text.Trim().Length>0)
             { 
-                if (!Clientes.ComprobarFormatoEmail(txtemail.Text))
+                if (!Clientes.ComprobarFormatoEmail(correo_formato))
                     {
                         MessageBox.Show("El formato del Email. es incorrecto",
                                   "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
                     }
             }
-                //MessageBoxResult msbResult = MessageBox.Show("¿Realmente desea Actualizar el cliente en nuestra Base de datos ? ",
-                //                  "Administrador del Sistema", MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                /////
-                //if (msbResult == MessageBoxResult.OK)
-                //{
-            Mouse.OverrideCursor = Cursors.Wait;
+                string mensaje_str = "¿Estás seguro de registrar los siguientes datos? \n\n Email:       " + correo_formato + "\n Telefono: " + txttelefono.Text ;
+
+                MessageBoxResult msbResult = MessageBox.Show(mensaje_str,
+                                  "Administrador del Sistema", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                ///
+                if (msbResult == MessageBoxResult.OK)
+                {
+                    Mouse.OverrideCursor = Cursors.Wait;
 
             string _ruc = txtdni.Text, _nombres = txtnombres.Text, _apepat = txtapepat.Text, _apemat = txtapemat.Text,
-                                            _telefono = txttelefono.Text, _email = txtemail.Text, _tda = "50100";
+                                            _telefono = txttelefono.Text, _email = correo_formato, _tda = "50100";
             string _correo_envio = "";
             string _telef_envia = "";
 
-            #region<REGION DE NUEVOS CLIENTES, GENERAR BARRA Y ENVIAR AL POS>
-                //if (nuevo_bataclub)
-                //{
+                    #region<REGION DE NUEVOS CLIENTES, GENERAR BARRA Y ENVIAR AL POS>
+                    //if (nuevo_bataclub)
+                    //{
+                    string _valida = "";
                     if (getpromo_bata != null)
                     {
-                        if (getpromo_bata.valida)
+                        _valida = Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
+                        if (_valida.Length==0)
                         {
-                            CuponGenerado set_cupon = new CuponGenerado();
-                            set_cupon.nombres_prin = _nombres;
-                            set_cupon.nombres = _nombres + " " + _apepat + " " + _apemat;
-                            set_cupon.apepat = _apepat;
-                            set_cupon.apemat = _apemat;
-                            set_cupon.email = _email;
-                            set_cupon.dni = _ruc;
-                            set_cupon.pordes = getpromo_bata.por_des;
-                            set_cupon.fechaini = getpromo_bata.fecha_ini;
-                            set_cupon.fechafin = getpromo_bata.fecha_fin;
-                            set_cupon.paresmax = getpromo_bata.max_par;
-                            set_cupon.grupo = getpromo_bata.nom_prom;
-                            set_cupon.tda_gen_cup = _tienda;
-
-                            PromBata prom = new PromBata();
-                            CuponGenerado get_cupon = prom.getcupon_generado(set_cupon);
-
-                            if (get_cupon==null)
+                            if (getpromo_bata.valida)
                             {
-                                MessageBox.Show("!Hubo un error al generar el codigo de barra automatico",
-                                "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Error);
-                                Mouse.OverrideCursor = null;
-                                return;
-                            }
-                            if (get_cupon != null)
-                            {
-                                if (get_cupon.barra==null || get_cupon.barra.Length==0)
+                                CuponGenerado set_cupon = new CuponGenerado();
+                                set_cupon.nombres_prin = _nombres;
+                                set_cupon.nombres = _nombres + " " + _apepat + " " + _apemat;
+                                set_cupon.apepat = _apepat;
+                                set_cupon.apemat = _apemat;
+                                set_cupon.email = _email;
+                                set_cupon.dni = _ruc;
+                                set_cupon.pordes = getpromo_bata.por_des;
+                                set_cupon.fechaini = getpromo_bata.fecha_ini;
+                                set_cupon.fechafin = getpromo_bata.fecha_fin;
+                                set_cupon.paresmax = getpromo_bata.max_par;
+                                set_cupon.grupo = getpromo_bata.nom_prom;
+                                set_cupon.tda_gen_cup = _tienda;
+
+                                PromBata prom = new PromBata();
+                                CuponGenerado get_cupon = prom.getcupon_generado(set_cupon);
+
+                                if (get_cupon == null)
                                 {
                                     MessageBox.Show("!Hubo un error al generar el codigo de barra automatico",
                                     "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Error);
                                     Mouse.OverrideCursor = null;
                                     return;
                                 }
-                                else
+                                if (get_cupon != null)
                                 {
-                                /*IMPRIMIR CUPON*/
-                                //Basico.Imprime_Bataclub(get_cupon.barra); 
-                                /**/
-                                _crear__actualiza_dbf(get_cupon);
-                                Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
-                                    if (_principal != null)
+                                    if (get_cupon.barra == null || get_cupon.barra.Length == 0)
                                     {
-                                        _principal.WindowState = WindowState.Minimized;
+                                        MessageBox.Show("!Hubo un error al generar el codigo de barra automatico",
+                                        "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Error);
+                                        Mouse.OverrideCursor = null;
+                                        return;
                                     }
-                                    MessageBox.Show("Se genero el cupon Satisfactoriamente,Por favor continue en el sistema POS ",
-                                 "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Information);
-                                    this.Close();
-                                    Mouse.OverrideCursor = null;
-                                    return;
+                                    else
+                                    {
+                                        /*IMPRIMIR CUPON*/
+                                        //Basico.Imprime_Bataclub(get_cupon.barra); 
+                                        /**/
+                                        _crear__actualiza_dbf(get_cupon);
+                                        // Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
+                                        if (_principal != null)
+                                        {
+                                            _principal.WindowState = WindowState.Minimized;
+                                        }
+                                        MessageBox.Show("Se genero el cupon Satisfactoriamente,Por favor continue en el sistema POS ",
+                                     "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Information);
+                                        this.Close();
+                                        Mouse.OverrideCursor = null;
+                                        return;
+                                    }
                                 }
                             }
+
                         }
+
                     }
                 //}
                 #endregion
 
 
-
-                string _valida = Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
+                if (_valida.Length==0)
+                    {
+                        _valida = Clientes._actualiza_cliente(_ruc, _nombres, _apepat, _apemat, _telefono, _email, _tienda, ref _correo_envio, ref _telef_envia);
+                    }
+                 
 
                 //se actualizo datos del cliente se actua    
                 string _msg = "Se Actualizo datos del cliente.";
@@ -1628,7 +1720,7 @@ namespace WPF_ConsData
                     MessageBox.Show(_valida,
                                 "Administrador del Sistema", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                //}
+                }
             }
             catch(Exception exc)
             {
@@ -1647,10 +1739,10 @@ namespace WPF_ConsData
         {
             try
             {
-                btnactualizar.IsEnabled = (txttelefono.Text.Trim().Length == 0) ? false : true;
+                btnactualizar.IsEnabled = ((txttelefono.Text.Trim().Length > 0 && txtemail.Text.Trim().Length > 0)) ? true : false;
                 if (!btnactualizar.IsEnabled)
                 {
-                    btnactualizar.IsEnabled = (txtemail.Text.Trim().Length == 0) ? false : true;
+                    btnactualizar.IsEnabled = (txtemail.Text.Trim().Length > 0 && txttelefono.Text.Trim().Length > 0) ? true : false;
                 }
             }
             catch
@@ -1663,10 +1755,10 @@ namespace WPF_ConsData
         {
             try
             {
-                btnactualizar.IsEnabled = (txtemail.Text.Trim().Length == 0) ? false : true;
+                btnactualizar.IsEnabled = (txtemail.Text.Trim().Length > 0 && txttelefono.Text.Trim().Length > 0) ? true : false;
                 if (!btnactualizar.IsEnabled)
                 {
-                    btnactualizar.IsEnabled = (txttelefono.Text.Trim().Length == 0) ? false : true;
+                    btnactualizar.IsEnabled = (txttelefono.Text.Trim().Length > 0 && txtemail.Text.Trim().Length > 0) ? true : false;
                 }
             }
             catch
@@ -1756,6 +1848,27 @@ namespace WPF_ConsData
                 
             }
            
+        }
+
+        private void cbodominio_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbodominio.SelectedValue == null) return;
+            if (!cbodominio.Focusable) return;
+            var valor = (Bata.ws_clientedniruc.Dominios)cbodominio.SelectedItem;
+
+            if (valor == null) return;
+
+            if (valor.des_dom == "Otros")
+            {
+                txtdominio.IsEnabled = true;
+                txtdominio.SelectAll();
+                txtdominio.Focus();
+            }
+            else
+            {
+                txtdominio.Text = valor.des_dom;
+                txtdominio.IsEnabled = false;
+            }
         }
     }
 }

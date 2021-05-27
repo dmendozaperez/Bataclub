@@ -119,10 +119,14 @@ namespace Bata.ws_clientedniruc {
         [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_lista_soporte", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Bata.ws_clientedniruc.Soporte[] ws_lista_soporte();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.consultabata.com/ws_lista_dominios", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Bata.ws_clientedniruc.Dominios[] ws_lista_dominios();
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -168,7 +172,67 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.consultabata.com/")]
+    public partial class Dominios : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string cod_domField;
+        
+        private string des_domField;
+        
+        private bool def_domField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string cod_dom {
+            get {
+                return this.cod_domField;
+            }
+            set {
+                this.cod_domField = value;
+                this.RaisePropertyChanged("cod_dom");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string des_dom {
+            get {
+                return this.des_domField;
+            }
+            set {
+                this.des_domField = value;
+                this.RaisePropertyChanged("des_dom");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public bool def_dom {
+            get {
+                return this.def_domField;
+            }
+            set {
+                this.def_domField = value;
+                this.RaisePropertyChanged("def_dom");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -214,7 +278,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -302,7 +366,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -404,7 +468,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -646,7 +710,7 @@ namespace Bata.ws_clientedniruc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -834,6 +898,10 @@ namespace Bata.ws_clientedniruc {
         
         public Bata.ws_clientedniruc.Soporte[] ws_lista_soporte() {
             return base.Channel.ws_lista_soporte();
+        }
+        
+        public Bata.ws_clientedniruc.Dominios[] ws_lista_dominios() {
+            return base.Channel.ws_lista_dominios();
         }
     }
 }

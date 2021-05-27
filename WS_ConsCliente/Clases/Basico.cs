@@ -838,6 +838,46 @@ namespace WS_ConsCliente
             return lista;
         }
         #endregion
+        #region<LISTA DE DOMINIOS PARA REGISTRO DE BATACLUB CORREO>
+        public static List<Dominios> get_dominios()
+        {
+            List<Dominios> lista = null;
+            string sqlquery = "USP_BATACLUB_LEER_DOMINIOS";
+            try
+            {
+                lista = new List<Dominios>();
+
+                using (SqlConnection cn = new SqlConnection(ConexionData.conexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sqlquery, cn))
+                    {
+                        cmd.CommandTimeout = 0;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+                            lista = (from DataRow fila in dt.Rows
+                                     select new Dominios()
+                                     {
+                                         cod_dom=fila["cod_dom"].ToString(),
+                                         des_dom = fila["des_dom"].ToString(),
+                                         def_dom =Convert.ToBoolean(fila["def_dom"]),
+                                     }
+                                   ).ToList();
+                        }
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+
+                lista = new List<Dominios>();
+            }
+            return lista;
+        }
+        #endregion
+
     }
 
     public class PromBata

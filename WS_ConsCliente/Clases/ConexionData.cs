@@ -14,13 +14,13 @@ namespace WS_ConsCliente
         {
             //get { return _conexion; }
             //get { return "Server=10.10.10.208;Database=BdTienda;User ID=sa;Password=Bata2013;Trusted_Connection=False;"; }
-            get { return "Server=POSPERUBD.BGR.PE;Database=BDPOS;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;"; ; }
+            get { return "Server=192.168.2.14;Database=BDPOS;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;"; ; }
         }
         public static string conexion_bataclub
         {
             //get { return _conexion_bataclub; }
             //get { return "Server=10.10.10.208;Database=BdBataClub;User ID=sa;Password=Bata2013;Trusted_Connection=False;"; }
-            get { return "Server=POSPERUBD.BGR.PE;Database=BDBATACLUB;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;"; }
+            get { return "Server=192.168.2.14;Database=BDBATACLUB;User ID=pos_oracle;Password=Bata2018**;Trusted_Connection=False;"; }
         }
     }
 }
