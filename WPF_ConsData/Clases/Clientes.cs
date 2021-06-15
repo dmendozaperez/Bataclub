@@ -317,10 +317,19 @@ namespace Bata.Clases
                 parameter.dni_barra = "";
                 parameter.correo_update = _email;
                 parameter.envia_correo = _enviar_correo_cliente;
-                var existe_cl = cliente_bataclub.ws_consultar_Cliente(header, parameter);
-
+                Ws_BataClub.Ent_Cliente_BataClub  existe_cl = null;
+                existe_cl = cliente_bataclub.ws_consultar_Cliente(header, parameter);
                 var registra_cl = cliente_bataclub.ws_registrar_Cliente(header, cliente);
 
+                if (registra_cl.codigo=="-1")
+                {
+                    parameter.envia_correo = "0";
+                    //existe_cl = cliente_bataclub.ws_consultar_Cliente(header, parameter);
+                }
+                else
+                {
+                    //existe_cl = cliente_bataclub.ws_consultar_Cliente(header, parameter);
+                }
 
                 //if (!existe_cl.existe_cliente)
                 //{
@@ -337,7 +346,7 @@ namespace Bata.Clases
 
 
 
-                if (registra_cl!=null)
+                    if (registra_cl!=null)
                 {
                     /*se inserto correctamente*/
                     if (registra_cl.codigo=="0")

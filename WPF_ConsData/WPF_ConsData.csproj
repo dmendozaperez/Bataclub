@@ -34,7 +34,7 @@
     <MinimumRequiredVersion>2.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>257</ApplicationRevision>
+    <ApplicationRevision>259</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -502,10 +502,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Ws_BataClub\BataEcommerce.disco" />
+    <Resource Include="Design\Images\copiar_p.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Design\Images\copiar_p.png" />
+    <None Include="Service References\Ws_BataClub\BataEcommerce.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
